@@ -1,0 +1,1519 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Continuous-Time Impulse Response and Convolution</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64327</md:content-id>
+  <md:title>Continuous-Time Impulse Response and Convolution</md:title>
+  <md:abstract>
+</md:abstract>
+  <md:uuid>8f427cca-d878-4379-beeb-1732775c593c</md:uuid>
+</metadata>
+
+<content>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505720565488">Recall that a continuous-time system is an entity that takes
+a continuous-time signal as an input and produces another continuous-time
+signal as an output. A task we will often face is determining what a system’s
+output will be for a given input. Sometimes, this could be trivially easy. For
+example, if a system is defined as <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=x(t-1)+\frac{1}{2}x(t-2)</m:annotation></m:semantics></m:math> and the
+given input is <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)=\sin(t)</m:annotation></m:semantics></m:math>, the output is simply <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>sin</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mn>2</m:mn>
+  </m:mfrac>
+  <m:mi>sin</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mn>2</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+.</para><para id="idm505720538176">In many cases, finding the output may be a little more complicated. We might not be given an explicit input/output relationship, and instead only have physical measurements of the system (see "impulse response," below). Or the input/output relationship might be tricky to work with; systems built with capacitors and resistors will have an input/output relationship that is a differential equation, e.g.:</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505720537232"><m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>x</m:mi><m:mo>′</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>x</m:mi><m:mo>″</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mi>y</m:mi><m:mo>″</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mi>y</m:mi><m:mo>′</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=b_0 x(t)+b_1 x'(t)+b_2 x''(t)-a_2 y''(t)-a_1 y'(t)</m:annotation></m:semantics></m:math></para><para id="idm505720512960">One way to find the output would be to solve the differential equation. That approach works fine, but the trouble is that for every new input, the differential equation will have to be re-solved to find the output, which might become somewhat tedious. For LTI systems, it turns out there is another way to find a system's output for a given input, one that only requires a straightforward computation of a single integral. Before we can reveal the nature of this special integral, there is one more important concept in continuous-time signals and systems we need to meet: the impulse response.</para><section id="idm505720512112">
+      <title>The Impulse Response of an LTI Continuous-time System</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505720511664">We will ultimately want to find a system's output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> for a given <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, but before we do that, we first would like to know what the output is for a very specific input, the delta function <m:math><m:semantics><m:mrow><m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\delta(t)</m:annotation></m:semantics></m:math>. That particular output, <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[\delta(t)]</m:annotation></m:semantics></m:math>, is so special that it has its own name, the <term>impulse response</term>, and notation, <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math>.</para><figure id="idm505720493168" orient="vertical"><subfigure id="idm505720492400">
+          <media id="idm505720492272" alt="">
+            <image mime-type="" src="../../media/dHh.png" width="300pt" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505720491056">
+          <media id="idm505720490928" alt="">
+            <image mime-type="" src="../../media/B4_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B4_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505720489712">
+          <media id="idm505720489584" alt="">
+            <image mime-type="" src="../../media/B4_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B4_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>For LTI systems, the system output when the input is a delta function has special significance.</caption></figure><para id="idm505720487488">The impulse response can be thought of in physical terms as using a delta function to somehow shock or probe a system in question, with the impulse response being the output. The reason the impulse response of LTI systems is so important is because it can be used to compute the output corresponding to any other input, and thus it contains all the information about the nature of the system. If we know the impulse response, we have complete knowledge of the system.</para></section>
+    <section id="idm505720486496">
+      <title>Convolution: Finding the output from the impulse response and input</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505720486032">If we are given a system's impulse response, we will be able to find the system's output for any given input. To see why, first recall the sifting property of the delta function, how it allows us to express an <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> in terms of delta functions:</para><para id="idm505720482480">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>=</m:mo>
+              <m:munderover>
+                <m:mo>∫</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+              </m:munderover>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>τ</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mi>δ</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>−</m:mo>
+              <m:mi>τ</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mi>d</m:mi>
+              <m:mi>τ</m:mi>
+            </m:mrow>
+            <m:annotation encoding="math/tex">x(t)=\int\limits_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505720469440">We will now see why a system being LTI is so helpful. Let's say we would like to put <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> through an LTI system <m:math>
+  <m:mi>H</m:mi>
+</m:math>
+, so as to produce <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math>. We have that:</para><para id="idm505720462688">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:mi>y</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>H</m:mi>
+          <m:mo stretchy="false">[</m:mo>
+          <m:mi>x</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo stretchy="false">]</m:mo>
+          <m:mo>=</m:mo>
+          <m:mi>H</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:munderover>
+              <m:mo>∫</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:munderover>
+            <m:mi>x</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>τ</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>δ</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>−</m:mo>
+            <m:mi>τ</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>d</m:mi>
+            <m:mi>τ</m:mi>
+            <m:mo>]</m:mo>
+          </m:mrow>
+        </m:math>
+      </para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505720444976">Alright, so all we've done is put the integral form of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> inside <m:math><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mo>⋅</m:mo><m:mo stretchy="false">]</m:mo></m:math>. But now we remember that the system <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> is linear (the "<emphasis effect="italics">L</emphasis>" in LTI). One of the properties of linearity is the superposition property, namely that </para><para id="idm505721538368">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mi>H</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>=</m:mo>
+              <m:mi>H</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>+</m:mo>
+              <m:mi>H</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo stretchy="false">]</m:mo>
+            </m:mrow>
+            <m:annotation encoding="math/tex">H[x_1(t)+x_2(t)]=H[x_1(t)]+H[x_2(t)]</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm505721520096">Of course if the sum holds for two elements in the sum, it does for one more, and then one more, and so on, so that the property holds even for an infinite sum:</para>
+      <para id="idm505721519664">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:mi>H</m:mi>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:munderover>
+              <m:mo movablelimits="false">∑</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>−</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo movablelimits="false">∑</m:mo>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mo>−</m:mo>
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+          </m:munderover>
+          <m:mi>H</m:mi>
+          <m:mo stretchy="false">[</m:mo>
+          <m:msub>
+            <m:mi>x</m:mi>
+            <m:mi>k</m:mi>
+          </m:msub>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo stretchy="false">]</m:mo>
+        </m:math>
+      </para>
+      <para id="idm505719505968">Make sure that above step makes sense to you before moving on. Now, an integral is nothing more than an infinite sum of infinitesimally skinny things, so we can use the superposition property of the system to simplify things a bit:</para>
+      <para id="idm505719505472">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>d</m:mi>
+                      <m:mi>τ</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+y(t)=H[x(t)]&amp;=H\left[\int\limits_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau\right]\\
+&amp;=\int\limits_{-\infty}^{\infty}H[x(\tau)\delta(t-\tau)]d\tau
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm505719470672">Remember that superposition is only part of the magic of linearity. The other linearity property is the scaling property, namely that for a linear system, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>α</m:mi><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>α</m:mi><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[\alpha x(t)]=\alpha H[x(t)]</m:annotation></m:semantics></m:math>. Our system <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> is taking in signals that are defined in terms of time <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>. From the perspective of the system, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(\tau)</m:annotation></m:semantics></m:math> then is simply a constant, so we can continue to simplify.</para>
+      <para id="idm505719454288">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>d</m:mi>
+                      <m:mi>τ</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+y(t)=H[x(t)]&amp;=H\left[\int\limits_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau\right]\\
+&amp;=\int\limits_{-\infty}^{\infty}H[x(\tau)\delta(t-\tau)]d\tau\\
+&amp;=\int\limits_{-\infty}^{\infty}x(\tau)H[\delta(t-\tau)]d\tau
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505719407184">Hopefully the expression <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[\delta(t-\tau)]</m:annotation></m:semantics></m:math> looks somewhat familiar...we had just been discussing the impulse response of a system, that it is the system's output when the input is a delta function: <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)=H[\delta(t)]</m:annotation></m:semantics></m:math>. Of course, that's not quite the same as <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[\delta(t-\tau)]</m:annotation></m:semantics></m:math>, but this is where the "<emphasis effect="italics">TI</emphasis>" (time-invariance) of the system <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> being LTI comes into play. For a time-invariant system, a delay in the input produces a corresponding delay in the output, <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t-t_0)]=y(t-t_0)</m:annotation></m:semantics></m:math>, or in our case, <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[\delta(t-t_0)]=h(t-t_0)</m:annotation></m:semantics></m:math>. That allows us to simplify the expression of the output even more:</para><para id="idm505721508496">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>δ</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mi>τ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>d</m:mi>
+                      <m:mi>τ</m:mi>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+y(t)=H[x(t)]&amp;=H\left[\int\limits_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau\right]\\
+&amp;=\int\limits_{-\infty}^{\infty}H[x(\tau)\delta(t-\tau)]d\tau\\
+&amp;=\int\limits_{-\infty}^{\infty}x(\tau)H[\delta(t-\tau)]d\tau\\
+&amp;=\int\limits_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+
+<figure id="formulas" orient="vertical"><media id="formulasm" alt="">
+       <image mime-type="" src="../../media/ctltioutputv2.png" width="500pt" print-width="350pt"/>
+   </media>
+  
+<caption>Any continuous-time signal can be expressed as an infinite combination of shifted delta functions. Therefore for an LTI system, the output can likewise be expressed as an infinite sum (i.e., the integral) of shifted impulse responses.</caption></figure>
+
+
+
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505721449712"><span>So now we see that for an LTI system, the output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> is simply an integral involving the input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> (although it is expressed in terms of the dummy variable <m:math>
+  <m:mi>τ</m:mi>
+</m:math>
+ in the integral) and the impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math>. </span>At a physical level, we can think of what is happening like this: when a delta function goes through an LTI system, the output is the system's impulse response. Because we can express an input as an integral of shifted and scaled delta functions, the fact that the system is LTI means that the output is likewise an integral of shifted and scaled impulse responses. <link target-id="formulas"/> shows how this looks in terms of the formulas, and <link target-id="idm505721439200"/> is an illustration of how it looks with actual signals.</para>
+
+
+<para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-417">So there we have it, the output of the system can be found through an integral of the input and impulse response! There will be many instances in which that will be far easier to calculate than solving a differential equation. This special integral is known as the <emphasis>convolution integral</emphasis> of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math>, and it even has a special kind of operator, the asterisk <m:math><m:semantics><m:mrow><m:mo>∗</m:mo></m:mrow><m:annotation encoding="math/tex">\ast</m:annotation></m:semantics></m:math>:</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-399"><m:math><m:semantics><m:mrow><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>d</m:mi><m:mi>τ</m:mi><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\int\limits_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau=x(t)\ast h(t)</m:annotation></m:semantics></m:math></para><figure id="idm505721439200" orient="vertical"><subfigure id="idm505721437088">
+          <media id="idm505721436960" alt="">
+            <image mime-type="" src="../../media/B4_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B4_1a.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505721435744">
+          <media id="idm505721435616" alt="">
+            <image mime-type="" src="../../media/B4_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B4_1b.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505721434400">
+          <media id="idm505721434272" alt="">
+            <image mime-type="" src="../../media/B12_3acnx.png"/>
+<image mime-type="application/postscript" src="../../media/B12_3acnx.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505721433056">
+          <media id="idm505721432928" alt="">
+            <image mime-type="" src="../../media/B12_3b.png"/>
+<image mime-type="application/postscript" src="../../media/B12_3b.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505721431712">
+          <media id="idm505721431584" alt="">
+            <image mime-type="" src="../../media/B12_3c.png"/>
+<image mime-type="application/postscript" src="../../media/B12_3c.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505721430368">
+          <media id="idm505721430240" alt="">
+            <image mime-type="" src="../../media/B12_3d.png"/>
+<image mime-type="application/postscript" src="../../media/B12_3d.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+                <subfigure id="idm505721427680">
+          <media id="idm505721427552" alt="">
+            <image mime-type="" src="../../media/B12_3f.png"/>
+<image mime-type="application/postscript" src="../../media/B12_3f.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The output of an LTI system is an infinite sum (an integral) of shifted and scaled versions of the system's impulse response.</caption></figure></section>
+    <section id="idm505721411744">
+      <title>Properties of Convolution</title>
+      <para id="idm505721411200">As with other mathematical operators, convolution also has a variety of properties that will help us out as we start working with it more. Like addition and multiplication, convolution obeys the <emphasis effect="italics">commutative property</emphasis>: </para>
+      <para id="idm505721410064">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>∗</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>=</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>∗</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+            </m:mrow>
+            <m:annotation encoding="math/tex">x_1(t)\ast x_2(t)=x_2(t)\ast x_1(t)</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm505721396560">Proof of this property involves a simple change of variables, letting <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>u</m:mi><m:mo>=</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">u=t-\tau</m:annotation></m:semantics></m:math> (meaning also <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>τ</m:mi><m:mo>=</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>u</m:mi></m:mrow><m:annotation encoding="math/tex">\tau=t-u</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>d</m:mi><m:mi>u</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi>d</m:mi><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">du=-d\tau</m:annotation></m:semantics></m:math>):</para>
+      <para id="idm505721386432">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>τ</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>u</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>t</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>u</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>u</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>u</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>u</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>u</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>u</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+x_1(t)\ast x_2(t)&amp;=\int\limits_{\tau=-\infty}^\infty x_1(\tau)x_2(t-\tau)d\tau\\
+&amp;=\int\limits_{u=t-(-\infty)}^{t-\infty}x_1(t-u)x_2(u)(-du)\\
+&amp;=-\int\limits_{u=\infty}^{-\infty}x_1(t-u)x_2(u)du\\
+&amp;=\int\limits_{u=-\infty}^{\infty}x_1(t-u)x_2(u)du\\
+&amp;=\int\limits_{u=-\infty}^{\infty}x_2(u)x_1(t-u)du\\
+&amp;=x_2(t)\ast x_1(t)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505721299264">When it comes to the commutative property's relevance to continuous-time LTI systems, what it means is that a signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> going through a system with impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> will produce the same output as a signal <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> processed by a system with an impulse response of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> (<link target-id="idm505721285456"/>).</para><figure id="idm505721285456" orient="vertical"><media id="idm505721284688" alt="">
+          <image mime-type="" src="../../media/convcommute.png" width="300pt" print-width="250pt"/>
+        </media>
+        
+      <caption>A graphical representation of the commutative property of convolution.</caption></figure><para id="idm505721282816">As with addition and multiplication, convolution also obeys the <emphasis effect="italics">associative property</emphasis>, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>)</m:mo></m:mrow><m:mo>∗</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)\ast\left(x_2(t)\ast x_3(t)\right)=\left(x_1(t)\ast x_2(t)\right)\ast x_3(t)</m:annotation></m:semantics></m:math>. The proof of this property requires switching the order of integration and using the commutative property a couple times:</para>
+      <para id="idm505721259424">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>∗</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mn>3</m:mn>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mtext> </m:mtext>
+                    <m:mi>d</m:mi>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:msub>
+                      <m:mi>τ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mtext> </m:mtext>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>1</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mn>1</m:mn>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>∗</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msub>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>∗</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+x_1(t)\ast\left(x_2(t)\ast x_3(t)\right)&amp;=x_1(t)\ast(x_3(t)\ast x_2(t))\\
+&amp;=\int\limits_{-\infty}^{\infty}x_1(\tau_2)\int\limits_{-\infty}^{\infty}x_3(\tau)x_2((t-\tau_2)-\tau)d\tau ~d\tau_2\\
+&amp;=\int\limits_{-\infty}^{\infty}x_3(\tau)\int\limits_{-\infty}^{\infty}x_1(\tau_2)x_2((t-\tau)-\tau_2)d\tau_2 ~d\tau\\
+&amp;=x_3(t)\ast(x_1(t)\ast x_2(t))\\
+&amp;=\left(x_1(t)\ast x_2(t)\right)\ast x_3(t)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm505720417696">The consequence of this property is that two LTI systems in series can be combined to be a single system whose impulse response is the convolution of the individual systems' impulse response (<link target-id="idm505720417248"/>).</para><figure id="idm505720417248" orient="vertical"><media id="idm505720416544" alt="">
+          <image mime-type="" src="../../media/convassoc.png" width="400pt" print-width="250pt"/>
+        </media>
+        
+      <caption>A graphical representation of the associative property of convolution.</caption></figure><para id="idm505720414672">Another property, the <emphasis effect="italics">distributive property</emphasis>, can help us to likewise simplify systems in other ways. As with multiplication and addition, the distributive property of convolution is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mo stretchy="false">(</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)\ast(x_2(t)+x_3(t))=x_1(t)\ast x_2(t)+x_1(t)\ast x_3(t)</m:annotation></m:semantics></m:math>. The proof is a matter of splitting a sum within the convolution integral into two separate integrals:</para>
+      <para id="idm505720389184">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <m:mtr>
+              <m:mtd>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>∗</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">)</m:mo>
+              </m:mtd>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:munderover>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>d</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:munderover>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>d</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:munderover>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>d</m:mi>
+                <m:mi>τ</m:mi>
+                <m:mo>+</m:mo>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:munderover>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>τ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>d</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>∗</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>+</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>1</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>∗</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>3</m:mn>
+                </m:msub>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </para>
+      <para id="idm505720303744">With this property, we can take two LTI systems that are in parallel and combine them into one system with an impulse response that is the sum of the individual systems' impulse responses (<link target-id="idm505720303296"/>).</para><figure id="idm505720303296" orient="vertical"><media id="idm505720302528" alt="">
+          <image mime-type="" src="../../media/convdistrib.png" width="400pt" print-width="250pt"/>
+        </media>
+        
+      <caption>A graphical representation of the distributive property of convolution.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm505720231936">The final property of convolution, its <emphasis effect="italics">width</emphasis>, has to do with the output that two convolved signals produce. Suppose a signal <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)</m:annotation></m:semantics></m:math> is valued at <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> outside a time duration of length <m:math><m:semantics><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">T_1</m:annotation></m:semantics></m:math>. Suppose also a signal <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2(t)</m:annotation></m:semantics></m:math> is valued at <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> outside a time duration of length <m:math><m:semantics><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">T_2</m:annotation></m:semantics></m:math>. The convolved signal <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)\ast x_2(t)</m:annotation></m:semantics></m:math> will then be valued at <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> outside a time duration of width <m:math><m:semantics><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">T_1+T_2</m:annotation></m:semantics></m:math> (<link target-id="idm505720202656"/>). We will see why this is the case when we begin to actually compute some convolutions.</para><figure id="idm505720202656" orient="vertical"><subfigure id="idm505720201888">
+          <media id="idm505720201760" alt="">
+            <image mime-type="" src="../../media/B16_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B16_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505720200544">
+          <media id="idm505720200416" alt="">
+            <image mime-type="" src="../../media/B16_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B16_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm505720199200">
+          <media id="idm505720199072" alt="">
+            <image mime-type="" src="../../media/B16_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B16_1c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The width of a convolved signal is the sum of the width of the two signals that were convolved to make it.</caption></figure></section>
+  </content>
+</document>

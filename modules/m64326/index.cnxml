@@ -1,0 +1,732 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Continuous-Time Impulse Response, Causality, and Stability</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64326</md:content-id>
+  <md:title>Continuous-Time Impulse Response, Causality, and Stability</md:title>
+  <md:abstract/>
+  <md:uuid>29dee2c6-9e4a-4f2e-a6e8-d7fb137fd9e6</md:uuid>
+</metadata>
+
+<content>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm512356930512">Recall that two properties of continuous-time systems of special interest to us are <link document="m64328" target-id="eip-976" window="new">causality</link> and <link document="m64328" target-id="eip-562" window="new">system stability</link>. A system <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> is causal if it only depends on present and/or past values of the input, and a system is bounded-input bounded-output (BIBO) stable if, for any bounded input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> --meaning there exists some real number <m:math><m:semantics><m:mrow><m:mi>A</m:mi></m:mrow><m:annotation encoding="math/tex">A</m:annotation></m:semantics></m:math> such that <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>&lt;</m:mo><m:mi>A</m:mi></m:mrow><m:annotation encoding="math/tex">|x(t)|&lt;A</m:annotation></m:semantics></m:math> for all <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>), the output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">--</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> will also be bounded (by some real number <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math> (<link target-id="idm512356910720"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm512356910720" orient="vertical"><subfigure id="idm512356910016">
+        <media id="idm512356909888" alt="">
+          <image mime-type="" src="../../media/B47_1.png"/>
+<image mime-type="application/postscript" src="../../media/B47_1.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm512356908688">
+        <media id="idm512356908560" alt="">
+          <image mime-type="" src="../../media/B47_2b.png"/>
+<image mime-type="application/postscript" src="../../media/B47_2b.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>A system is bounded-input bounded-output (BIBO) stable if, for any bounded input signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, the output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> will also be bounded. Here we have an example of a bounded input, with <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>&lt;</m:mo><m:mi>A</m:mi></m:mrow><m:annotation encoding="math/tex">|x(t)|&lt;A</m:annotation></m:semantics></m:math>, and a bounded output, <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>&lt;</m:mo><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">|y(t)|&lt;B</m:annotation></m:semantics></m:math>.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm512356887152">We also recall that for LTI systems, the impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> tells us everything we need to know about a system, because the output to any given input is simply the convolution of the input with <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math>. If indeed the impulse response completely describes an LTI system, then it follows that we ought to be able to somehow examine an LTI system's impulse response to determine whether or not the system is causal and/or BIBO stable. And it turns out, of course, that such is the case. </para><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-679"><title>The Impulse Response and Causality</title><para id="eip-492">Let's take a look again at what convolution looks like. For an LTI system with impulse response <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, the output <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is the convolution of the input <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ with <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Note especially the orientation of <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ in <link target-id="fig2"/>.</para>
+<figure id="fig2" orient="vertical"><subfigure id="fig2s1">
+<media id="conv1" alt="">
+<image mime-type="" src="../../media/B21_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B21_1a.eps" for="pdf" print-width="200pt"/>
+</media>
+</subfigure>
+<subfigure id="fig2s2">
+<media id="conv2" alt="">
+<image mime-type="" src="../../media/B19_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B19_1a.eps" for="pdf" print-width="200pt"/>
+</media>
+</subfigure>
+<subfigure id="fig2s3">
+<media id="conv3" alt="">
+<image mime-type="" src="../../media/B21_2b.png"/>
+<image mime-type="application/postscript" src="../../media/B21_2b.eps" for="pdf" print-width="200pt"/>
+</media>
+</subfigure>
+<subfigure id="fig2s4">
+<media id="conv4" alt="">
+<image mime-type="" src="../../media/B21_2c.png"/>
+<image mime-type="application/postscript" src="../../media/B21_2c.eps" for="pdf" print-width="200pt"/>
+</media>
+</subfigure>
+<subfigure id="fig2s5">
+<media id="conv5" alt="">
+<image mime-type="" src="../../media/B22_2-8dd6.png"/>
+<image mime-type="application/postscript" src="../../media/B22_2-dd09.eps" for="pdf" print-width="200pt"/>
+</media>
+</subfigure>
+<caption>In this convolution example, only values of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ for <m:math>
+  <m:mi>τ</m:mi>
+  <m:mo>&lt;</m:mo>
+  <m:mi>t</m:mi>
+</m:math>
+ contribute to the output at time <m:math>
+  <m:mi>t</m:mi>
+</m:math>, because <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ was <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ for all <m:math>
+  <m:mi>τ</m:mi>
+  <m:mo>&lt;</m:mo>
+  <m:mn>0</m:mn>
+</m:math>.</caption></figure>
+<para id="eip-492b">
+<m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is zero for all <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>&lt;</m:mo>
+  <m:mn>0</m:mn>
+</m:math>, once it is flipped, only <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ for <m:math>
+  <m:mi>τ</m:mi>
+  <m:mo>≤</m:mo>
+  <m:mi>t</m:mi>
+</m:math>
+ contribute (shaded above) to the convolution integral <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:munderover>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>d</m:mi>
+  <m:mi>τ</m:mi>
+</m:math>. In other words, no future values of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ go in to the computation of <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ for any given <m:math>
+  <m:mi>t</m:mi>
+</m:math>; the system is causal!</para><para id="eip-39">Because of that, we can see that the impulse response does indeed tell us if a system is causal or not. Because of the way the convolution integral works, a system is causal if (and only if) its impulse response <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ for all <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>&lt;</m:mo>
+  <m:mn>0</m:mn>
+</m:math>.</para></section><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-875"><title>The Impulse Response and Stability</title><para id="idm512356880128">Likewise, we can determine if an LTI system <m:math>
+  <m:mi>H</m:mi>
+</m:math>
+ is BIBO stable simply from considering its impulse response <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. The relationship between BIBO stability and the impulse response is as follows: An LTI system with impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> is BIBO stable if and only if <m:math><m:semantics><m:mrow><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">\int\limits_{-\infty}^{\infty}|h(t)|dt &lt;\infty</m:annotation></m:semantics></m:math> (<link target-id="idm512356864992"/>).</para><figure id="idm512356864992" orient="vertical"><subfigure id="idm512356864272">
+        <media id="idm512356864144" alt="">
+          <image mime-type="" src="../../media/B49_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B49_1a.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm512356862928">
+        <media id="idm512356862800" alt="">
+          <image mime-type="" src="../../media/B49_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B49_1b.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>For an LTI system to be BIBO stable, the area under the curve <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">|h(t)|</m:annotation></m:semantics></m:math> must be finite.</caption></figure><para id="idm512356855040">Proof of this important relationship is a matter of evaluating the convolution integral (which is why we cannot stress enough that the relationship <emphasis effect="italics">only holds for LTI systems</emphasis>, because only for those is the output the convolution of the input and the system impulse response). We will first show the "if" side of the relationship, that a system is BIBO stable if <m:math><m:semantics><m:mrow><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">\int\limits_{-\infty}^{\infty}|h(t)|dt &lt;\infty</m:annotation></m:semantics></m:math> , or in other words, that the integral condition is sufficient for BIBO stability. Suppose we have that some arbitrary input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is bounded, <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>&lt;</m:mo><m:mi>A</m:mi></m:mrow><m:annotation encoding="math/tex">|x(t)|&lt;A</m:annotation></m:semantics></m:math>, and that <m:math><m:semantics><m:mrow><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>B</m:mi><m:mo>&lt;</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">\int\limits_{-\infty}^{\infty}|h(t)|dt=B &lt;\infty</m:annotation></m:semantics></m:math>. Using the convolution integral we have:</para><para id="idm512356821184">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo>∗</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>≤</m:mo>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>≤</m:mo>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>≤</m:mo>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>A</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>≤</m:mo>
+                  <m:mi>A</m:mi>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>≤</m:mo>
+                  <m:mi>A</m:mi>
+                  <m:mi>B</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mrow>
+          <m:annotation encoding="math/tex">\begin{align*}
+|y(t)|&amp;=|x(t)\ast h(t)|\\
+&amp;=|\int\limits_{-\infty}^{\infty}x(t-\tau)h(\tau)d\tau|\\
+&amp;\leq \int\limits_{-\infty}^{\infty}|x(t-\tau)h(\tau)|d\tau\\
+&amp;\leq \int\limits_{-\infty}^{\infty}|x(t-\tau)||h(\tau)|d\tau\\
+&amp;\leq \int\limits_{-\infty}^{\infty}A|h(\tau)|d\tau\\
+&amp;\leq A \int\limits_{-\infty}^{\infty}|h(\tau)|d\tau\\
+&amp;\leq A B\\
+\end{align*}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="idm512356736528">The other aspect of the proof, the "only if," is a little trickier. We need to show that a system is BIBO stable <emphasis effect="italics">only if</emphasis> the impulse response satisfies the integration condition, or in other words, that the condition is necessary for BIBO stability. In order to do that, we will show that it <emphasis effect="italics">not</emphasis> satisfying the condition implies the system is definitely not BIBO stable (if that doesn't make sense, think about it a second: if somehow the system were BIBO stable without the integration condition, then that would mean the condition was not really necessary). To show this, we start with the assumption that <m:math><m:semantics><m:mrow><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">\int\limits_{-\infty}^{\infty}|h(t)|dt=\infty</m:annotation></m:semantics></m:math> and then we input a very special input signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>:</para>
+    <para id="idm512355950880"><m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mrow><m:mo>{</m:mo><m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false"><m:mtr><m:mtd><m:mo>−</m:mo><m:mn>1</m:mn></m:mtd><m:mtd><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>0</m:mn></m:mtd><m:mtd><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>1</m:mn></m:mtd><m:mtd><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mtd></m:mtr></m:mtable><m:mo fence="true" stretchy="true"/></m:mrow></m:mrow><m:annotation encoding="math/tex">x(t)=\begin{cases}-1 &amp; h(-t)&lt;0\\0 &amp;h(-t)=0\\1 &amp; h(-t)&gt;0\end{cases}</m:annotation></m:semantics></m:math>.</para>
+    <para id="idm512355929552">So the input is very clearly bounded (by <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+), and yet the system's output to this input will be unbounded at <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math>:</para><para id="idm512355926912">
+      <m:math>
+        <m:semantics>
+          <m:mrow>
+            <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mi>y</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>−</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mo>−</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>h</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>τ</m:mi>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:mrow>
+          <m:annotation encoding="math/tex">\begin{align*}
+y(0)&amp;=\int\limits_{-\infty}^{\infty}x(0-\tau)h(\tau)d\tau\\
+&amp;= \int\limits_{-\infty}^{\infty}x(-\tau)h(\tau)d\tau\\
+&amp;= \int\limits_{-\infty}^{\infty}|h(\tau)|d\tau\\
+&amp;=\infty
+\end{align*}</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <exercise id="idm512355886544" class="exercise">
+      <problem id="id_04a713c2-a3b9-5f3b-abf7-980e892e4fb9" class="problem">
+        <para id="idm512355885488">Suppose an LTI system has an impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>a</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)=e^{-at}u(t)</m:annotation></m:semantics></m:math>, with <m:math><m:semantics><m:mrow><m:mi>a</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">a&gt;0</m:annotation></m:semantics></m:math>. Is this system BIBO stable?</para>
+      </problem>
+      <solution id="idm512355874672" class="solution">
+        <para id="idm512355874176">
+          <m:math>
+            <m:semantics>
+              <m:mrow>
+                <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                  <m:mtr>
+                    <m:mtd>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo stretchy="false">|</m:mo>
+                      </m:mrow>
+                      <m:mi>h</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo stretchy="false">|</m:mo>
+                      </m:mrow>
+                      <m:mi>d</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo stretchy="false">|</m:mo>
+                      </m:mrow>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi>a</m:mi>
+                          <m:mi>t</m:mi>
+                        </m:mrow>
+                      </m:msup>
+                      <m:mi>u</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo stretchy="false">|</m:mo>
+                      </m:mrow>
+                      <m:mi>d</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi>a</m:mi>
+                          <m:mi>t</m:mi>
+                        </m:mrow>
+                      </m:msup>
+                      <m:mi>d</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:msubsup>
+                        <m:mrow>
+                          <m:mo>[</m:mo>
+                          <m:mfrac>
+                            <m:mrow>
+                              <m:mo>−</m:mo>
+                              <m:mn>1</m:mn>
+                            </m:mrow>
+                            <m:mi>a</m:mi>
+                          </m:mfrac>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mo>−</m:mo>
+                              <m:mi>a</m:mi>
+                              <m:mi>t</m:mi>
+                            </m:mrow>
+                          </m:msup>
+                          <m:mo>]</m:mo>
+                        </m:mrow>
+                        <m:mn>0</m:mn>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:msubsup>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                      <m:mo>−</m:mo>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mo>−</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:mrow>
+                        <m:mi>a</m:mi>
+                      </m:mfrac>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mi>a</m:mi>
+                      </m:mfrac>
+                      <m:mo>&lt;</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mrow>
+              <m:annotation encoding="math/tex">\begin{align*}
+\int\limits_{-\infty}^{\infty}|h(t)|dt&amp;=\int\limits_{-\infty}^{\infty}|e^{-at}u(t)|dt\\
+&amp;=\int\limits_{0}^{\infty}e^{-at}dt\\
+&amp;=\left[\frac{-1}{a}e^{-at}\right]_0^\infty\\
+&amp;=0-\frac{-1}{a}\\
+&amp;=\frac{1}{a}&lt;\infty
+\end{align*}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="idm512355887568">As <m:math><m:semantics><m:mrow><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">\int\limits_{-\infty}^{\infty}|h(t)|dt&lt;\infty</m:annotation></m:semantics></m:math>, the system is BIBO stable.</para>
+      </solution>
+    </exercise>
+</section>
+    </content>
+</document>

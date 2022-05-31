@@ -1,0 +1,482 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Windowing Infinite-Length Continuous Time Signals</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m67585</md:content-id>
+  <md:title>Windowing Infinite-Length Continuous Time Signals</md:title>
+  <md:abstract/>
+  <md:uuid>b9bd9c03-1985-48e7-b4c4-a31be89504bc</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-52"><title>The Frequency Domain Effects of Windowing</title><para id="delete_me">We have seen that the CTFT allows us to analyze signals of potentially infinite length (and finite-length signals as well, with the assumption they have a value of <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ outside the defined "finite" range). But there are many circumstances in which we might want to only consider a portion of a larger signal. This raises the question of how we are to mathematically "consider" only a portion, and what effect that has in the frequency domain.</para><para id="eip-361">For example, suppose we have a lengthy signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, pictured in <link target-id="fig1"/>.</para>
+<figure id="fig1" orient="vertical"><media id="i651m1" alt="">
+       <image mime-type="" src="../../media/i65_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i65_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>An infinite length signal, from which we would like to consider only a part.</caption></figure><para id="eip-361b">We'll assume that either it continues on forever (or is simply <m:math>
+  <m:mn>0</m:mn>
+</m:math>) outside the portion shown. But suppose we want to take the CTFT of just the center portion of it. We could mathematically "extract" that portion of the signal by multiplying <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ by another signal <m:math>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+(<link target-id="fig2"/>).</para><figure id="fig2" orient="vertical"><subfigure id="fig2s1">
+<media id="i652m1" alt="">
+       <image mime-type="" src="../../media/i65_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i65_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig2s2">
+<media id="i653m1" alt="">
+       <image mime-type="" src="../../media/i65_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i65_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>Multiplying <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ by <m:math>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ extracts a portion of it for CTFT analysis.</caption></figure><para id="eip-361c">Having done that, it is straightforward to compute its CTFT. But we may wonder how the CTFT of the extracted portion compares to the CTFT of the original signal. To do this, we recall that multiplication in the time domain corresponds to convolution in the frequency domain. That means that
+<m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ corresponds to <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>∗</m:mo>
+  <m:mi>W</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. So lets first look at <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, <link target-id="fig3"/>, the CTFT of the original signal (the scale of the following CTFTs has been normalized to help with visualization).</para><figure id="fig3" orient="vertical"><media id="i654m1" alt="">
+       <image mime-type="" src="../../media/i65_4.png"/>
+       <image mime-type="application/postscript" src="../../media/i65_4.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The CTFT of the original infinite length signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</caption></figure><para id="eip-361d">Since <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ was multiplied by <m:math>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ in time, <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ will therefore be convolved with <m:math>
+  <m:mi>W</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+(<link target-id="fig4"/>). The result is the extracted signal's CTFT, <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+(<link target-id="fig5"/>).</para><figure id="fig4" orient="vertical"><media id="i655m1" alt="">
+       <image mime-type="" src="../../media/i65_5.png"/>
+       <image mime-type="application/postscript" src="../../media/i65_5.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The CTFT of the window <m:math>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</caption></figure><figure id="fig5" orient="vertical"><media id="i656m1" alt="">
+       <image mime-type="" src="../../media/i65_6.png"/>
+       <image mime-type="application/postscript" src="../../media/i65_6.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The CTFT of <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</caption></figure><para id="eip-645">This analysis in the frequency domain helps us to better understand the nature of windowing, in two ways. First, we can see how the size of the window makes a difference. The wider the window, the more that the windowed signal will be like the original. Recalling the time/frequency CTFT relationship, we know that the more spread out the rectangular window is in time, the narrower the sinc will be in frequency. The narrower the window in frequency, the less it will "smear" the original CTFT as it produces the extracted signal's CTFT. In the extreme case, if the window is infinitely wide (i.e., <m:math>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>), then <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. In the frequency domain, that <m:math>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ corresponds to a delta, and of course convolving <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ with a delta will simply return <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ again, thus also <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</para><para id="eip-627">This smearing in the frequency domain illustrates what we know intuitively in the time domain, that the windowing operation results in lost information (so it is not reversible). It is impossible to recover <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ from the windowed version <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, and this loss of information in the time domain corresponds to the smearing/blurring/averaging in the frequency domain, which of course is also a loss of information (if you are told only the average of two numbers, there is no way to recover what those two numbers were).</para><para id="eip-373">And the second way this CTFT analysis helps us to understand windowing is in showing how the type of window we use--not just its width--also has a significant effect. It might seem at first that the rectangular windowing operation above is relatively unbiased and neutral, objectively giving us a very good representation of the frequency content of the original signal at the time it was windowed. But as we saw in its CTFT, the windowed signal has a significantly higher proportion of higher frequency components. And look again at <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+(<link target-id="fig6"/>). Note how it suddenly rises from <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ and then especially how it sharply drops again to <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ at the edges where it was widowed. <emphasis effect="italics"> Such sudden changes were never present in the original signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ -- the windowing operation introduced them!</emphasis> We can see this change in the frequency domain in the high frequency ripples in <m:math>
+  <m:mi>W</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ that by extension also appear <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</para><figure id="fig6" orient="vertical"><media id="i653m2" alt="">
+       <image mime-type="" src="../../media/i65_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i65_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>While it might seem that a rectangular window <m:math>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ selects a portion of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ in an unbiased way, it does introduce high frequencies: note how <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ jumps up from <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ and then falls back again sharply at the window edges.</caption></figure></section><section id="eip-429"><title>Types of Windows</title><para id="eip-205">So when it comes to the frequency domain (that is, <m:math>
+  <m:mi>W</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>), there are two desirable properties for windows. First, we would like them to be narrow, which results in less "smearing" and lost information. And second, we would prefer if they did not have ripples, which artificially introduce high frequencies in the windowed signal.</para><para id="eip-377">Unfortunately, for a given window length (in the time domain) it is not possible to achieve both goals. Some windows will be narrow but have ripples, while others will be wider and not have ripples. The square (or "rectangular") window is an example of the first type. <link target-id="fig8"/> shows how it looks in the time and frequency domains.</para><figure id="fig8" orient="vertical"><subfigure id="fig8s1">
+<media id="i671m1" alt="">
+       <image mime-type="" src="../../media/i67_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i67_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig8s2">
+<media id="i672m1" alt="">
+       <image mime-type="" src="../../media/i67_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i67_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>The time and frequency domain plots of a rectangular window function.</caption></figure><para id="eip-377b">Two other windows are more of the second type. They both have the same width in the time domain as the rectangular window. But compared to it, they will not have (as much) rippling in the frequency domain, at the expense of being wider in the frequency domain. One is a triangle (or "Bartlett") window (<link target-id="fig9"/>), and another similar one is the "Hamming" window (<link target-id="fig11"/>).</para><figure id="fig9" orient="vertical"><subfigure id="fig9s1">
+<media id="i673m1" alt="">
+       <image mime-type="" src="../../media/i67_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i67_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig9s2">
+<media id="i674m1" alt="">
+       <image mime-type="" src="../../media/i67_4.png"/>
+       <image mime-type="application/postscript" src="../../media/i67_4.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>The time and frequency domain plots of a triangular, or "Bartlett," window function.</caption></figure><figure id="fig11" orient="vertical"><subfigure id="fig11s1">
+<media id="i675m1" alt="">
+       <image mime-type="" src="../../media/i67_5.png"/>
+       <image mime-type="application/postscript" src="../../media/i67_5.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig11s2">
+<media id="i676m1" alt="">
+       <image mime-type="" src="../../media/i67_6.png"/>
+       <image mime-type="application/postscript" src="../../media/i67_6.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>The time and frequency domain plots of a Hamming window function.</caption></figure><para id="eip-637">There are many different types of windows, which might be chosen according to desired purposes. <link target-id="eip-561"/> demonstrates how different windows can have varying results in terms of a particular application.</para><example id="eip-561"><title>Windows for Sinusoidal Resolution</title><para id="eip-928">We will now see how the choice of windows can make a difference in certain applications. Suppose <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is a signal that is composed of two sinusoids (<link target-id="fig12"/>). As we would expect, its CTFT is simply four spikes: two for each sinusoid (<link target-id="fig13"/>).</para><figure id="fig12" orient="vertical"><media id="i70_2am1" alt="">
+       <image mime-type="" src="../../media/i70_2a.png"/>
+       <image mime-type="application/postscript" src="../../media/i70_2a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure>
+<figure id="fig13" orient="vertical"><media id="i70_2bm1" alt="">
+       <image mime-type="" src="../../media/i70_2b.png"/>
+       <image mime-type="application/postscript" src="../../media/i70_2b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="eip-928c">
+Suppose we use a rectangular window to extract a portion of a signal. <link target-id="fig14"/> shows the CTFT of the result.</para>
+<figure id="fig14" orient="vertical"><media id="i70_2cm1" alt="">
+       <image mime-type="" src="../../media/i70_2c.png"/>
+       <image mime-type="application/postscript" src="../../media/i70_2c.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure>
+<para id="eip-928d">Based upon this CTFT and all of its ripples, it is very difficult to determine the frequency and number of sinusoids in <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>! But now look at the result when a triangular window is used (<link target-id="fig15"/>). Now it is clear there were only two sinusoids, and we can see exactly where they are located.</para><figure id="fig15" orient="vertical"><media id="i70_2dm1" alt="">
+       <image mime-type="" src="../../media/i70_2d.png"/>
+       <image mime-type="application/postscript" src="../../media/i70_2d.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure>
+</example></section><section id="eip-401"><title>Windowing Application: Short-time Fourier Transform</title><para id="eip-124">A CTFT looks at the frequency components of an entire infinite-length signal. There may be some instances in which we are more interested in the frequency content at a particular point in a signal, such as the one in <link target-id="fig16"/>. For signals like this, in which the frequency content varies over the course of a signal, it would be helpful to have a way to represent such changes.</para>
+<figure id="fig16" orient="vertical"><media id="i721am1" alt="">
+       <image mime-type="" src="../../media/i72_1a.png"/>
+       <image mime-type="application/postscript" src="../../media/i72_1a.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The frequency content at particular points in this signal varies considerably over time.</caption></figure><para id="eip-476">It turns out there is a way, and it is called the <term>short-time Fourier transform (STFT)</term>. The STFT works by windowing a signal at all of its time values and taking the CTFT of the windowed signal at each point.<newline/>
+<m:math>
+  <m:mi>S</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>b</m:mi>
+  <m:mo>,</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:msubsup>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:msubsup>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>w</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mi>b</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+</m:math>
+<newline/>
+So we start with the original signal of <link target-id="fig16"/>, then we multiply it by a window, in this case centered at <m:math>
+  <m:mi>b</m:mi>
+  <m:mo>=</m:mo>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+</m:math>
+ (<link target-id="fig18"/>). At this point, the CTFT of the windowed signal is taken, giving the result for that particular time point <m:math>
+  <m:mi>b</m:mi>
+</m:math>
+ (<link target-id="fig19"/>). We can see from the CTFT that at that point in the signal, it is simply a sinusoid.</para>
+<figure id="fig18" orient="vertical"><subfigure id="fig18s1">
+<media id="i721bm1" alt="">
+       <image mime-type="" src="../../media/i72_1b.png"/>
+       <image mime-type="application/postscript" src="../../media/i72_1b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig18s2">
+<media id="i721cm1" alt="">
+       <image mime-type="" src="../../media/i72_1c.png"/>
+       <image mime-type="application/postscript" src="../../media/i72_1c.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>The moving window extracts a portion of the signal at all points in time (here, at <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+</m:math>).</caption></figure>
+<figure id="fig19" orient="vertical"><media id="i721dm1" alt="">
+       <image mime-type="" src="../../media/i72_1d.png"/>
+       <image mime-type="application/postscript" src="../../media/i72_1d.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="eip-236">Of course, the STFT is defined for many different time points. Representing it therefore requires using a third dimension in plots (<m:math>
+  <m:mi>b</m:mi>
+</m:math>
+ is one dimension, <m:math>
+  <m:mi>ω</m:mi>
+</m:math>
+ is another, and the value <m:math>
+  <m:mi>S</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>b</m:mi>
+  <m:mo>,</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is the third). When <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>S</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>b</m:mi>
+  <m:mo>,</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo stretchy="false">|</m:mo>
+    </m:mrow>
+    <m:mn>2</m:mn>
+  </m:msup>
+</m:math>
+ is used, and in particular when its value is represented as a color, then the plot is called a <term>spectrogram</term>. <link target-id="fig20"/> is a spectrogram of an audio recording of a scale and then a series of chords on a piano.</para>
+<figure id="fig20" orient="vertical"><media id="i731m1" alt="">
+       <image mime-type="" src="../../media/i73_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i73_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="pspec">
+Each vertical column of the spectrogram represents the CTFT of a the signal windowed at a particular time <m:math>
+  <m:mi>b</m:mi>
+</m:math>. We can see the frequencies increasing and then decreasing in time as the scale is played. Each note is composed of its fundamental frequency (e.g., .440 kHz for the note "A") and a number of harmonic frequencies as well (these are what give different instruments their particular sound characteristics, even when playing the same note). If you look closely enough, you can see that each chord is a combination of three fundamental frequencies.</para></section></content>
+
+</document>

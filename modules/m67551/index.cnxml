@@ -1,0 +1,2751 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Circuit Analysis and System Implementation with the Laplace Transform</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m67551</md:content-id>
+  <md:title>Circuit Analysis and System Implementation with the Laplace Transform</md:title>
+  <md:abstract/>
+  <md:uuid>8febcadb-55b9-4ffe-b7ac-d3e5474f2d05</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me">In our treatment of the <link document="m67541" window="new">properties of the Laplace transform</link> we began to see how it is a useful tool, helping us to make the solving a linear constant coefficient differential equation a matter of mere algebra. But the usefulness of the Laplace transform certainly does not stop there.</para><para id="eip-689">Dealing as it does with continuous-time signals and systems, the Laplace transform is also helpful as we consider the physical realization of those systems. With the Laplace transform we can easily perform circuit analysis with time varying signals, and it also gives us a straightforward way to implement systems with analog components.</para><section id="eip-889"><title>Circuit Analysis</title><para id="eip-427">In circuits with voltage sources, current sources, and resistors, analysis involves using Kirchoff's circuit laws and algebraically solving a set of equations. Things get trickier, however, when capacitors and inductors are introduced into the circuits. The current through a capacitor and the voltage across an inductor are both expressed in terms of differentials. Analyzing such circuits would therefore involve solving differential equations.</para>
+<para id="eip-447">But as we already know, the Laplace transform can make solving differential equations easier. As a result, it also makes circuit analysis easier. It does that by generalizing the notion of circuit element resistance to be something called <term>impedance</term>.</para><para id="eip-4">According to Ohm's law, the voltage drop across a circuit element equals the resistance of the element times the current passing through it: <m:math>
+  <m:mi>v</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>i</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>R</m:mi>
+</m:math>
+. <link target-id="fig1"/> shows the circuit diagram representation.</para>
+<figure id="fig1" orient="vertical"><media id="m86cnx1m1" alt="">
+       <image mime-type="" src="../../media/M86cnx1.png" width="150pt" print-width="100pt"/>
+    </media>
+<caption>A diagram of the voltage across (and current through) a resistor.</caption></figure><para id="eip-4b">
+When the circuit is viewed in the Laplace domain, the voltage and current are the transforms of their time-domain equivalents, and resistance is now called impedance.
+ <m:math>
+  <m:mi>V</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>I</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>Z</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Sometimes, when referring to impedance, circuit elements are represented as boxes, as seen in <link target-id="fig2"/>.</para>
+<figure id="fig2" orient="vertical"><media id="m86cnx2m1" alt="">
+       <image mime-type="" src="../../media/M86cnx2.png" width="150pt" print-width="100pt"/>
+    </media>
+<caption>When viewed in the Laplace domain, "resistance" is generalized to be "impedance."</caption></figure><para id="eip-4c">
+The good news of all of this is that while capacitors and conductors do not have a defined "resistance" like a resistor does, they do have readily defined impedances:</para><list id="eip-801"><item>Resistor: <m:math>
+  <m:mi>R</m:mi>
+</m:math>
+</item>
+<item>Capacitor: <m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>C</m:mi>
+      <m:mi>s</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</item>
+<item>Inductor: <m:math>
+  <m:mi>L</m:mi>
+  <m:mi>s</m:mi>
+</m:math>
+</item></list><para id="eip-423">So to analyze circuits containing capacitors and inductors, it is useful to view them in the Laplace domain. Their impedance values are otherwise treated as their "resistance" when performing the usual KVL/KCL analysis. It is easiest to see how that all works with an example.</para><example id="eip-921"><para id="eip-812">Suppose the circuit of <link target-id="fig3"/> is initially at rest (no current going through it, and no stored voltage across any elements). </para>
+<figure id="fig3" orient="vertical"><media id="m86cnx3m1" alt="">
+       <image mime-type="" src="../../media/M86cnx3.png" width="300pt" print-width="250pt"/>
+    </media>
+</figure>
+<para id="eip-812b">
+Then a voltage source <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is applied (<link target-id="fig4"/>). We would like to know what the output voltage <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is.</para>
+<figure id="fig4" orient="vertical"><media id="m86cnx5am1" alt="">
+<image mime-type="" src="../../media/M86cnx5a.png"/>
+       <image mime-type="application/postscript" src="../../media/M86cnx5a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="eip-97">Using typical circuit analysis methods, this would be a tricky problem to solve. It is made much easier, however, by looking at the circuit in the Laplace domain (<link target-id="fig5"/>).</para>
+<figure id="fig5" orient="vertical"><media id="m86cnx4m1" alt="">
+       <image mime-type="" src="../../media/M86cnx4.png" width="300pt" print-width="250pt"/>
+    </media>
+</figure><para id="eip-744">Using impedance instead of resistance, the output <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is found using a simple voltage divider relation. Once it is simplified enough, the inverse Laplace transform is found to determine <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ (<link target-id="fig6"/>). Since the output will be right-sided (since the system was initially at rest), the ROC will be assumed to extend rightward from the rightmost pole.<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mfrac>
+          <m:mi>R</m:mi>
+          <m:mrow>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>C</m:mi>
+                <m:mi>s</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+        <m:mfrac>
+          <m:mi>R</m:mi>
+          <m:mrow>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>C</m:mi>
+                <m:mi>s</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>R</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>C</m:mi>
+                <m:mi>s</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mi>R</m:mi>
+          </m:mrow>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mi>R</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>R</m:mi>
+                <m:mi>C</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>R</m:mi>
+                <m:mi>C</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mn>1000</m:mn>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mn>.0005</m:mn>
+                <m:mo stretchy="false">)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mn>1000</m:mn>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mn>.0005</m:mn>
+                <m:mo stretchy="false">)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>.5</m:mn>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>.5</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>A</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo>+</m:mo>
+        <m:mfrac>
+          <m:mi>B</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">→</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo>=</m:mo>
+        <m:mi>A</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>2</m:mn>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">→</m:mo>
+        <m:mi>A</m:mi>
+        <m:mo>+</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo>=</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo>,</m:mo>
+        <m:mi>A</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>B</m:mi>
+        <m:mo>=</m:mo>
+        <m:mn>0</m:mn>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">→</m:mo>
+        <m:mi>A</m:mi>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+        <m:mo>,</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo>=</m:mo>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>2</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo>−</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+<m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+
+        <m:mo>−</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+<m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+</para><figure id="fig6" orient="vertical"><media id="m86cnx5bm1" alt="">
+<image mime-type="" src="../../media/M86cnx5b.png"/>
+       <image mime-type="application/postscript" src="../../media/M86cnx5b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure>
+<para id="eip-607">The Laplace transform also makes it easy to find the system's transfer function <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, and then--by taking the inverse transform--its impulse response <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Once again, the ROC--though unstated below--is right-sided:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mfrac>
+          <m:mi>R</m:mi>
+          <m:mrow>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>C</m:mi>
+                <m:mi>s</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>R</m:mi>
+          <m:mrow>
+            <m:mi>R</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>C</m:mi>
+                <m:mi>s</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>R</m:mi>
+            <m:mi>s</m:mi>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>R</m:mi>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>C</m:mi>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>R</m:mi>
+                <m:mi>C</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mn>1000</m:mn>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mn>.0005</m:mn>
+                <m:mo stretchy="false">)</m:mo>
+              </m:mrow>
+            </m:mfrac>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>s</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo>−</m:mo>
+        <m:mfrac>
+          <m:mn>2</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>h</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>−</m:mo>
+        <m:mn>2</m:mn>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>u</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+
+</para></example></section><section id="eip-377"><title>System Implementation</title><para id="eip-370">Using the Laplace transform, we have seen how to analyze a circuit to determine its transfer function. But suppose instead we have some desired transfer function and then want to create a corresponding circuit. We could try to make one with the usual circuit elements of resistors, capacitors, and inductors, but the more typical approach is to make a block diagram of the system using slightly more advanced analog computer components:</para><list id="eip-353"><item>Gain<newline/><media id="ampm1" alt="">
+       <image mime-type="" src="../../media/amp.png" width="100pt" print-width="50pt"/>
+</media></item>
+<item>Summer
+ <list id="nest353"><item>Two or three inputs<newline/><media id="sum2m1" alt="">
+       <image mime-type="" src="../../media/sum2.png" width="100pt" print-width="50pt"/>
+</media></item>
+   <item>Many inputs<newline/><media id="summanym1" alt="">
+       <image mime-type="" src="../../media/summany.png" width="100pt" print-width="50pt"/>
+</media></item>
+</list>
+</item>
+<item>Differentiator<newline/><media id="diffm1" alt="">
+       <image mime-type="" src="../../media/diff.png" width="100pt" print-width="50pt"/>
+</media></item>
+<item>Integrator<newline/><media id="intm1" alt="">
+       <image mime-type="" src="../../media/int.png" width="100pt" print-width="50pt"/>
+</media></item>
+
+</list><example id="eip-412"><para id="eip-459">Suppose we would like to implement a system that "zeros-out" a particular frequency, but leaves the rest essentially unchanged. A system with the following transfer function will accomplish that goal, as we can see from its frequency response (<link target-id="fig7"/>):<newline/><m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+(recall that for causal systems, which these are assumed to be, the ROCs always extend to the right of the rightmost pole, and thus are usually left unstated)</para><figure id="fig7" orient="vertical"><media id="anacompcnxm2" alt="">
+       <image mime-type="" src="../../media/anacompcnx.png"/>
+       <image mime-type="application/postscript" src="../../media/anacompcnx.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>This system eliminates a specific incoming frequency, but leaves the rest relatively unchanged.</caption></figure><para id="eip-459b">
+To implement that system, we'll first create an input/output relationship in the <m:math>
+  <m:mi>s</m:mi>
+</m:math>
+-domain:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>−</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msup>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>−</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>s</m:mi>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math><newline/>
+From here, we can create a system diagram using gains, summers, and differentiators (<link target-id="fig8"/>).</para>
+<figure id="fig8" orient="vertical"><media id="anacompimpcnxm1" alt="">
+       <image mime-type="" src="../../media/anacompimpcnx.png" width="400pt" print-width="250pt"/>
+</media>
+<caption>A system realization using gains, summers, and differentiators.</caption></figure></example><para id="eip-736">In the example above, we used differentiators (the "<m:math>
+  <m:mi>s</m:mi>
+</m:math>
+" blocks) to implement the transfer function. In the ideal case, they work together with the gains and the summer to perfectly reproduce it. But in practice there is some amount of deviation from what the elements are supposed to do. Such deviation is only compounded by the fact that differentiators, on their own, amplify noise. As a result, integrators ("<m:math>
+  <m:mn>1</m:mn>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo>/</m:mo>
+  </m:mrow>
+  <m:mi>s</m:mi>
+</m:math>
+" blocks) are typically preferred for system implementation. The only trouble with them is that they have infinite gain on the DC component of signals, so systems that use them first eliminate the DC portion of inputs using a "coupling capacitor."</para><para id="eip-578">Systems are implemented with integrators in essentially the same way as with differentiators. The only difference is that <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is expressed using negative powers of <m:math>
+  <m:mi>s</m:mi>
+</m:math>, rather than positive powers of <m:math>
+  <m:mi>s</m:mi>
+</m:math>. We'll repeat the same example as before, but use integrators this time.</para><example id="eip-71"><para id="eip-592">Using the same system as the previous example, we will implement it instead with integrators (<link target-id="fig9"/>):<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd/>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>2</m:mn>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo>+</m:mo>
+        <m:mn>2</m:mn>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo>+</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>−</m:mo>
+        <m:mn>2</m:mn>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>−</m:mo>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+</para>
+<figure id="fig9" orient="vertical"><media id="compintimpcnxm1" alt="">
+       <image mime-type="" src="../../media/compintimp.png" width="400pt" print-width="250pt"/>
+</media>
+<caption>The same system as before, only implemented with integrators instead of differentiators.</caption></figure></example><para id="eip-87">The general form for causal systems that can be implemented with gains, summers, and integrators is as follows:<newline/>
+<m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mrow>
+      <m:msub>
+        <m:mi>b</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mo>+</m:mo>
+      <m:msub>
+        <m:mi>b</m:mi>
+        <m:mn>1</m:mn>
+      </m:msub>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:msub>
+        <m:mi>b</m:mi>
+        <m:mn>2</m:mn>
+      </m:msub>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mn>2</m:mn>
+        </m:mrow>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:mo>.</m:mo>
+      <m:mo>.</m:mo>
+      <m:mo>.</m:mo>
+      <m:mo>+</m:mo>
+      <m:msub>
+        <m:mi>b</m:mi>
+        <m:mi>N</m:mi>
+      </m:msub>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mi>N</m:mi>
+        </m:mrow>
+      </m:msup>
+    </m:mrow>
+    <m:mrow>
+      <m:mn>1</m:mn>
+      <m:mo>+</m:mo>
+      <m:msub>
+        <m:mi>a</m:mi>
+        <m:mn>1</m:mn>
+      </m:msub>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:msub>
+        <m:mi>a</m:mi>
+        <m:mn>2</m:mn>
+      </m:msub>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mn>2</m:mn>
+        </m:mrow>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:mo>.</m:mo>
+      <m:mo>.</m:mo>
+      <m:mo>.</m:mo>
+      <m:mo>+</m:mo>
+      <m:msub>
+        <m:mi>a</m:mi>
+        <m:mi>M</m:mi>
+      </m:msub>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mi>M</m:mi>
+        </m:mrow>
+      </m:msup>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+<newline/>
+The Laplace domain input/output relation for the system is:<newline/>
+
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>=</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:msub>
+          <m:mi>b</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:msub>
+          <m:mi>b</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:msub>
+          <m:mi>b</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:mo>⋯</m:mo>
+        <m:mo>+</m:mo>
+        <m:msub>
+          <m:mi>b</m:mi>
+          <m:mi>N</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>N</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>a</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msub>
+          <m:mi>a</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>−</m:mo>
+        <m:mo>⋯</m:mo>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>a</m:mi>
+          <m:mi>M</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>M</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+
+
+<newline/>
+There are many ways to create a system block diagram of this system. Two standard implementations are the "direct form I" and "direct form II." The direct form I implementation has the smallest number of summers possible (<link target-id="fig11"/>).</para>
+<figure id="fig11" orient="vertical"><media id="dficnxcnxm1" alt="">
+       <image mime-type="" src="../../media/dficnx.png" width="400pt" print-width="250pt"/>
+</media>
+<caption>The direct form I implementation of a system has the smallest number of summers possible.</caption></figure><para id="eip-87b">
+The direct form II, on the other hand, uses a minimum number of integrators. It simply flips the order of the two big parallel structures (<link target-id="fig12"/>).</para>
+<figure id="fig12" orient="vertical"><media id="dfiicnxcnxm1" alt="">
+       <image mime-type="" src="../../media/dfiicnx.png" width="400pt" print-width="250pt"/>
+</media>
+<caption>The direct form II implementation has the smallest number of integrators possible.</caption></figure><para id="eip-87c">
+In each of the systems above it was assumed that <m:math>
+  <m:mi>N</m:mi>
+</m:math>
+ and <m:math>
+  <m:mi>M</m:mi>
+</m:math>
+ were equal. If they weren't, then the largest number would prevail in the block diagram, and some coefficients would simply be zero.</para><para id="eip-746">As elegant as those system implementations--or "realizations," as they are sometimes known--are, in practice they are not used, because they magnify errors of component drift (changes in component behavior). Instead, a large system is usually broken up into a series of parallel or cascaded first and second order (i.e., <m:math>
+  <m:mi>N</m:mi>
+</m:math>
+ is <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+ or  <m:math>
+  <m:mn>2</m:mn>
+</m:math>) systems.</para></section><section id="eip-612"><title>Filter Design</title><para id="eip-441">The above discussion on system implementation explained how a system that has a <term>rational</term> transfer function (i.e., it can be expressed as a single fraction with a polynomial numerator and denominator) can be realized with analog computer components. But that raises a question: how are we to decide on a desired transfer function? This leads us to the topic of filter design.</para><para id="eip-309">When it comes to ways in which we may want to modify a signal, one of the most common is to apply a <term>filter</term>. As we would expect from the name, a filter is a system that eliminates undesired aspects of an input signal, letting the rest of it pass (hopefully otherwise unchanged). Filters are typically described in terms of what they remove and what they allow to pass in the frequency domain. A <term>lowpass filter</term> seeks to eliminate high frequencies in an input signal, and a <term>highpass filter</term> does the opposite. A <term>bandpass filter</term> lets only a certain band of frequencies through, while a <term>bandstop filter</term> removes them. If a filter is <term>ideal</term>, then its response is perfectly flat in the <term>passband</term>, and then immediately drops to zero (and remains there) at the cutoff frequency into the <term>stopband</term>(<link target-id="fig13"/>).</para><figure id="fig13" orient="vertical"><media id="idealfiltsm2" alt="">
+       <image mime-type="" src="../../media/idealfilts.png"/>
+       <image mime-type="application/postscript" src="../../media/idealfilts.eps" for="pdf" print-width="350pt"/>
+    </media>
+<caption>The magnitude of the frequency response of ideal lowpass, highpass, bandstop, and bandpass filters.</caption></figure><para id="eip-484">It is, unfortunately, not possible to create a physical realization of an ideal filter in practice. A simple examination of their frequency response illustrates why: their "boxy" shapes correspond to their impulse responses being sinc functions in the time domain. Those functions extend indefinitely in time--past and future--so as a result it would be impossible to create a causal ideal filter (remember, the impulse responses of causal systems are zero for all <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>&lt;</m:mo>
+  <m:mn>0</m:mn>
+</m:math>).</para><para id="eip-178">But it is characteristic of engineers to find the best practical solutions available under given restraints. To that end, a number of options have been given for the problem of filtering. These options all trade-off on mutually exclusive traits:</para><list id="eip-864"><item>Flat frequency response in the passband (especially) and/or stopband</item>
+<item>Sharp transition from the passband to stopband</item>
+<item>Low filter order (i.e., small number of poles and/or zeros)</item></list><para id="eip-169">As is curiously often the case in such sets of three variables, only two can be prioritized (at the expense of the other). Looking at three of the most common analog filters will illustrate the trade-offs involved in filter design. The first is the <term>Butterworth filter</term>. This filter prizes flatness in the passband and stopbands. The frequency response of the filter is:<newline/>
+<m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:msqrt>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo>+</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>ω</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>/</m:mo>
+        </m:mrow>
+        <m:msub>
+          <m:mi>ω</m:mi>
+          <m:mi>c</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mn>2</m:mn>
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:msqrt>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+<newline/>
+As the filter order increases, the transition from the passband to stopband becomes ever sharper (<link target-id="fig14"/>). So it is flat and can have a sharp transition, but only for a high filter order.</para><figure id="fig14" orient="vertical"><media id="M88am2" alt="">
+       <image mime-type="" src="../../media/M88a.PNG"/>
+       <image mime-type="application/postscript" src="../../media/M88a.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>For a Butterworth filter, the passband and stopband are both flat, and the transition can be sharp if the filter order is large enough.</caption></figure><para id="eip-380">The implementation of a Butterworth filter is very straightforward; it is simply <m:math>
+  <m:mi>n</m:mi>
+</m:math>
+ poles distributed equally on a semicircle in the left-hand plane (<link target-id="fig15"/>).</para><figure id="fig15" orient="vertical"><media id="M88bm2" alt="">
+       <image mime-type="" src="../../media/M88b.PNG"/>
+       <image mime-type="application/postscript" src="../../media/M88b.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>A Butterworth filter has <m:math>
+  <m:mi>n</m:mi>
+</m:math>
+ poles distributed equally on a semicircle in the left-hand plane.</caption></figure><para id="eip-380b">This means the transfer function is equally straightforward, a product of those poles:
+<newline/>
+If the denominator polynomial is expanded--and assuming a cutoff frequency of <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+ (Laplace transform properties can be used for other cutoff values)--then we will have an input/output relationship as follows:<newline/>
+<m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>a</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mi>s</m:mi>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>a</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:msup>
+    <m:mi>s</m:mi>
+    <m:mn>2</m:mn>
+  </m:msup>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>−</m:mo>
+  <m:mo>⋯</m:mo>
+  <m:mo>−</m:mo>
+  <m:msup>
+    <m:mi>s</m:mi>
+    <m:mi>n</m:mi>
+  </m:msup>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+The coefficient values can be found on a table, or by using a command in computational software. With the coefficients, an analog computer implementation can be performed.</para><para id="eip-342">But in the frequency response we see the tradeoff.  The response is flat in the passband and stopband, but it is not possible to have both a sharp transition and low filter order. As we might expect, perhaps we can accept less flatness in the frequency response in order to get a quicker transition. Two filters that accomplish this, in varying degrees, are the <term>Chebyshev</term> and <term>Elliptic</term> filters. The Chebyshev filter allows ripples in either the passband ("Chebyshev type I") or stopband ("Chebyshev type II"), and in return gets a sharper dropoff at the cutoff frequency. Below is the frequency response of a Chebyshev type I filter (<link target-id="fig16"/>):<newline/>
+<m:math>
+  <m:mrow>
+    <m:mo>|</m:mo>
+    <m:mrow>
+      <m:mi>H</m:mi>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mo>|</m:mo>
+  </m:mrow>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:msqrt>
+      <m:mn>1</m:mn>
+      <m:mo>+</m:mo>
+      <m:msup>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mi>ϵ</m:mi>
+        </m:mrow>
+        <m:mn>2</m:mn>
+      </m:msup>
+      <m:msup>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:msub>
+            <m:mi>C</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>ω</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+        </m:mrow>
+        <m:mn>2</m:mn>
+      </m:msup>
+    </m:msqrt>
+  </m:mfrac>
+  <m:mtext> </m:mtext>
+  <m:mtext> </m:mtext>
+  <m:mo>,</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mtext> </m:mtext>
+  <m:msub>
+    <m:mi>C</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>cos</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>n</m:mi>
+  <m:msup>
+    <m:mi>cos</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mn>1</m:mn>
+    </m:mrow>
+  </m:msup>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</para>
+<figure id="fig16" orient="vertical"><media id="M88c_1m2" alt="">
+       <image mime-type="" src="../../media/M88c_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M88c_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>A Chebyshev filter allows ripples in either the passband or stopband. By giving up flatness in one of these bands, it can have a sharp transition with a relatively small filter order.</caption></figure><para id="p1">
+Note both the ripples in the passband, as well as how the transition is sharp; for a filter order of <m:math>
+  <m:mn>8</m:mn>
+</m:math>, it has a similar dropoff to a Butterworth filter of order <m:math>
+  <m:mn>64</m:mn>
+</m:math>! In terms of the transfer function, the poles for a Chebyshev type I filter are on an ellipse in the left-hand plane (<link target-id="fig17"/>).</para>
+<figure id="fig17" orient="vertical"><media id="M88c_2m1" alt="">
+       <image mime-type="" src="../../media/M88c_2.png"/>
+       <image mime-type="application/postscript" src="../../media/M88c_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The poles for a Chebyshev type I filter are on an ellipse in the left-hand plane.</caption></figure><para id="p2">
+As with the Butterworth filter, the transfer function coefficients can be found in tables.</para><para id="eip-974">The elliptic filter takes the Chebyshev approach even further (it turns out that Chebyshev filters are actually just a special case of elliptic filters). It allows for ripples in both the passband and stopband, and therefore has the sharpest dropoff in the transition of the three filters. Its frequency response references <m:math>
+  <m:msub>
+    <m:mi>R</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, the "Chebyshev rational function" (<link target-id="fig18"/>):<newline/>
+<m:math>
+  <m:mrow>
+    <m:mo>|</m:mo>
+    <m:mrow>
+      <m:mi>H</m:mi>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mo>|</m:mo>
+  </m:mrow>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:msqrt>
+      <m:mn>1</m:mn>
+      <m:mo>+</m:mo>
+      <m:msup>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mi>ϵ</m:mi>
+        </m:mrow>
+        <m:mn>2</m:mn>
+      </m:msup>
+      <m:msup>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:msub>
+            <m:mi>R</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>ω</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+        </m:mrow>
+        <m:mn>2</m:mn>
+      </m:msup>
+    </m:msqrt>
+  </m:mfrac>
+</m:math>
+
+</para><figure id="fig18" orient="vertical"><media id="M88d_1m2" alt="">
+       <image mime-type="" src="../../media/M88d_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M88d_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>Because it has ripples in both the passband and stopband, an elliptic filter can have an extremely sharp transition with a very low filter order.</caption></figure><para id="p4">
+Here the transition from passband to stopband is nearly immediate, and with a filter order of only <m:math>
+  <m:mn>8</m:mn>
+</m:math>! The cost is rippling in both bands. Unlike the other filters, the elliptic filter also requires zeros in addition to poles (<link target-id="fig19"/>).</para>
+<figure id="fig19" orient="vertical"><media id="M88d_2m2" alt="">
+       <image mime-type="" src="../../media/M88d_2.png"/>
+       <image mime-type="application/postscript" src="../../media/M88d_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>Unlike Butterworth and Chebyshev filters, elliptic filters require zeros in addition to poles.</caption></figure><para id="p5">
+Referring to tables or computational programs is the best way to design (e.g., determine the filter order necessary to achieve certain performance, or vice versa) and implement elliptic filters.</para><para id="eip-709">Finally, a word is in order about the phase response of these filters. Considering only the magnitude of the filter frequency response of course does not give us a complete picture of how it modifies input signals. Not only does the filter change the magnitude of various frequency components, but also their phases.</para><para id="eip-277">The ultimate goal for a filter is to have a "linear phase" response (<link target-id="fig21"/>).</para>
+<figure id="fig21" orient="vertical"><media id="M88f_1m2" alt="">
+       <image mime-type="" src="../../media/M88f_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M88f_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>A linear phase response introduces only a simple delay into a system.</caption></figure><para id="p6">
+We can see why in a simple illustration. Virtually all signals are composed of a combination of different frequencies. A system with linear phase shifts all of these frequencies the same amount of distance in time (for the same shift in time, a higher frequency sinusoid shifts in phase more than a lower frequency one). The result is a delay for the whole signal. Consider a signal composed of two sinusoids (<link target-id="fig22"/>). If it is put through an allpass filter (i.e., the magnitude of the frequency response is constant) with a linear phase response, the signal is simply delayed.</para>
+<figure id="fig22" orient="vertical"><subfigure id="fig22s1"><media id="phaseinm2" alt="">
+       <image mime-type="" src="../../media/phasein.png"/>
+       <image mime-type="application/postscript" src="../../media/phasein.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig22s2">
+<media id="phaseout1m2" alt="">
+       <image mime-type="" src="../../media/phaseout1.png"/>
+       <image mime-type="application/postscript" src="../../media/phaseout1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>An input signal composed of two frequencies. A linear phase allpass system will simply delay input signals.</caption></figure><para id="p8">
+But suppose now the phase response is not linear. That means one of the frequencies will be shifted a different amount of time than the other, and distortion is the result (<link target-id="fig24"/>).</para>
+<figure id="fig24" orient="vertical">
+<subfigure id="fig24s1"><media id="phaseinm22" alt="">
+       <image mime-type="" src="../../media/phasein.png"/>
+       <image mime-type="application/postscript" src="../../media/phasein.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig24s2">
+<media id="phaseout2m2" alt="">
+       <image mime-type="" src="../../media/phaseout2.png"/>
+       <image mime-type="application/postscript" src="../../media/phaseout2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>A system with a nonlinear phase response will delay different input frequencies different amounts of time.</caption></figure><para id="p9">
+Now, we would love to have a linear phase response; nonlinear phase response is hardly ever something that is desired. But linear phase is not something that can ever be perfectly achieved with analog filters. The best we can do is to keep them as linear as possible. To do that, an analytic tool called <term>group delay</term> is often employed.</para><para id="eip-797">Group delay is defined as the negative derivative of the phase of a system's frequency response:<newline/>
+<m:math>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mo>−</m:mo>
+  <m:mfrac>
+    <m:mi>d</m:mi>
+    <m:mrow>
+      <m:mi>d</m:mi>
+      <m:mi>ω</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mi mathvariant="normal">∠</m:mi>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+A linear phase response will have a group delay that is of constant value, as the first derivative of a linear function is constant (<link target-id="fig26"/>).</para><figure id="fig26" orient="vertical"><subfigure id="fig26s1">
+<media id="M88f_1m3" alt="">
+       <image mime-type="" src="../../media/M88f_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M88f_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig26s2">
+    <media id="M88f_2m1" alt="">
+       <image mime-type="" src="../../media/M88f_2.png"/>
+       <image mime-type="application/postscript" src="../../media/M88f_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure><para id="p10">Nonlinear phase will obviously not have constant value for group delay. Even though no continuous-time filter has a completely flat group delay, some are better than others. Compare the group delay of the following elliptic (<m:math>
+  <m:msub>
+    <m:mi>H</m:mi>
+    <m:mi>E</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>) and Butterworth (<m:math>
+  <m:msub>
+    <m:mi>H</m:mi>
+    <m:mi>B</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>) filters, each of the same filter order (<link target-id="fig27"/>).</para><figure id="fig27" orient="vertical"><subfigure id="fig27s1">
+<media id="M88g_1m1" alt="">
+       <image mime-type="" src="../../media/M88g_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M88g_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig27s2">
+<media id="M88g_2m1" alt="">
+       <image mime-type="" src="../../media/M88g_2.png"/>
+       <image mime-type="application/postscript" src="../../media/M88g_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig27s3">
+<media id="M88g_3m1" alt="">
+       <image mime-type="" src="../../media/M88g_3.png"/>
+       <image mime-type="application/postscript" src="../../media/M88g_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig27s4">
+<media id="M88g_4m1" alt="">
+       <image mime-type="" src="../../media/M88g_4.png"/>
+       <image mime-type="application/postscript" src="../../media/M88g_4.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>For the same filter order, the elliptic filter has a much sharper group delay than the Butterworth filter.</caption></figure><para id="p11">The Butterworth filter has a much flatter group delay, meaning it has less phase distortion. The elliptic filter (as we have already seen) has the best dropoff in magnitude between passband and stopband, but a much larger group delay, especially in the area of the cutoff frequency. So it is that phase response is yet another tradeoff variable to consider in addition to filter size, flatness, and dropoff. The particular filter you will want to choose in a given application depends on which of these characteristics you prioritize.</para></section><section id="eip-274"><title>Using Feedback to Stabilize Systems</title><para id="eip-425">It is almost always preferable for a system to be BIBO stable (a notable exception being oscillator circuits, which start up unstable and then run on the border between stability and instability). But if a system is unstable, all hope is not lost. Using insights from the Laplace transform, we can modify unstable systems to make them stable.</para><para id="eip-96">When discussing the properties of the Laplace transform, we made a connection between BIBO stability for an LTI system and that system's transfer function. Specifically, a system is BIBO stable if the transfer function's ROC includes the <m:math>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+</m:math>
+ axis. For causal systems (which are the kind we will work with when implementing systems), that means all of the system's poles must be in the left-hand plane for the system to be stable.</para><para id="eip-573">But suppose we are faced with a system that is not stable, such as the following very simple system:<newline/>
+<m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mn>2</m:mn>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>,</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mn>2</m:mn>
+</m:math>
+<newline/>
+This system has a pole in the right-hand plane (<link target-id="fig28"/>).</para>
+<figure id="fig28" orient="vertical"><media id="M95_1m1" alt="">
+       <image mime-type="" src="../../media/M95_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M95_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>Because this causal system has a pole in the right-hand plane, it is unstable.</caption></figure><para id="p13">
+That pole being in the right-hand plane is the problem. Perhaps we could find a way to deal with it. Take a look at the system block diagram and input/output relationship in the Laplace domain (<link target-id="fig29"/>).</para>
+<figure id="fig29" orient="vertical">
+<media id="XHYm1" alt="">
+       <image mime-type="" src="../../media/XHY.png" width="400pt" print-width="250pt"/>
+</media>
+</figure>
+<para id="p14">
+<m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+
+<newline/>
+One way to address the unstable system <m:math>
+  <m:mi>H</m:mi>
+</m:math>
+ is to put another system <m:math>
+  <m:mi>G</m:mi>
+</m:math>
+ in front of it, and then let that system's output be the input to <m:math>
+  <m:mi>H</m:mi>
+</m:math> (<link target-id="fig30"/>):</para>
+<figure id="fig30" orient="vertical"><media id="XGHYm1" alt="">
+       <image mime-type="" src="../../media/XGHY.png" width="400pt" print-width="250pt"/>
+</media>
+<caption>System <m:math>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ can be placed in front of system <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ to deal with its instability.</caption></figure><para id="p15">Now the input/output relationship is:<newline/>
+<m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+So then the transfer function for the overall system is <m:math>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Since the pole at <m:math>
+  <m:mi>s</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+</m:math>
+ was the problem, we could set <m:math>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ to get rid of it by putting a zero at the same location.<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>G</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>G</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo>−</m:mo>
+        <m:mn>2</m:mn>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+The pole has disappeared, and the system is therefore now stable! But while this works perfectly well mathematically, there is a difficulty in implementation. If the pole and zero are not both at <emphasis effect="italics">precisely</emphasis> the same location, then the pole still exists, and therefore the system is still unstable (<link target-id="fig31"/>).</para><figure id="fig31" orient="vertical"><media id="M96_1m1" alt="">
+       <image mime-type="" src="../../media/M96_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M96_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>While one system's zero can theoretically cover another system's pole, any amount of component drift will uncover the pole.</caption></figure><para id="eip-897">So we will try another approach, called "feedback" (the previous approach is called, appropriately enough, "feedforward"). You are already familiar with the concept of feeding a system's output back into the input--it's what happens when a microphone is in front of a loudspeaker. That particular example is pretty unstable, as the sound from the speaker goes into the microphone, and then the speaker amplifies that, and so on until it becomes very loud. But there is also a way to use feedback to stabilize unstable systems.</para>
+<para id="eip-129">Let's again try to use system <m:math>
+  <m:mi>G</m:mi>
+</m:math>
+ to deal with the pole in system <m:math>
+  <m:mi>H</m:mi>
+</m:math>, but in a way that uses feedback (<link target-id="fig32"/>).</para>
+<figure id="fig32" orient="vertical"><media id="XGHYfbm1" alt="">
+       <image mime-type="" src="../../media/XGHYfb.png" width="400pt" print-width="250pt"/>
+</media>
+<caption>Feedback can also be used to stabilize some system <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</caption></figure><para id="p16">
+The input-output relationship for this system is now:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>Y</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>−</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>G</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo>+</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>G</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+Dividing both sides of that equation by <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ gives us the overall transfer function:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+So far it is not clear how this is going to help us! But let's see what happens to that pole in <m:math>
+  <m:mi>S</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ at <m:math>
+  <m:mi>s</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+</m:math>
+ when <m:math>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is a very simple system that scales its input by <m:math>
+  <m:mi>K</m:mi>
+</m:math>
+ (i.e., <m:math>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>K</m:mi>
+</m:math>
+):<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mi>s</m:mi>
+              <m:mo>−</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:mfrac>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>s</m:mi>
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi>K</m:mi>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mi>s</m:mi>
+              <m:mo>−</m:mo>
+              <m:mn>2</m:mn>
+            </m:mrow>
+          </m:mfrac>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mi>s</m:mi>
+                <m:mo>−</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mi>K</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>k</m:mi>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mn>2</m:mn>
+            <m:mo>−</m:mo>
+            <m:mi>k</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+The overall system now has a pole at <m:math>
+  <m:mi>s</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+  <m:mo>−</m:mo>
+  <m:mi>K</m:mi>
+</m:math>. This is pretty remarkable! What the feedback accomplished was <emphasis effect="italics">moving</emphasis> the pole at <m:math>
+  <m:mi>s</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+</m:math>
+ to <m:math>
+  <m:mn>2</m:mn>
+  <m:mo>−</m:mo>
+  <m:mi>K</m:mi>
+</m:math>. So, as long as <m:math>
+  <m:mi>K</m:mi>
+  <m:mo>&gt; </m:mo>
+  <m:mn>2</m:mn>
+</m:math>, the pole will be in the left hand plane, making the overall system stable (<link target-id="fig33"/>)!</para>
+<figure id="fig33" orient="vertical"><media id="M98_1m1" alt="">
+       <image mime-type="" src="../../media/M98_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M98_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>Rather than cover a pole through a feedforward approach, feedback can be used to move a pole from the right-hand plane to the left-hand plane, stabilizing the overall system.</caption></figure><para id="p17">
+So feedback can stabilize a system by making a formerly unstable system to be BIBO stable. It can also stabilize a system in another sense. Consider the system in <link target-id="fig34"/>.</para>
+<figure id="fig34" orient="vertical"><media id="M100_1m1" alt="">
+       <image mime-type="" src="../../media/M100_1.png" width="400pt" print-width="250pt"/>
+</media>
+<caption>Feedback can also be used to stabilize component drift.</caption></figure><para id="p18">
+Let's find the transfer function of the overall system:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>10000</m:mn>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mn>10000</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mn>0.01</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>10000</m:mn>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>100</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>99.01</m:mn>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+
+<newline/>
+As a whole, the system is a simple gain: <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mn>99.01</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. But suppose the <m:math>
+  <m:msup>
+    <m:mn>10</m:mn>
+    <m:mn>4</m:mn>
+  </m:msup>
+</m:math>
+ component drifts considerably, and doubles to be <m:math>
+  <m:mn>20000</m:mn>
+</m:math>. What effect do you think this will have on the overall transfer function?<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>Y</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mi>G</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>20000</m:mn>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mn>20000</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mn>0.01</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>20000</m:mn>
+          <m:mrow>
+            <m:mn>1</m:mn>
+            <m:mo>+</m:mo>
+            <m:mn>200</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>99.5</m:mn>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+
+<newline/>
+The whole system is now a gain of <m:math>
+  <m:mn>99.5</m:mn>
+</m:math>. This is less than a <m:math>
+  <m:mn>1</m:mn>
+  <m:mi mathvariant="normal">%</m:mi>
+</m:math>
+ increase, even though the <m:math>
+  <m:msup>
+    <m:mn>10</m:mn>
+    <m:mn>4</m:mn>
+  </m:msup>
+</m:math>
+ component doubled. In fact, no matter how much that component increases, the overall transfer function will never be greater than <m:math>
+  <m:mn>100</m:mn>
+</m:math>
+(and as long as the component is greater than <m:math>
+  <m:mn>1000</m:mn>
+</m:math>, the transfer function will be greater than <m:math>
+  <m:mn>90</m:mn>
+</m:math>). So the negative feedback "stabilized" the system by protecting it from component drift. It would be a different story if the <m:math>
+  <m:mn>.01</m:mn>
+</m:math>
+ feedback element drifted, so that one needs to be steady. But as long as it holds to <m:math>
+  <m:mn>.01</m:mn>
+</m:math>, it helps the overall system tolerate a huge range of drift in the <m:math>
+  <m:msup>
+    <m:mn>10</m:mn>
+    <m:mn>4</m:mn>
+  </m:msup>
+</m:math>
+ element.</para><para id="eip-18">These were just two simple ways feedback can be used to bring stability to a system. It has all sorts of important real-world uses. To just name applications in transportation, feedback is a key element of the controls of Segway transports, cars, airplanes, and spacecraft.</para></section></content>
+
+</document>

@@ -1,0 +1,4566 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Continuous-Time Fourier Transform Properties</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m67587</md:content-id>
+  <md:title>Continuous-Time Fourier Transform Properties</md:title>
+  <md:abstract/>
+  <md:uuid>30b67434-b290-40fe-a260-e8b6d9cc07fb</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me">Having defined the CTFT, we will now examine its properties more closely. The first to consider is the <emphasis>linearity</emphasis> of the CTFT. Let signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ have a CTFT <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and signal <m:math>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ have a CTFT of <m:math>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, with <m:math>
+  <m:mi>α</m:mi>
+</m:math>
+ and <m:math>
+  <m:mi>β</m:mi>
+</m:math> as constants. Consider then the linear combination:<newline/>
+<m:math>
+  <m:mi>α</m:mi>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mi>β</m:mi>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.<newline/>
+The CTFT of that combined signal is:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:mi>α</m:mi>
+            <m:mi>x</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo>+</m:mo>
+            <m:mi>β</m:mi>
+            <m:mi>g</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mo>=</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:mi>α</m:mi>
+            <m:mi>x</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mi>β</m:mi>
+            <m:mi>g</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mo>=</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi>α</m:mi>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:mi>β</m:mi>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mo>=</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi>α</m:mi>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:mi>β</m:mi>
+        <m:mi>G</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>.<newline/>
+The linearity of the CTFT is not much of a surprise, since it is essentially just an integral (and the integral operator is linear), but nonetheless it will be useful as we look at other properties.</para><section id="eip-331"><title>Common CTFT Pairs</title><para id="eip-674">A CTFT "pair" is some signal--say, <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>--and its corresponding CTFT representation <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. We will refer to a CTFT pair using the following notation:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+In this section we will detail some of the most common CTFT pairs.</para><section id="eip-796"><title>Deltas and Sinusoids</title><para id="eip-230">Recall the dirac delta function <m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+(<link target-id="fig1"/>). <m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ has the property that it is <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ at all <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>≠</m:mo>
+  <m:mn>0</m:mn>
+</m:math>, and that <m:math>
+  <m:msubsup>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mi mathvariant="normal">∞</m:mi>
+  </m:msubsup>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>.<newline/>
+It is straightforward to find its CTFT:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi mathvariant="normal">Δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mn>1</m:mn>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+</para>
+<figure id="fig1" orient="vertical"><subfigure id="fig1s1">
+<media id="dtm" alt="">
+       <image mime-type="" src="../../media/i16_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i16_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig1s2">
+<media id="dfms" alt="">
+       <image mime-type="" src="../../media/i16_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i16_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure></figure>
+<para id="p1">We'll now shift the delta function a bit (<link target-id="fig3"/>) and see what happens.<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:msub>
+          <m:mi mathvariant="normal">Δ</m:mi>
+          <m:mi>s</m:mi>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>t</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>t</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math><newline/>
+A delta in time corresponds to a complex sinusoid in frequency, with the frequency of this sinusoid determined by how much the delta was shifted in the time domain.</para>
+<figure id="fig3" orient="vertical"><subfigure id="fig3s1">
+<media id="sdm" alt="">
+       <image mime-type="" src="../../media/i17_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i17_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig3s2">
+<media id="shifdelts" alt="">
+       <image mime-type="" src="../../media/i17_2a.png"/>
+       <image mime-type="application/postscript" src="../../media/i17_2a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure></figure>
+<para id="eip-722">We may wonder what happens the other way around. Suppose now we have <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ as a complex sinusoid in time. It is not immediately clear how to find its CTFT:<newline/>
+<m:math>
+  <m:msubsup>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mi mathvariant="normal">∞</m:mi>
+  </m:msubsup>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:msub>
+        <m:mi>ω</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+</m:math>.<newline/>
+The problem is that this integral is not defined, because the complex exponential goes on forever. What we can do is leverage the fact that the CTFT and inverse CTFT formulas are very similar, differing only by a scaling factor and negation in the exponent.</para><para id="eip-820">So, suppose <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ are a CTFT pair:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+What now might happen if we have a time-domain signal that looks like another signal's CTFT?<newline/>
+<m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mo>?</m:mo>
+  <m:mo>?</m:mo>
+  <m:mo>?</m:mo>
+</m:math>
+<newline/>
+Let's find this new signal's CTFT, using a temporary change of variables along the way:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mtext>CTFT </m:mtext>
+        <m:mo fence="false" stretchy="false">{</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">}</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mtext>Let </m:mtext>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mover>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">^</m:mo>
+          </m:mover>
+        </m:mrow>
+        <m:mo>=</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>,</m:mo>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mover>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">^</m:mo>
+          </m:mover>
+        </m:mrow>
+        <m:mo>=</m:mo>
+        <m:mi>ω</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mover>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">^</m:mo>
+          </m:mover>
+        </m:mrow>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mover>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">^</m:mo>
+              </m:mover>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mover>
+                <m:mi>ω</m:mi>
+                <m:mo stretchy="false">^</m:mo>
+              </m:mover>
+            </m:mrow>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mover>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">^</m:mo>
+          </m:mover>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>π</m:mi>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:msubsup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mover>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">^</m:mo>
+          </m:mover>
+        </m:mrow>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mover>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">^</m:mo>
+              </m:mover>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mover>
+                <m:mi>ω</m:mi>
+                <m:mo stretchy="false">^</m:mo>
+              </m:mover>
+            </m:mrow>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mover>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">^</m:mo>
+          </m:mover>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>π</m:mi>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:msubsup>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>j</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mover>
+                <m:mi>ω</m:mi>
+                <m:mo stretchy="false">^</m:mo>
+              </m:mover>
+            </m:mrow>
+            <m:mo stretchy="false">)</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>j</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mover>
+                    <m:mi>ω</m:mi>
+                    <m:mo stretchy="false">^</m:mo>
+                  </m:mover>
+                </m:mrow>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mo>−</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mover>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">^</m:mo>
+                  </m:mover>
+                </m:mrow>
+                <m:mo stretchy="false">)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mover>
+                <m:mi>ω</m:mi>
+                <m:mo stretchy="false">^</m:mo>
+              </m:mover>
+            </m:mrow>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>π</m:mi>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mo>−</m:mo>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mover>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">^</m:mo>
+          </m:mover>
+        </m:mrow>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mtext>Change variables back</m:mtext>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>π</m:mi>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mo>−</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+After we put in a temporary change of variables, we can see how much the CTFT of <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ resembles the inverse CTFT of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ (recall that the <m:math>
+  <m:mi>j</m:mi>
+</m:math>
+ in the expression <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>--or in this case, <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>--is simply a way to mark that we are speaking of a CTFT). It leads us to this result:<newline/>
+<m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mn>2</m:mn>
+  <m:mi>π</m:mi>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+It also works the other way around:<newline/>
+<m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>π</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/></para><para id="eip-733">The whole point of that exercise was to figure out what the CTFT of a complex sinusoid is. We would like to know the CTFT of a signal like <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:msub>
+        <m:mi>ω</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+(<link target-id="fig7"/>).</para>
+<figure id="fig7" orient="vertical"><subfigure id="fig7s1">
+<media id="tdexp" alt="">
+       <image mime-type="" src="../../media/i21_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i21_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+
+<subfigure id="fig7s2">
+<media id="fddeltas" alt="">
+       <image mime-type="" src="../../media/i21_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i21_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure>
+<para id="p3">However, it was not clear how to integrate that over <m:math>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>
+ to <m:math>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>. The good news is that we know a signal whose CTFT was a complex sinusoid: a shifted delta.<newline/>
+<m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:msub>
+        <m:mi>t</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+    </m:mrow>
+  </m:msup>
+</m:math>
+<newline/>
+We'll change the shift direction so that the exponent in the CTFT is positive:<newline/>
+<m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:msub>
+        <m:mi>t</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+    </m:mrow>
+  </m:msup>
+</m:math>
+<newline/>
+Now recall the relationship we derived above:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+<m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mn>2</m:mn>
+  <m:mi>π</m:mi>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+We can use that relationship to fill in the blanks here (remembering for the last step that the delta function is even):<newline/>
+<m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:msub>
+        <m:mi>t</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+    </m:mrow>
+  </m:msup>
+</m:math>
+<newline/>
+<m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:msub>
+        <m:mi>ω</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mo>?</m:mo>
+  <m:mo>?</m:mo>
+  <m:mo>?</m:mo>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math></para><para id="eip-879">Having done this, we can then use the linearity property of the CTFT to determine the CTFT for a signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>cos</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> (<link target-id="fig9"/>). Since <m:math>
+  <m:mi>cos</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mrow>
+      <m:msup>
+        <m:mi>e</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mi>j</m:mi>
+          <m:msub>
+            <m:mi>ω</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:mi>t</m:mi>
+        </m:mrow>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:msup>
+        <m:mi>e</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mi>j</m:mi>
+          <m:msub>
+            <m:mi>ω</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:mi>t</m:mi>
+        </m:mrow>
+      </m:msup>
+    </m:mrow>
+    <m:mn>2</m:mn>
+  </m:mfrac>
+</m:math>, then we have <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>-</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. And, of course, the same logic would apply to a sine as well:<newline/>
+<m:math>
+  <m:mi>sin</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mrow>
+      <m:msup>
+        <m:mi>e</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mi>j</m:mi>
+          <m:msub>
+            <m:mi>ω</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:mi>t</m:mi>
+        </m:mrow>
+      </m:msup>
+      <m:mo>−</m:mo>
+      <m:msup>
+        <m:mi>e</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mo>−</m:mo>
+          <m:mi>j</m:mi>
+          <m:msub>
+            <m:mi>ω</m:mi>
+            <m:mn>0</m:mn>
+          </m:msub>
+          <m:mi>t</m:mi>
+        </m:mrow>
+      </m:msup>
+    </m:mrow>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>j</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mfrac>
+    <m:mi>π</m:mi>
+    <m:mi>j</m:mi>
+  </m:mfrac>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>−</m:mo>
+  <m:mfrac>
+    <m:mi>π</m:mi>
+    <m:mi>j</m:mi>
+  </m:mfrac>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+So based upon the above, we can conclude that it is a general CTFT property that a sinusoid in one domain corresponds to deltas in the other.</para><figure id="fig9" orient="vertical"><subfigure id="fig9s1">
+<media id="costd" alt="">
+       <image mime-type="" src="../../media/i22_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i22_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+
+<subfigure id="fig9s2">
+<media id="cosfds" alt="">
+       <image mime-type="" src="../../media/i22_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i22_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure></figure>
+</section>
+
+<section id="eip-658"><title>Sincs and Rectangles</title><para id="eip-209">Another common CTFT pair has to do with sinc and rectangle functions. If <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+
+ is a rectangle function, then its CTFT <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is a sinc (<link target-id="fig12"/>):<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mrow>
+    <m:mo>{</m:mo>
+    <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+      <m:mtr>
+        <m:mtd>
+          <m:mn>1</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mi>t</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mo>≤</m:mo>
+          <m:mi>T</m:mi>
+        </m:mtd>
+      </m:mtr>
+      <m:mtr>
+        <m:mtd>
+          <m:mn>0</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mi>t</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mo>&gt;</m:mo>
+          <m:mi>T</m:mi>
+        </m:mtd>
+      </m:mtr>
+    </m:mtable>
+    <m:mo fence="true" stretchy="true" symmetric="true"/>
+  </m:mrow>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mfrac>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>sin</m:mi>
+      <m:mo>⁡</m:mo>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>T</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mi>ω</m:mi>
+  </m:mfrac>
+</m:math>
+<newline/>
+Likewise, if it is
+<m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ that is a rectangle, then <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ will be a sinc (<link target-id="fig13"/>):<newline/>
+<m:math>
+  <m:mfrac>
+    <m:mrow>
+      <m:mi>sin</m:mi>
+      <m:mo>⁡</m:mo>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>W</m:mi>
+      <m:mi>t</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mrow>
+      <m:mi>π</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mrow>
+    <m:mo>{</m:mo>
+    <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+      <m:mtr>
+        <m:mtd>
+          <m:mn>1</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mi>ω</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mo>≤</m:mo>
+          <m:mi>W</m:mi>
+        </m:mtd>
+      </m:mtr>
+      <m:mtr>
+        <m:mtd>
+          <m:mn>0</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mi>ω</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mo>&gt;</m:mo>
+          <m:mi>W</m:mi>
+        </m:mtd>
+      </m:mtr>
+    </m:mtable>
+    <m:mo fence="true" stretchy="true" symmetric="true"/>
+  </m:mrow>
+</m:math>
+<newline/>
+Just as with deltas and sinusoids, rectangles in one CTFT domain correspond with sinc functions in the other.</para>
+
+
+<figure id="fig12" orient="vertical"><subfigure id="fig12s1">
+<media id="rectdt" alt="">
+       <image mime-type="" src=" i19_1.png"/>
+       <image mime-type="application/postscript" src=" i19_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig12s2">
+<media id="sincfd" alt="">
+       <image mime-type="" src="../../media/i19_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i19_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure>
+
+<figure id="fig13" orient="vertical"><subfigure id="fig13s1">
+<media id="sincdt" alt="">
+       <image mime-type="" src=" i19_3cnx.png"/>
+       <image mime-type="application/postscript" src=" i19_3cnx.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig13s2">
+<media id="rectfd" alt="">
+       <image mime-type="" src="../../media/i19_4cnx.png"/>
+       <image mime-type="application/postscript" src=" i19_4cnx.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure>
+</section>
+<para id="eip-56"><title>Summary of CTFT Pairs</title><link target-id="eip-723"/> summarizes the CTFT pairs we have covered, along with a couple other ones, as well. It can often be useful to look up a CTFT in a table like this (rather than working out the CTFT integral each time).</para><table id="eip-723" summary="Table of CTFT pairs">
+<tgroup cols="2"><thead>
+  <row>
+    <entry align="center"><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math></entry>
+    <entry align="center"><m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω<!-- &#969; --></m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math></entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry><m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mn>1</m:mn>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mn>1</m:mn>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mn>2</m:mn>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:msub>
+        <m:mi>ω</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mn>2</m:mn>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mi>cos</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mi>sin</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+    <m:mfrac>
+    <m:mi>π</m:mi>
+    <m:mi>j</m:mi>
+  </m:mfrac>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>−</m:mo>
+    <m:mfrac>
+    <m:mi>π</m:mi>
+    <m:mi>j</m:mi>
+  </m:mfrac>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mi>π</m:mi>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mo>,</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mi>a</m:mi>
+  <m:mo>&gt;</m:mo>
+  <m:mn>0</m:mn>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>a</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mrow>
+    <m:mo>{</m:mo>
+    <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+      <m:mtr>
+        <m:mtd>
+          <m:mn>1</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mo>−</m:mo>
+          <m:mi>T</m:mi>
+          <m:mo>&lt;</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo>&lt;</m:mo>
+          <m:mi>T</m:mi>
+        </m:mtd>
+      </m:mtr>
+      <m:mtr>
+        <m:mtd>
+          <m:mn>0</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mtext>else</m:mtext>
+          </m:mrow>
+        </m:mtd>
+      </m:mtr>
+    </m:mtable>
+    <m:mo fence="true" stretchy="true" symmetric="true"/>
+  </m:mrow>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>sin</m:mi>
+      <m:mo>⁡</m:mo>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>ω</m:mi>
+      <m:mi>T</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mi>ω</m:mi>
+  </m:mfrac>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mrow>
+      <m:mi>sin</m:mi>
+      <m:mo>⁡</m:mo>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>W</m:mi>
+      <m:mi>t</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mrow>
+      <m:mi>π</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mrow>
+    <m:mo>{</m:mo>
+    <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+      <m:mtr>
+        <m:mtd>
+          <m:mn>1</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mo>−</m:mo>
+          <m:mi>W</m:mi>
+          <m:mo>&lt;</m:mo>
+          <m:mi>ω</m:mi>
+          <m:mo>&lt;</m:mo>
+          <m:mi>W</m:mi>
+        </m:mtd>
+      </m:mtr>
+      <m:mtr>
+        <m:mtd>
+          <m:mn>0</m:mn>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mtext>else</m:mtext>
+          </m:mrow>
+        </m:mtd>
+      </m:mtr>
+    </m:mtable>
+    <m:mo fence="true" stretchy="true" symmetric="true"/>
+  </m:mrow>
+</m:math>
+</entry>
+  </row>
+</tbody>
+</tgroup>
+</table></section><section id="eip-928"><title>CTFT Time/Frequency Relationships</title><para id="eip-748">For a given CTFT pair, making a change to one side of the pair will of course influence the other (because a signal and its CTFT have a one-to-one relationship). We’ll now take a look at some of the ways a change in one domain corresponds to a change in the other.</para><section id="eip-790"><title>Time/Frequency Scaling</title><para id="eip-414">
+Recall that a rectangle and sinc are a CTFT pair (<link target-id="fig14"/>). <link target-id="fig15"/> shows what happens when we double the time scale for <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Notice how it halves the frequency scale for <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Then, as you might expect, <link target-id="fig16"/> shows what when we halve the time scale for <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, it doubles the frequency scale for <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</para>
+<figure id="fig14" orient="vertical"><subfigure id="fig14s1">
+<media id="i28ma" alt="">
+       <image mime-type="" src="../../media/i28_1.png"/>
+       <image mime-type="application/postscript" src=" i28_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig14s2">
+<media id="i28mb" alt="">
+       <image mime-type="" src="../../media/i28_2.png"/>
+       <image mime-type="application/postscript" src=" i28_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>A rectangle and sinc are CTFT pairs.</caption></figure>
+<figure id="fig15" orient="vertical"><subfigure id="fig15s1">
+<media id="i28mc" alt="">
+       <image mime-type="" src="../../media/i28_3.png"/>
+       <image mime-type="application/postscript" src=" i28_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig15s2">
+ <media id="i28md" alt="">
+       <image mime-type="" src="../../media/i28_4.png"/>
+       <image mime-type="application/postscript" src=" i28_4.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>Doubling the time scale of a signal halves the frequency scale of its CTFT.</caption></figure>
+<figure id="fig16" orient="vertical"><subfigure id="fig16s1">
+<media id="i28me" alt="">
+       <image mime-type="" src="../../media/i28_5.png"/>
+       <image mime-type="application/postscript" src=" i28_5.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig16s2">
+<media id="i28mf" alt="">
+       <image mime-type="" src="../../media/i28_6.png"/>
+       <image mime-type="application/postscript" src=" i28_6.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>Halving the time scale of a signal doubles the frequency scale of its CTFT.</caption></figure>
+<para id="p7">
+For a more general mathematical expression of what's going on here, let
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+be a CTFT pair
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. If we scale the time variable of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ by some constant scalar value <m:math>
+  <m:mi>a</m:mi>
+</m:math>
+, it will scale the frequency variable of the CTFT by <m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mi>a</m:mi>
+  </m:mfrac>
+</m:math>:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>a</m:mi>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mrow class="MJX-TeXAtom-ORD">
+        <m:mo stretchy="false">|</m:mo>
+      </m:mrow>
+      <m:mi>a</m:mi>
+      <m:mrow class="MJX-TeXAtom-ORD">
+        <m:mo stretchy="false">|</m:mo>
+      </m:mrow>
+    </m:mrow>
+  </m:mfrac>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mfrac>
+    <m:mi>ω</m:mi>
+    <m:mi>a</m:mi>
+  </m:mfrac>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.<newline/>
+Notice that the magnitude of the CTFT is also scaled. Derivation of this property needs only a simple change of variables:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mtext>CTFT</m:mtext>
+        </m:mrow>
+        <m:mo fence="false" stretchy="false">{</m:mo>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>a</m:mi>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">}</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>a</m:mi>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mtext>Let </m:mtext>
+        </m:mrow>
+        <m:mi>u</m:mi>
+        <m:mo>=</m:mo>
+        <m:mi>a</m:mi>
+        <m:mi>t</m:mi>
+        <m:mtext> </m:mtext>
+        <m:mo stretchy="false">→</m:mo>
+        <m:mtext> </m:mtext>
+        <m:mi>t</m:mi>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>u</m:mi>
+          <m:mi>a</m:mi>
+        </m:mfrac>
+        <m:mtext> </m:mtext>
+        <m:mo>,</m:mo>
+        <m:mtext> </m:mtext>
+        <m:mi>d</m:mi>
+        <m:mi>u</m:mi>
+        <m:mo>=</m:mo>
+        <m:mi>a</m:mi>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>u</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mfrac>
+              <m:mi>u</m:mi>
+              <m:mi>a</m:mi>
+            </m:mfrac>
+          </m:mrow>
+        </m:msup>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+            <m:mi>a</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:mfrac>
+        <m:mi>d</m:mi>
+        <m:mi>u</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+            <m:mi>a</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>u</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mi>ω</m:mi>
+              <m:mi>a</m:mi>
+            </m:mfrac>
+            <m:mi>u</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>u</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+            <m:mi>a</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:mfrac>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mfrac>
+          <m:mi>ω</m:mi>
+          <m:mi>a</m:mi>
+        </m:mfrac>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+(The reason for the magnitude bars around the <m:math>
+  <m:mi>a</m:mi>
+</m:math>
+ is because if it were negative, the integral would run from <m:math>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>
+ to <m:math>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>
+, in which case we would negate it to go back from <m:math>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>
+ to <m:math>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>).</para><para id="eip-436">As you can see from the figures of the rectangle and its CTFT sinc, it is not possible for a signal to be simultaneously narrow in both time and frequency. If it is very narrow in one domain, it will be spread out in the other. Nor is it possible, therefore, for a signal to be spread out in both domains. This is sometimes referred to as the time/frequency <term>uncertainty principle</term>. Much like the principle in physics that states that a particle's momentum and position cannot be simultaneously determined (or localized), so also a signal cannot be localized in both time and frequency.
+</para></section><section id="eip-497"><title>Time/Frequency Shifting</title><para id="eip-110">Another way a signal can be modified in the time domain is by shifting it. Recall that if <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is a sinc, then <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is a rectangle (<link target-id="fig17"/>). <link target-id="fig18"/> shows what happens to the CTFT if we shift <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ over to the right a bit.</para>
+<figure id="fig17" orient="vertical"><subfigure id="fig17s1">
+<media id="i32m1" alt="">
+       <image mime-type="" src="../../media/i32_1.png"/>
+       <image mime-type="application/postscript" src=" i32_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig17s2">
+<media id=" i32m2" alt="">
+       <image mime-type="" src=" i32_2.png"/>
+       <image mime-type="application/postscript" src=" i32_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure>
+<figure id="fig18" orient="vertical"><subfigure id="fig18s1">
+<media id=" i32m3" alt="">
+       <image mime-type="" src=" i32_3.png"/>
+       <image mime-type="application/postscript" src=" i32_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig18s2">
+<media id=" i32m4" alt="">
+       <image mime-type="" src=" i32_4.png"/>
+       <image mime-type="application/postscript" src=" i32_4.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>Shifting a signal in time modulates its CTFT (multiplies it by a complex sinusoid).</caption></figure>
+<para id="eip-110b"> When <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is shifted in time, the CTFT is multiplied by a complex sinusoid. Another word for this multiplication by a sinusoid is <term>modulation</term>:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:msub>
+        <m:mi>t</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+    </m:mrow>
+  </m:msup>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+Due to the duality of the CTFT, the principle also applies in the other direction. Modulation in time results in a shift in frequency:<newline/>
+<m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:msub>
+        <m:mi>ω</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+<m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+</para></section><section id="eip-193"><title>Convolution/Multiplication</title><para id="eip-585">One final time/frequency relationship is especially relevant in the study of signals and systems. Recall that for an LTI system with impulse response <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, the output <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ for a given input <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ can be found through convolution:<newline/>
+<m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>∗</m:mo>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math><newline/>
+This convolution occurs in the time domain. It is natural to wonder what the corresponding relationship between the input, output, and impulse response is in the frequency domain. To do that, we will look at the CTFT of <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, and simplify it using the convolution integral (note how we use the time shifting CTFT property along the way):<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>Y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mtext> </m:mtext>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mrow>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:msubsup>
+            <m:mi>x</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>τ</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>h</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>−</m:mo>
+            <m:mi>τ</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mtext> </m:mtext>
+            <m:mi>d</m:mi>
+            <m:mi>τ</m:mi>
+          </m:mrow>
+          <m:mo>]</m:mo>
+        </m:mrow>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mtext> </m:mtext>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>τ</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mrow>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:msubsup>
+            <m:mi>h</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>−</m:mo>
+            <m:mi>τ</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mtext> </m:mtext>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+          <m:mo>]</m:mo>
+        </m:mrow>
+        <m:mtext> </m:mtext>
+        <m:mi>d</m:mi>
+        <m:mi>τ</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>τ</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mrow>
+            <m:mi>C</m:mi>
+            <m:mi>T</m:mi>
+            <m:mi>F</m:mi>
+            <m:mi>T</m:mi>
+            <m:mo fence="false" stretchy="false">{</m:mo>
+            <m:mi>h</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>−</m:mo>
+            <m:mi>τ</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo fence="false" stretchy="false">}</m:mo>
+          </m:mrow>
+          <m:mo>]</m:mo>
+        </m:mrow>
+        <m:mtext> </m:mtext>
+        <m:mi>d</m:mi>
+        <m:mi>τ</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>τ</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>H</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mo>]</m:mo>
+        </m:mrow>
+        <m:mtext> </m:mtext>
+        <m:mi>d</m:mi>
+        <m:mi>τ</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>τ</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>τ</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mtext> </m:mtext>
+        <m:mi>d</m:mi>
+        <m:mi>τ</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+</para><para id="eip-798">So we now see another CTFT relationship. Convolution in time corresponds to multiplication in frequency:<newline/>
+<m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>∗</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+We also can better understand why <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, the CTFT of <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, is called the system's <term>frequency response</term>. It tells us how the system scales various frequency components. The relationship <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ indicates that each frequency component in <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is scaled by <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ to produce the output frequency component <m:math>
+  <m:mi>Y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</para><para id="eip-730">This property can give us additional insight in to how systems modify input signals. For example, we have already seen that a system with a pulse for an impulse response can take signals with high frequency noise and denoise them by "averaging" or "blurring" out the noise (<link target-id="fig19"/>).</para>
+<figure id="fig19" orient="vertical"><subfigure id="fig19s1">
+<media id="i321am1" alt="">
+       <image mime-type="" src="../../media/i32_1a.png"/>
+       <image mime-type="application/postscript" src="../../media/i32_1a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig19s2">
+<media id="i322am1" alt="">
+       <image mime-type="" src="../../media/i32_2a.png"/>
+       <image mime-type="application/postscript" src="../../media/i32_2a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig19s3">
+<media id="i323am1" alt="">
+       <image mime-type="" src="../../media/i32_3a.png"/>
+       <image mime-type="application/postscript" src="../../media/i32_3a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>Convolving a signal that has high frequency noise with a pulse results in the signal being de-noised.</caption></figure>
+<para id="eip-730b">
+Looking at that same operation in the frequency domain gives another picture of how the de-noising works (<link target-id="fig20"/>). A signal with high frequency noise will have a considerable amount of high-frequency components. The frequency response of the system is close to <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+at high frequencies, while being more or less close to <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+ at low frequencies. Because the CTFT of the output is the product of the CTFT of the input and the frequency response, the result is for the system to "zero out" the high-frequency noise components. This also shows us why the de-noising operation isn't perfect: the frequency response is not exactly <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+ for low frequencies, nor is it exactly <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ for higher frequencies.</para>
+
+<figure id="fig20" orient="vertical"><subfigure id="fig20s1">
+<media id="i321bm1" alt="">
+       <image mime-type="" src="../../media/i32_1b.png"/>
+       <image mime-type="application/postscript" src="../../media/i32_1b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig20s2">
+<media id="i322bm1" alt="">
+       <image mime-type="" src="../../media/i32_2b.png"/>
+       <image mime-type="application/postscript" src="../../media/i32_2b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig20s3">
+<media id="i323bm1" alt="">
+       <image mime-type="" src="../../media/i32_3b.png"/>
+       <image mime-type="application/postscript" src="../../media/i32_3b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>The frequency response of a de-noising system has values close to <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ for high frequency, thus "zeroing out" those frequencies when multiplied by the CTFT of the input.</caption></figure></section>
+<para id="eip-354"><title>Summary of Relationships</title>We have seen several ways in which modifications in one domain of a CTFT pair result in certain changes in the other. These properties, as well as one on differentiation, are summarized in <link target-id="eip-397"/>.</para><table id="eip-397" summary="Summary of CTFT properties">
+<tgroup cols="3"><tbody>
+  <row>
+    <entry align="center">Property</entry>
+    <entry align="center"><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry align="center"><m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry>Linearity</entry>
+    <entry><m:math>
+  <m:mi>α</m:mi>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mi>β</m:mi>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mi>α</m:mi>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mi>β</m:mi>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry>Time scaling</entry>
+    <entry><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>a</m:mi>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math></entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mrow class="MJX-TeXAtom-ORD">
+        <m:mo stretchy="false">|</m:mo>
+      </m:mrow>
+      <m:mi>a</m:mi>
+      <m:mrow class="MJX-TeXAtom-ORD">
+        <m:mo stretchy="false">|</m:mo>
+      </m:mrow>
+    </m:mrow>
+  </m:mfrac>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mfrac>
+    <m:mi>ω</m:mi>
+    <m:mi>a</m:mi>
+  </m:mfrac>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry>Time shifting</entry>
+    <entry><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:msub>
+        <m:mi>t</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+    </m:mrow>
+  </m:msup>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry>Modulation</entry>
+    <entry><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:msub>
+        <m:mi>ω</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry>Time convolution</entry>
+    <entry><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>∗</m:mo>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry>Frequency convolution</entry>
+    <entry><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>π</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>∗</m:mo>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry>Time differentiation</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:msup>
+      <m:mi>d</m:mi>
+      <m:mi>n</m:mi>
+    </m:msup>
+    <m:mrow>
+      <m:mi>d</m:mi>
+      <m:msup>
+        <m:mi>t</m:mi>
+        <m:mi>n</m:mi>
+      </m:msup>
+    </m:mrow>
+  </m:mfrac>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:msup>
+    <m:mo stretchy="false">)</m:mo>
+    <m:mi>n</m:mi>
+  </m:msup>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+  </row>
+</tbody>
+
+
+
+
+</tgroup>
+</table></section><section id="eip-487"><title>CTFT Preservation of Inner Product and Energy</title><para id="eip-212">Whereas most of the time/frequency properties we have considered have a reciprocal relationship, the final property is more of an identity. Suppose we have two continuous-time infinite length signals, <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, with corresponding CTFTs <m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>G</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. The inner product of the two signals is simply a scaled version of the inner product of their CTFTs (and vice versa):<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mo fence="false" stretchy="false">⟨</m:mo>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>,</m:mo>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">⟩</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo fence="false" stretchy="false">⟨</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>,</m:mo>
+        <m:mi>G</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">⟩</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>g</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>∗</m:mo>
+          </m:mrow>
+        </m:msup>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>G</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>∗</m:mo>
+          </m:mrow>
+        </m:msup>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>d</m:mi>
+        <m:mi>ω</m:mi>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+This property is known as <term>Parseval's Theorem</term>, and it is pretty remarkable. The two signals look very different from their CTFTs, but their inner products are the same, simply scaled by <m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>π</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>. This property might come in handy in cases where finding the inner product might be easier in one domain than the other.</para><para id="eip-448">It can also be used in another way, by making the two signals identical. In this case then we have:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mo fence="false" stretchy="false">⟨</m:mo>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>,</m:mo>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">⟩</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo fence="false" stretchy="false">⟨</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>,</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">⟩</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mo fence="false" stretchy="false">∥</m:mo>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msubsup>
+          <m:mo fence="false" stretchy="false">∥</m:mo>
+          <m:mn>2</m:mn>
+          <m:mn>2</m:mn>
+        </m:msubsup>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo fence="false" stretchy="false">∥</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msubsup>
+          <m:mo fence="false" stretchy="false">∥</m:mo>
+          <m:mn>2</m:mn>
+          <m:mn>2</m:mn>
+        </m:msubsup>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math><newline/>
+This shows that the CTFT preserves the energy of a signal (with a <m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>π</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+ scaling factor), and is known as <term>Plancherel's Theorem</term>.</para></section><section id="eip-951"><title>CTFT Symmetry</title><para id="eip-922">Most of the CTFTs we have seen exhibit a kind of symmetry. Consider the <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+</m:math>
+ in <link target-id="fig21"/>. <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+</m:math>
+ is even, being symmetric about <m:math>
+  <m:mi>ω</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>0</m:mn>
+</m:math>, even though <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ did not have such symmetry.</para>
+<figure id="fig21" orient="vertical"><subfigure id="fig21s1">
+<media id="sampledctftm10" alt="">
+       <image mime-type="" src="../../media/i2_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i2_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig21s2">
+<media id="sampledctftm20" alt="">
+       <image mime-type="" src="../../media/i2_3b.png"/>
+       <image mime-type="application/postscript" src="../../media/i2_3b.eps" for="pdf" print-width="250pt"/></media>
+</subfigure>
+</figure>
+<para id="eip-922b">
+There are two reasons this is the case. First, it is because the complex sinusoids that go in to the CTFT formula have certain symmetries, namely, that they are <term>conjugate symmetric</term>. If some <m:math>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is conjugate symmetric, that means <m:math>
+  <m:msup>
+    <m:mi>s</m:mi>
+    <m:mo>∗</m:mo>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ (or, equivalently, <m:math>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:msup>
+    <m:mi>s</m:mi>
+    <m:mo>∗</m:mo>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>). And second, it is because <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is real-valued. When we combine complex sinusoid conjugate symmetry with a real-valued signal in the CTFT, then we will see that the CTFT is also conjugate symmetric:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:msup>
+          <m:mi>X</m:mi>
+          <m:mo>∗</m:mo>
+        </m:msup>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mrow>
+              <m:msubsup>
+                <m:mo>∫</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+              </m:msubsup>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mi>d</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>∗</m:mo>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mrow>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>∗</m:mo>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:mrow>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+            </m:mrow>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>∗</m:mo>
+        </m:msup>
+        <m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>∗</m:mo>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mrow>
+            <m:mo>(</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>)</m:mo>
+          </m:mrow>
+          <m:mo>∗</m:mo>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mtext>as </m:mtext>
+        </m:mrow>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mtext>  is real</m:mtext>
+        </m:mrow>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mo>−</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+Conjugate symmetry implies many other symmetries. For example, if <m:math>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is conjugate symmetric, then its real part and its magnitude are even, while its imaginary part and its phase are odd.
+
+</para><para id="eip-548">So if a signal is real, then its CTFT is conjugate symmetric. If the signal itself also has symmetry by being either even or odd, then its CTFT will not only be conjugate symmetric, it will be even (for even time-domain signals) or odd (for odd time-domain signals). All of these symmetry properties are summarized in <link target-id="ctftsymtable"/>.<newline/>
+<table id="ctftsymtable" summary="CTFT Symmetry Table">
+<tgroup cols="6"><tbody>
+  <row>
+    <entry><m:math><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">I</m:mi><m:mi mathvariant="normal">m</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mi mathvariant="normal">∠</m:mi><m:mtext> </m:mtext><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+  </row>
+  <row>
+    <entry>real</entry>
+    <entry>conjugate symmetric:<newline/> <m:math>
+                      <m:mrow>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi><m:mi>ω</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>=</m:mo>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>j</m:mi><m:mi>ω</m:mi>
+                        <m:msup>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo>∗</m:mo>
+                        </m:msup>
+                      </m:mrow>
+                  </m:math></entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+  </row>
+  <row>
+    <entry>real and even</entry>
+    <entry>real and even</entry>
+    <entry>even</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mo>,</m:mo>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                </m:math></entry>
+  </row>
+  <row>
+    <entry>real and odd</entry>
+    <entry>imaginary and odd</entry>
+    <entry>zero</entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                      <m:mrow>
+                        <m:mo>±</m:mo>
+                        <m:mfrac>
+                          <m:mi>π</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                      </m:mrow>
+                  </m:math></entry>
+  </row>
+  <row>
+    <entry>imaginary</entry>
+    <entry>conjugate odd symmetric <newline/> <m:math>
+                      <m:mrow>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi><m:mi>ω</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>j</m:mi><m:mi>ω</m:mi>
+                        <m:msup>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo>∗</m:mo>
+                        </m:msup>
+                      </m:mrow>
+                  </m:math></entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+  </row>
+  <row>
+    <entry>imaginary and even</entry>
+    <entry>imaginary and even</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry>even</entry>
+    <entry><m:math><m:mrow><m:mo>±</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+  </row>
+  <row>
+    <entry>imaginary and odd</entry>
+    <entry>real and odd</entry>
+    <entry>odd</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mo>,</m:mo>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                </m:math></entry>
+  </row>
+</tbody>
+</tgroup>
+</table></para></section><section id="eip-61"><title>CTFT/CTFS Relationship</title><para id="eip-865">Recall that we developed the CTFT from the CTFS. The CTFS is a frequency domain representation for finite-length or periodic signals.</para>
+
+<figure id="F1" orient="vertical"><subfigure id="F1s1">
+    <media id="F1m1" alt="">
+       <image mime-type="" src="../../media/i1_1-73ce.png"/>
+       <image mime-type="application/postscript" src="../../media/i1_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+  </subfigure>
+  <subfigure id="F1s2">
+    <media id="F1m2" alt="">
+       <image mime-type="" src="../../media/i1_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i1_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+  </subfigure>
+  <subfigure id="F1s3">
+    <media id="F1m3" alt="">
+       <image mime-type="" src="../../media/i1_1b.png"/>
+       <image mime-type="application/postscript" src="../../media/i1_1b.eps" for="pdf" print-width="250pt"/>
+    </media>
+  </subfigure>
+  
+<caption>Finite-length signals (<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ above) or periodic signals (<m:math>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mi>p</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+) can be represented as a weighted sum of complex sinusoids <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mfrac>
+        <m:mrow>
+          <m:mn>2</m:mn>
+          <m:mi>π</m:mi>
+        </m:mrow>
+        <m:mi>T</m:mi>
+      </m:mfrac>
+      <m:mi>n</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+.</caption></figure><para id="eip-73">Also recall the formula for a signal's representation with CTFS coefficients, letting <m:math>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:mi>π</m:mi>
+    </m:mrow>
+    <m:mi>T</m:mi>
+  </m:mfrac>
+</m:math>:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mn>0</m:mn>
+          <m:mi>T</m:mi>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:msub>
+               <m:mi>ω</m:mi>
+               <m:mn>0</m:mn>
+            </m:msub>
+           <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math><newline/>
+The formula for <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+ can actually be expressed as a CTFT, though only at certain points:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mn>0</m:mn>
+          <m:mi>T</m:mi>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mrow>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:msubsup>
+                <m:mo>∫</m:mo>
+                <m:mn>0</m:mn>
+                <m:mi>T</m:mi>
+              </m:msubsup>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mi>d</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>ω</m:mi>
+            <m:mo>=</m:mo>
+<m:mi>n</m:mi>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>n</m:mi>
+        <m:msub>
+          <m:mi>ω</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+So, then, as shown in <link target-id="sampledctft"/>, a CTFS of a finite-length signal is actually just a sampled version of a CTFT for the same signal (though zero-padded to be infinite length). Every <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+ is simply the value of the CTFT at location <m:math>
+  <m:mi>n</m:mi>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+</m:math>.</para><figure id="sampledctft" orient="vertical"><subfigure id="sampledctfts1">
+    <media id="sampledctftm1" alt="">
+       <image mime-type="" src="../../media/i2_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i2_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+  </subfigure>
+  <subfigure id="sampledctfts2">
+    <media id="sampledctftm2" alt="">
+       <image mime-type="" src="../../media/i2_3b.png"/>
+       <image mime-type="application/postscript" src="../../media/i2_3b.eps" for="pdf" print-width="250pt"/>
+    </media>
+  </subfigure>
+  <subfigure id="sampledctfts3">
+    <media id="sampledctftm3" alt="">
+       <image mime-type="" src="../../media/i2_3bcombined.png"/>
+       <image mime-type="application/postscript" src="../../media/i2_3bcombined.eps" for="pdf" print-width="250pt"/>
+    </media>
+  </subfigure>
+  
+<caption>When a finite-length signal is made to be infinite-length by adding zeros before and after it, we can see that the CTFS of the finite-length signal is simply a sampled version of the CTFT of the infinite-length signal.</caption></figure><para id="eip-633">So we know what happens when we do a CTFT on a finite-length signal by considering the expanded time-domain portion of it as being zero: the CTFS of the finite-length signal is a sampled version of the CTFT of the infinite-length signal.</para>
+
+<para id="eip-496">Of course, the CTFS applies to periodic signals as well. The CTFT is used for infinite-length signals, and a periodic signal is also infinite in length (it repeats forever!), so we can also consider what happens if we take the CTFT of the periodic signal. Recall that the CTFS of the a periodic signal <m:math>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mi>p</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is identical to the CTFS of the finite-length signal <m:math>
+    <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ that is a single period of <m:math>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mi>p</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> (<link target-id="fig23"/>).
+</para>
+
+<figure id="fig23" orient="vertical"><subfigure id="fig23s1">
+<media id="F1m22" alt="">
+       <image mime-type="" src="../../media/i1_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i1_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig23s2">
+<media id="F1m32" alt="">
+       <image mime-type="" src="../../media/i1_1b.png"/>
+       <image mime-type="application/postscript" src="../../media/i1_1b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>A periodic signal and its CTFS coefficients.</caption></figure>
+
+<para id="eip-496b">
+The CTFT of a periodic signal is:
+<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>X</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>j</m:mi>
+        <m:mi>ω</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:msub>
+          <m:mi>x</m:mi>
+          <m:mi>p</m:mi>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:munderover>
+              <m:mo movablelimits="false">∑</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>−</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>c</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>ω</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+                <m:mi>n</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mi>ω</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:msubsup>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>ω</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+                <m:mi>n</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mtext>CTFT</m:mtext>
+            </m:mrow>
+            <m:mo fence="false" stretchy="false">{</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>j</m:mi>
+                <m:msub>
+                  <m:mi>ω</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+                <m:mi>n</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo fence="false" stretchy="false">}</m:mo>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+            <m:mi>δ</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mo>−</m:mo>
+            <m:msub>
+              <m:mi>ω</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>π</m:mi>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:mi>δ</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>ω</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>ω</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mi>n</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+So the CTFT of a periodic signal is a series of delta functions, each scaled by its corresponding CTFS coefficients (<link target-id="fig24"/>).</para>
+
+<figure id="fig24" orient="vertical"><media id="CTFTCTFS" alt="">
+       <image mime-type="" src="../../media/i1_1bdelta.png"/>
+       <image mime-type="application/postscript" src="../../media/i1_1bdelta.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The CTFT of a periodic signal is a series of delta functions at <m:math>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mi>n</m:mi>
+</m:math>, the scales of which are the same as the signal's CTFS coefficients.</caption></figure>
+<para id="eip-496c">
+This representation makes sense, because we already knew (from the CTFS) that periodic signals can be composed of a sum of exponential signals. The CTFT gives a frequency representation of an exponential as a delta function, so it follows that the CTFT of a periodic signal would be a series of delta functions.</para></section><section id="eip-724"><title>CTFT Properties in Action: Amplitude Modulation</title><para id="eip-991">Having reviewed the most important properties of the CTFT, we can now put some of them to use in understanding the <term>amplitude modulation</term> operation.</para><para id="eip-753">Have you ever wondered how all of the different radio, television, satellite, and cell phone signals around you don't get hopelessly mixed up? Football games, soap operas, Tejano music, hundreds of cell phone conversations...all travel through the same airspace, yet we expect our TV/radio/phone to isolate only the one particular information stream that we're interested in.</para><para id="eip-5">One of the ways many different signals can be transmitted through the same space (and recovered individually) is through amplitude modulation. As you might have guessed, this is the way AM radio handles the task. We can better understand how and why it works with the help of the CTFT.</para><para id="eip-339">Suppose there are three signals we would like to transmit across the same airspace, and at the same time, signals <m:math>
+  <m:msub>
+    <m:mi>m</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+</m:math>, <m:math>
+  <m:msub>
+    <m:mi>m</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+</m:math>, and <m:math>
+  <m:msub>
+    <m:mi>m</m:mi>
+    <m:mn>3</m:mn>
+  </m:msub>
+</m:math> (<link target-id="fig26"/>). Now, if we simply added them together and transmitted the sum, we wouldn't be able to separate them again (if you are told the sum of three numbers is 20, there is no way from that information alone to know what the three numbers were). Of course, it is possible to send each one after the other, but right now we'd like to see if there is a way to send them simultaneously. So we'll need to do something else. Lets first look at their CTFTs (<link target-id="fig27"/>).</para><figure id="fig26" orient="vertical"><subfigure id="fig26s1">
+<media id="sigm1" alt="">
+       <image mime-type="" src="../../media/i52_1a.png"/>
+       <image mime-type="application/postscript" src="../../media/i52_1a.eps" for="pdf" print-width="250pt"/>
+</media>
+</subfigure>
+<subfigure id="fig26s2">
+<media id="sigm2" alt="">
+       <image mime-type="" src="../../media/i52_2a.png"/>
+       <image mime-type="application/postscript" src="../../media/i52_2a.eps" for="pdf" print-width="250pt"/>
+</media>
+</subfigure>
+<subfigure id="fig26s3">
+<media id="sigm3" alt="">
+       <image mime-type="" src="../../media/i52_3a.png"/>
+       <image mime-type="application/postscript" src="../../media/i52_3a.eps" for="pdf" print-width="250pt"/>
+</media>
+</subfigure>
+</figure>
+<figure id="fig27" orient="vertical"><subfigure id="fig27s1">
+<media id="sigm1b" alt="">
+       <image mime-type="" src="../../media/i52_1b.png"/>
+       <image mime-type="application/postscript" src="../../media/i52_1b.eps" for="pdf" print-width="250pt"/>
+</media>
+</subfigure>
+<subfigure id="fig27s2">
+<media id="sigm2b" alt="">
+       <image mime-type="" src="../../media/i52_2b.png"/>
+       <image mime-type="application/postscript" src="../../media/i52_2b.eps" for="pdf" print-width="250pt"/>
+</media>
+</subfigure>
+<subfigure id="fig27s3">
+<media id="sigm3b" alt="">
+       <image mime-type="" src="../../media/i52_3b.png"/>
+       <image mime-type="application/postscript" src="../../media/i52_3b.eps" for="pdf" print-width="250pt"/>
+</media>
+</subfigure>
+</figure><para id="p2">We can't simply just add them together (due to linearity, that is the same as adding them in the time domain!). But we can see that there is a lot of empty space in the frequency domain. We could shift them in the frequency domain and still be able to send them simultaneously. The modulation property we considered earlier states that we can shift a signal in its frequency domain by multiplying it by a sinusoidal in the time domain (<link target-id="fig28"/>).</para><figure id="fig28" orient="vertical"><subfigure id="fig28s1">
+<media id="i482m1" alt="">
+       <image mime-type="" src="../../media/i48_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i48_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig28s2">
+<media id="i483m1" alt="">
+       <image mime-type="" src="../../media/i48_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i48_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig28s3">
+<media id="i485m1" alt="">
+       <image mime-type="" src="../../media/i48_5.png"/>
+       <image mime-type="application/postscript" src="../../media/i48_5.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure><para id="p4">We will recall that multiplication in the time domain corresponds to convolution in the frequency domain. Combining that property with the fact that a cosine in time corresponds to two deltas in frequency, we can see what this modulation looks like in the frequency domain (<link target-id="fig29"/>). Of course, we are going do need to eventually undo this operation. In order to do that, all we have to do is multiply it by the same cosine again, and then filter out the center section (<link target-id="fig30"/>).</para><figure id="fig29" orient="vertical"><subfigure id="fig29s1">
+<media id="i491m1" alt="">
+       <image mime-type="" src="../../media/i49_1.png"/>
+       <image mime-type="application/postscript" src="../../media/i49_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig29s2">
+<media id="i492m1" alt="">
+       <image mime-type="" src="../../media/i49_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i49_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig29s3">
+<media id="i493m1" alt="">
+       <image mime-type="" src="../../media/i49_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i49_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure><figure id="fig30" orient="vertical"><subfigure id="fig30s1">
+<media id="i502m1" alt="">
+       <image mime-type="" src="../../media/i50_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i50_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig30s2">
+<media id="i503m1" alt="">
+       <image mime-type="" src="../../media/i50_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i50_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig30s3">
+<media id="i504m1" alt="">
+       <image mime-type="" src="../../media/i50_4.png"/>
+       <image mime-type="application/postscript" src="../../media/i50_4.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure>
+<para id="p5">So then, if we modulate each of the three signals by a different frequency (<link target-id="fig31"/>), then we can separate out the three signals in the frequency domain. To pull out a particular signal, say, the one modulated by <m:math>
+  <m:msub>
+    <m:mi>ω</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+</m:math>, we will first "tune" in to it by multiplying by the carrier cosine again (<link target-id="fig32"/>).</para><figure id="fig31" orient="vertical"><media id="i532m1" alt="">
+       <image mime-type="" src="../../media/i53_2.png"/>
+       <image mime-type="application/postscript" src="../../media/i53_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><figure id="fig32" orient="vertical"><media id="i533m1" alt="">
+       <image mime-type="" src="../../media/i53_3.png"/>
+       <image mime-type="application/postscript" src="../../media/i53_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="p10">Right there in the center of the frequency spectrum, at <m:math>
+  <m:mi>ω</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>0</m:mn>
+</m:math>, is the CTFT of the signal we want to extract. Of course, there is also quite a bit of junk on either side of it. So the next step is to apply a lowpass filter; this means convolving the signal with another signal whose CTFT looks like the one in <link target-id="fig33"/>. Since convolution in time equals multiplication in the frequency domain,
+ the final effect is to isolate just the CTFT of the desired signal (<link target-id="fig34"/>).</para><figure id="fig33" orient="vertical"><media id="i534m1" alt="">
+       <image mime-type="" src="../../media/i53_4.png"/>
+       <image mime-type="application/postscript" src="../../media/i53_4.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><figure id="fig34" orient="vertical"><media id="i535m1" alt="">
+       <image mime-type="" src="../../media/i53_5.png"/>
+       <image mime-type="application/postscript" src="../../media/i53_5.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="p9">
+So we have successfully recovered the signal of interest! To recover the other ones, we simply would appropriately "tune" in to their respective carrier frequencies. Those frequencies are the station numbers for various radio stations. The station 750 AM has a carrier frequency of 750 kHz.</para><para id="eip-749">Now, it should be noted that this is not <emphasis effect="italics">exactly</emphasis> how amplitude modulation works. What was described above is called "double sideband suppressed carrier" modulation. Amplitude modulation, such as is used for AM radio, actually does something just slightly different. Rather than multiply <m:math>
+  <m:mi>m</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ by the carrier sinusoid, (<m:math>
+  <m:mn>1</m:mn>
+  <m:mo>+</m:mo>
+  <m:mi>m</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>) is multiplied by the carrier sinusoid. The primary upside to this approach is that it allows for simpler retrieval, but it works in basically the same way.</para><para id="eip-401">In either case, this way of transmitting multiple signals across the same communications medium is an example of a "multiple access" scheme. There are a few different approaches to this problem of several different signals needing to be communicated across the same communication medium (e.g., telephone cables, over the air as a radio wave). As stated earlier, signals could be sent one after the other at different points in time. This is known as time division multiple access (TDMA). In practice, it amounts to users of the channel having access to all of it, but only at defined times. In our illustration of amplitude modulation, rather than divide the communication medium usage by time, we divided it by frequency allocation; this is an example of "frequency division multiple access" (FDMA). FDMA divides up a communication medium into a number of frequency "channels." This limits the amount of frequency bandwidth that each operator can use (lest the signals interfere with each other), but the benefit is they can use the channel at any time. A third scheme is "code division multiple access," (CDMA) in which instead of multiplying a given signal by a sinusoid, it is multiplied by a pseudo-random code.</para></section></content>
+
+</document>

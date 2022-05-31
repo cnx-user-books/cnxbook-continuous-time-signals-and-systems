@@ -1,0 +1,1349 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Computing Convolution</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64325</md:content-id>
+  <md:title>Computing Convolution</md:title>
+  <md:abstract>
+</md:abstract>
+  <md:uuid>be9e4274-efc9-44a6-bcb5-aa7c25c75673</md:uuid>
+</metadata>
+
+<content>
+    <para id="idm339988852496">We have seen that, for LTI systems, we can find the output <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> from the input <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and impulse response <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> through the operation of convolution <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t)\ast h(t)</m:annotation></m:semantics></m:math>, which is simply the integral:</para>
+    <para id="idm339988834080"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>d</m:mi><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">y(t)=\int\limits_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau</m:annotation></m:semantics></m:math>.</para>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988821184">In order to evaluate that integral, it can be helpful to see a graphical depiction of what it is doing. One way of looking at that integral is, as we have done previously, to see it as a combination of an infinite number of shifted and scaled impulse responses. Another way of looking at it is to consider its value for a particular time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>. <span>To do that, we'll look at the integrand. In it, one signal, <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(\tau)</m:annotation></m:semantics></m:math> is multiplied by a "flipped and shifted" version of the other signal, <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t-\tau)</m:annotation></m:semantics></m:math> (<link target-id="idm339988811664"/>). Before evaluating convolution integrals, it may be helpful to first practice the "flip and shift" a bit more; see <link target-id="idm339988768816"/>.</span></para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988811664" orient="vertical"><subfigure id="idm339988810896">
+        <media id="idm339988810768" alt="">
+          <image mime-type="" src="../../media/B19_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B19_1a.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm339988809552">
+        <media id="idm339988809424" alt="">
+          <image mime-type="" src="../../media/B19_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B19_1b.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm339988808208">
+        <media id="idm339988808080" alt="">
+          <image mime-type="" src="../../media/B19_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B19_1c.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>When two signals are convolved, one is "flipped and shifted" in the integrand. Suppose a signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is convolved with a signal (or impulse response) <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> to produce <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math>. The value of <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> for each <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> is the integral over <m:math><m:semantics><m:mrow><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">\tau</m:annotation></m:semantics></m:math> of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(\tau)h(t-\tau)</m:annotation></m:semantics></m:math>. Above we see how <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(\tau)</m:annotation></m:semantics></m:math> is flipped and then shifted to result in <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t-\tau)</m:annotation></m:semantics></m:math> (where here, <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>).</caption></figure><exercise id="idm339988768816" class="exercise">
+      <problem id="id_0b0b7eb1-9a7e-0652-73b3-02443d04aafc" class="problem">
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988767680">Consider the signal <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> in <link target-id="idm339988764208"/>.</para><figure id="idm339988764208"><media id="idm339988763440" alt="">
+            <image mime-type="" src="../../media/B20_1.png"/>
+<image mime-type="application/postscript" src="../../media/B20_1.eps" for="pdf" print-width="250pt"/>
+          </media>
+          
+        </figure><para id="idm339988761568">Create a labeled plot of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t-\tau)</m:annotation></m:semantics></m:math> in general, and then also for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> (i.e., <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(-\tau)</m:annotation></m:semantics></m:math>), <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">t=2</m:annotation></m:semantics></m:math>, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t=-1</m:annotation></m:semantics></m:math>.</para>
+      </problem>
+      <solution id="idm339988746352" class="solution">
+        <figure id="idm339988745856" orient="vertical"><subfigure id="idm339988745088">
+            <media id="idm339988744960" alt="">
+              <image mime-type="" src="../../media/B20_2.png"/>
+<image mime-type="application/postscript" src="../../media/B20_2.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm339988743744">
+            <media id="idm339988743616" alt="">
+              <image mime-type="" src="../../media/B20_2a.png"/>
+<image mime-type="application/postscript" src="../../media/B20_2a.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm339988742400">
+            <media id="idm339988742272" alt="">
+              <image mime-type="" src="../../media/B20_2b.png"/>
+<image mime-type="application/postscript" src="../../media/B20_2b.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm339988741056">
+            <media id="idm339988740928" alt="">
+              <image mime-type="" src="../../media/B20_2c.png"/>
+<image mime-type="application/postscript" src="../../media/B20_2c.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          
+        </figure></solution>
+    </exercise>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988738928"><span>So for the convolution <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t)\ast h(t)</m:annotation></m:semantics></m:math>, one signal, <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(\tau)</m:annotation></m:semantics></m:math> is multiplied by a "flipped and shifted" signal (or impulse response) <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t-\tau)</m:annotation></m:semantics></m:math>, and the product is then integrated over all of  <m:math><m:semantics><m:mrow><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">\tau</m:annotation></m:semantics></m:math>. That produces a single numerical value for <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> at time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>. The integral therefore is evaluated for <emphasis effect="italics">all</emphasis> values of <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>, with <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t-\tau)</m:annotation></m:semantics></m:math> sliding from left to right for increasing values of <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> <link target-id="idm339987883520"/>. </span>
+    </para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339987883520" orient="vertical"><subfigure id="idm339987882752">
+        <media id="idm339987882624" alt="">
+          <image mime-type="" src="../../media/B21_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B21_1a.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+<subfigure id="id2">
+        <media id="idm2" alt="">
+          <image mime-type="" src="../../media/B19_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B19_1a.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm339987881408">
+        <media id="idm339987881280" alt="">
+          <image mime-type="" src="../../media/B21_2b.png"/>
+<image mime-type="application/postscript" src="../../media/B21_2b.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm339987880064">
+        <media id="idm339987879936" alt="">
+          <image mime-type="" src="../../media/B21_2c.png"/>
+<image mime-type="application/postscript" src="../../media/B21_2c.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm339987878720">
+        <media id="idm339987878592" alt="">
+          <image mime-type="" src="../../media/B22_2-ddae.png"/>
+<image mime-type="application/postscript" src="../../media/B22_2-c030.eps" for="pdf" print-width="200pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>The signal <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is the convolution of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+. <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mn>.5</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is the area under the curve of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mn>.5</m:mn>
+  <m:mo>−</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+.</caption></figure><para id="idm339987876432">When it comes to evaluating the convolution, remember the commutative property of convolution. Since <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)\ast h(t)=h(t)\ast x(t)</m:annotation></m:semantics></m:math>, either <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> or <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> can be the one to flip and shift.</para>
+    <example xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339987859200" class="example"><title id="id_72f5fa96-f7ac-7d42-79bf-756369f591d1" class="title">Computing Convolution</title><para id="idm339987857632">At this point we can work through calculating a convolution integral, step by step. Consider the following LTI continuous-time system, a simple RC circuit with an input of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and output of <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> (<link target-id="idm339987850464"/>).</para><figure id="idm339987850464"><media id="idm339987849696" alt="">
+          <image mime-type="" src="../../media/RCcircuit.png" width="300pt" print-width="200pt"/>
+        </media>
+        
+      <caption>This simple RC circuit is continuous-time LTI system.</caption></figure><para id="idm339986839440">The impulse response of this system is provided for us, <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>R</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mfrac><m:mi>t</m:mi><m:mrow><m:mi>R</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac></m:mrow></m:msup><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)=\frac{1}{RC}e^{-\frac{t}{RC}}u(t)</m:annotation></m:semantics></m:math> (<link target-id="idm339986827104"/>).</para><figure id="idm339986827104"><media id="idm339986826336" alt="">
+          <image mime-type="" src="../../media/B25_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B25_1b.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>The impulse response of an RC circuit.</caption></figure><para id="idm339986824080">We will determine this system's output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> when the input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is the step function <m:math><m:semantics><m:mrow><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">u(t)</m:annotation></m:semantics></m:math>.</para><figure id="idm339986813952"><media id="idm339986813184" alt="">
+          <image mime-type="" src="../../media/B25_2.png"/>
+<image mime-type="application/postscript" src="../../media/B25_2.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>This step function will be the input to our system.</caption></figure><para id="idm339986811184">Because the system is LTI, we can find the output through convolution, <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t)\ast h(t)</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm339986802592"><m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mo>∫</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>d</m:mi><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">y(t)=\int\limits x(\tau) h(t-\tau)d\tau</m:annotation></m:semantics></m:math></para><para id="idm339986792592">Since convolution is commutative, we will instead choose to "flip and shift" <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, as that is a simpler signal:</para><para id="idm339986788800"><m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mo>∫</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>d</m:mi><m:mi>τ</m:mi><m:mo>=</m:mo><m:mo>∫</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>R</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mfrac><m:mi>τ</m:mi><m:mrow><m:mi>R</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac></m:mrow></m:msup><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>d</m:mi><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">y(t)=\int\limits h(\tau) x(t-\tau)d\tau=\int\limits \frac{1}{RC}e^{-\frac{\tau}{RC}} x(t-\tau)d\tau</m:annotation></m:semantics></m:math>.</para><para id="idm339986768704">We will plot both <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(\tau)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> (<link target-id="idm339986760992"/>).</para><figure id="idm339986760992" orient="vertical"><subfigure id="idm339986760224">
+          <media id="idm339986760096" alt="">
+            <image mime-type="" src="../../media/B26_3a.png"/>
+<image mime-type="application/postscript" src="../../media/B26_3a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986758880">
+          <media id="idm339986758752" alt="">
+            <image mime-type="" src="../../media/B26_3b.png"/>
+<image mime-type="application/postscript" src="../../media/B26_3b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The product in the integrand <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(\tau)x(t-\tau)</m:annotation></m:semantics></m:math> will be <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for all <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt;0</m:annotation></m:semantics></m:math></caption></figure><para id="idm339986756752">Right away, we can see that the product in the integrand <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(\tau)x(t-\tau)</m:annotation></m:semantics></m:math> will be <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for all <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt;0</m:annotation></m:semantics></m:math>. No matter the value of <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>, as long as <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt;0</m:annotation></m:semantics></m:math>, the nonzero portions of <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(\tau)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> do not overlap. Thus <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">y(t)=0</m:annotation></m:semantics></m:math> for all <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt;0</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm339986728960">Now we will consider the convolution for <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t\geq 0</m:annotation></m:semantics></m:math>.</para>
+      <figure id="idm339986726080" orient="vertical"><subfigure id="idm339986725312">
+          <media id="idm339986725184" alt="">
+            <image mime-type="" src="../../media/B26_3a.png"/>
+<image mime-type="application/postscript" src="../../media/B26_3a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986723968">
+          <media id="idm339986723840" alt="">
+            <image mime-type="" src="../../media/B27_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B27_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>When <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t\geq 0</m:annotation></m:semantics></m:math>, the nonzero portions of <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ overlap, so <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ will be nonzero.</caption></figure><para id="idm339986721840">In this case, the nonzero portions do overlap, so the convolution integral will be nonzero.</para>
+      <figure id="idm339986721232"><media id="idm339986720464" alt="">
+          <image mime-type="" src="../../media/B27_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B27_1c.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>An instance of the integrand of the convolution integral for <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t\geq 0</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm339986718464">We can work out the value of the convolution integral for this case, <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t&gt;0</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm339986715552">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>h</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mi>t</m:mi>
+                    </m:munderover>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>R</m:mi>
+                        <m:mi>C</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mfrac>
+                          <m:mi>τ</m:mi>
+                          <m:mrow>
+                            <m:mi>R</m:mi>
+                            <m:mi>C</m:mi>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msubsup>
+                      <m:mrow>
+                        <m:mo>[</m:mo>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mo>−</m:mo>
+                            <m:mi>R</m:mi>
+                            <m:mi>C</m:mi>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mi>R</m:mi>
+                            <m:mi>C</m:mi>
+                          </m:mrow>
+                        </m:mfrac>
+                        <m:msup>
+                          <m:mi>e</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mfrac>
+                              <m:mi>τ</m:mi>
+                              <m:mrow>
+                                <m:mi>R</m:mi>
+                                <m:mi>C</m:mi>
+                              </m:mrow>
+                            </m:mfrac>
+                          </m:mrow>
+                        </m:msup>
+                        <m:mo>]</m:mo>
+                      </m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mi>t</m:mi>
+                    </m:msubsup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>−</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mfrac>
+                          <m:mi>t</m:mi>
+                          <m:mrow>
+                            <m:mi>R</m:mi>
+                            <m:mi>C</m:mi>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+y(t)&amp;=\int\limits_{-\infty}^\infty h(\tau)x(t-\tau)d\tau\\
+&amp;=\int\limits_{0}^t \frac{1}{RC}e^{-\frac{\tau}{RC}}d\tau\\
+&amp;=\left[\frac{-RC}{RC}e^{-\frac{\tau}{RC}}\right]_0^t\\
+&amp;=1-e^{-\frac{t}{RC}}
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm339986672064">So then, we have:</para><para id="idm339986671552">
+        <m:math>
+          <m:mi>y</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>1</m:mn>
+                  <m:mo>−</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mfrac>
+                        <m:mi>t</m:mi>
+                        <m:mrow>
+                          <m:mi>R</m:mi>
+                          <m:mi>C</m:mi>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>≥</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:mo fence="true" stretchy="true"/>
+          </m:mrow>
+        </m:math>
+      </para>
+      <figure id="idm339986655440"><media id="idm339986654672" alt="">
+          <image mime-type="" src="../../media/B27_2.png"/>
+<image mime-type="application/postscript" src="../../media/B27_2.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>The output when a step function is input into the RC circuit.</caption></figure></example><example xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339986651760" class="example"><title id="id_657e29d7-4094-335b-6401-2883229aa1c8" class="title">A Trickier Convolution Integral</title><para id="idm339986650192">For our first example, the convolution integral was a straightforward calculation: it was <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt;0</m:annotation></m:semantics></m:math> and a single, simple integration for <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t\geq 0</m:annotation></m:semantics></m:math>. We'll now look at an example with a few more steps to it. Consider signals <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(t)</m:annotation></m:semantics></m:math>. <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is <m:math><m:semantics><m:mrow><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math> for <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>≤</m:mo><m:mi>t</m:mi><m:mo>≤</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">-1\leq t \leq 1</m:annotation></m:semantics></m:math>, being <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> otherwise, and <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mfrac><m:mi>t</m:mi><m:mn>3</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">g(t)=\frac{t}{3}</m:annotation></m:semantics></m:math> for <m:math><m:semantics><m:mrow><m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>t</m:mi><m:mo>≤</m:mo><m:mn>3</m:mn></m:mrow><m:annotation encoding="math/tex">0\leq t \leq 3</m:annotation></m:semantics></m:math>, and is <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> otherwise (<link target-id="idm339986617584"/>).</para><figure id="idm339986617584" orient="vertical"><subfigure id="idm339986616816">
+          <media id="idm339986616688" alt="">
+            <image mime-type="" src="../../media/B31_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B31_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986615472">
+          <media id="idm339986615344" alt="">
+            <image mime-type="" src="../../media/B31_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B31_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      </figure><para id="idm339986612960">We will convolve them together to produce the signal <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t)\ast g(t)</m:annotation></m:semantics></m:math>. Choosing for <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> to be the signal to flip and shift, we will next plot both signals of the convolution integrand in terms of <m:math><m:semantics><m:mrow><m:mi>τ</m:mi></m:mrow><m:annotation encoding="math/tex">\tau</m:annotation></m:semantics></m:math> (<link target-id="idm339986599424"/>).</para><figure id="idm339986599424" orient="vertical"><subfigure id="idm339986598656">
+          <media id="idm339986598528" alt="">
+            <image mime-type="" src="../../media/B31_2b.png"/>
+<image mime-type="application/postscript" src="../../media/B31_2b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986597312">
+          <media id="idm339986597184" alt="">
+            <image mime-type="" src="../../media/B31_2d.png"/>
+<image mime-type="application/postscript" src="../../media/B31_2d.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      </figure><para id="idm339986594288">As <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> (and thus, <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math>) moves from left to right, there will be five different cases to evaluate. The first is starting all the way at the left, when initially the signals do not overlap at all. Then the leading edge of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> will cross over an overlap partially with <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(\tau)</m:annotation></m:semantics></m:math>. Eventually <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> will completely overlap with <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(\tau)</m:annotation></m:semantics></m:math>, before the leading edge crosses over again, until <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> is completely to the right of <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(\tau)</m:annotation></m:semantics></m:math> and not overlapping at all. Let's now look at those in more detail.</para>
+      <para id="idm339986566336"><emphasis effect="underline">Case 1</emphasis>:</para>
+      <para id="idm339986565312">Notice that whenever the leading edge of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math>, which is located at <m:math><m:semantics><m:mrow><m:mi>τ</m:mi><m:mo>=</m:mo><m:mi>t</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">\tau=t+1</m:annotation></m:semantics></m:math>, is less than <m:math><m:semantics><m:mrow><m:mi>τ</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\tau=0</m:annotation></m:semantics></m:math>, the two signals will not overlap at all, meaning the integral is zero (<link target-id="idm339986599424"/>). Simplifying <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t+1&lt; 0</m:annotation></m:semantics></m:math>, we have <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt; -1</m:annotation></m:semantics></m:math>. So we have</para><para id="idm339985784592"><m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mrow><m:mo>{</m:mo><m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false"><m:mtr><m:mtd><m:mn>0</m:mn></m:mtd><m:mtd><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable><m:mo fence="true" stretchy="true"/></m:mrow></m:mrow><m:annotation encoding="math/tex">y(t)=\begin{cases}0&amp;t&lt;1\end{cases}</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm339986555392"><emphasis effect="underline">Case 2</emphasis>:</para>
+      <para id="idm339986554400">The next case occurs when <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>≥</m:mo><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t\geq -1</m:annotation></m:semantics></m:math>, but while the trailing edge of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> still does not overlap. That will happen when <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t-1=0</m:annotation></m:semantics></m:math>, or <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t=1</m:annotation></m:semantics></m:math> (<link target-id="idm339986537904"/>). So this partial overlap occurs for <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>≤</m:mo><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">-1\leq t &lt; 1</m:annotation></m:semantics></m:math>.</para><figure id="idm339986537904" orient="vertical"><subfigure id="idm339986537152">
+          <media id="idm339986537024" alt="">
+            <image mime-type="" src="../../media/B32_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B32_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986535808">
+          <media id="idm339986535680" alt="">
+            <image mime-type="" src="../../media/B32_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B32_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986534464">
+          <media id="idm339986534336" alt="">
+            <image mime-type="" src="../../media/B32_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B32_1c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      </figure><para id="idm339986531824">The convolution integral for those values of <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> is then:</para>
+      <para id="idm339986529728"><m:math><m:semantics><m:mrow><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>t</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mfrac><m:mi>τ</m:mi><m:mn>3</m:mn></m:mfrac><m:mi>d</m:mi><m:mi>τ</m:mi></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msubsup><m:mrow><m:mo>[</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>3</m:mn></m:mfrac><m:mfrac><m:msup><m:mi>τ</m:mi><m:mn>2</m:mn></m:msup><m:mn>2</m:mn></m:mfrac><m:mo>]</m:mo></m:mrow><m:mn>0</m:mn><m:mrow class="MJX-TeXAtom-ORD"><m:mi>t</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msubsup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>6</m:mn></m:mfrac><m:mo stretchy="false">(</m:mo><m:msup><m:mi>t</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:mrow><m:annotation encoding="math/tex">\begin{align*}
+y(t)&amp;=\int\limits_{0}^{t+1}\frac{\tau}{3}d\tau\\
+&amp;=\left[\frac{1}{3}\frac{\tau^2}{2} \right]_0^{t+1}\\
+&amp;=\frac{1}{6}(t^2+1)
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm339986502768">So far, then, we have</para>
+      <para id="idm339986502256"><m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mrow><m:mo>{</m:mo><m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false"><m:mtr><m:mtd><m:mn>0</m:mn></m:mtd><m:mtd><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mo>−</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mfrac><m:mn>1</m:mn><m:mn>6</m:mn></m:mfrac><m:mo stretchy="false">(</m:mo><m:msup><m:mi>t</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>≤</m:mo><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mtd></m:mtr></m:mtable><m:mo fence="true" stretchy="true"/></m:mrow></m:mrow><m:annotation encoding="math/tex">y(t)=\begin{cases}0 &amp;t&lt;-1\\ \frac{1}{6}(t^2+1)&amp;-1\leq t &lt;1 \end{cases}</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm339986484400"><emphasis effect="underline">Case 3</emphasis>:</para>
+      <para id="idm339986483408">As <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> increases, the trailing edge of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> comes within the nonzero duration of <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(\tau)</m:annotation></m:semantics></m:math>. For a time, all of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> will overlap with <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(\tau)</m:annotation></m:semantics></m:math>. This ceases to happen when the leading edge <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t+1</m:annotation></m:semantics></m:math> is greater than <m:math><m:semantics><m:mrow><m:mn>3</m:mn></m:mrow><m:annotation encoding="math/tex">3</m:annotation></m:semantics></m:math>, or when <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&gt;</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">t&gt;2</m:annotation></m:semantics></m:math> (<link target-id="idm339986452096"/>). Thus the total overlap occurs for <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t-1\geq 0</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt;1</m:annotation></m:semantics></m:math>, or <m:math><m:semantics><m:mrow><m:mn>1</m:mn><m:mo>≤</m:mo><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">1\leq t &lt; 2</m:annotation></m:semantics></m:math>.</para><figure id="idm339986452096" orient="vertical"><subfigure id="idm339986451344">
+          <media id="idm339986451216" alt="">
+            <image mime-type="" src="../../media/B32_2a.png"/>
+<image mime-type="application/postscript" src="../../media/B32_2a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986450000">
+          <media id="idm339986449872" alt="">
+            <image mime-type="" src="../../media/B32_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B32_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986448656">
+          <media id="idm339986448528" alt="">
+            <image mime-type="" src="../../media/B32_2c.png"/>
+<image mime-type="application/postscript" src="../../media/B32_2c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      </figure><para id="idm339986446528">With this complete overlap, the integral becomes:</para><para id="idm339986445952">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>t</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>t</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mfrac>
+                      <m:mi>τ</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msubsup>
+                      <m:mrow>
+                        <m:mo>[</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mn>3</m:mn>
+                        </m:mfrac>
+                        <m:mfrac>
+                          <m:msup>
+                            <m:mi>τ</m:mi>
+                            <m:mn>2</m:mn>
+                          </m:msup>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                        <m:mo>]</m:mo>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>t</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>t</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:msubsup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>6</m:mn>
+                    </m:mfrac>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>−</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>6</m:mn>
+                    </m:mfrac>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:msup>
+                        <m:mi>t</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>+</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>t</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>−</m:mo>
+                      <m:msup>
+                        <m:mi>t</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>+</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>2</m:mn>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                    <m:mi>t</m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+y(t)&amp;=\int\limits_{t-1}^{t+1}\frac{\tau}{3}d\tau\\
+&amp;=\left[\frac{1}{3}\frac{\tau^2}{2} \right]_{t-1}^{t+1}\\
+&amp;=\frac{1}{6}\left((t+1)^2-(t-1)^2\right)\\
+&amp;=\frac{1}{6}\left(t^2+2t+1-t^2+2t-1\right)\\
+&amp;=\frac{2}{3}t
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm339986397888">So now <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> is:</para>
+      <para id="idm339986394256">
+        <m:math>
+          <m:mi>y</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mn>6</m:mn>
+                  </m:mfrac>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>2</m:mn>
+                    <m:mn>3</m:mn>
+                  </m:mfrac>
+                  <m:mi>t</m:mi>
+                </m:mtd>
+                <m:mtd>
+                  <m:mn>1</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:mo fence="true" stretchy="true"/>
+          </m:mrow>
+        </m:math>
+      </para>
+      <para id="idm339986372688"><emphasis effect="underline">Case 4</emphasis>:</para>
+      <para id="idm339986371536">The fourth case has the leading edge of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> moving past the edge of <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(\tau)</m:annotation></m:semantics></m:math>, but the trailing edge still overlapping, which happens for <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>≥</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">t\geq 2</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>&lt;</m:mo><m:mn>3</m:mn></m:mrow><m:annotation encoding="math/tex">t-1&lt;3</m:annotation></m:semantics></m:math> (so, <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>4</m:mn></m:mrow><m:annotation encoding="math/tex">t&lt;4</m:annotation></m:semantics></m:math>) (<link target-id="idm339986355984"/>).</para><figure id="idm339986355984" orient="vertical"><subfigure id="idm339986355216">
+          <media id="idm339986355088" alt="">
+            <image mime-type="" src="../../media/B33_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B33_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986353872">
+          <media id="idm339986353744" alt="">
+            <image mime-type="" src="../../media/B32_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B32_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986352528">
+          <media id="idm339986352400" alt="">
+            <image mime-type="" src="../../media/B33_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B33_1c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      </figure><para id="idm339986350144">That case gives the following convolution integral:</para>
+      <para id="idm339986349568">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∫</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>t</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mn>3</m:mn>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:mfrac>
+                      <m:mi>τ</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:mfrac>
+                    <m:mi>d</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msubsup>
+                      <m:mrow>
+                        <m:mo>[</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mn>3</m:mn>
+                        </m:mfrac>
+                        <m:mfrac>
+                          <m:msup>
+                            <m:mi>τ</m:mi>
+                            <m:mn>2</m:mn>
+                          </m:msup>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                        <m:mo>]</m:mo>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>t</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mn>3</m:mn>
+                      </m:mrow>
+                    </m:msubsup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>6</m:mn>
+                    </m:mfrac>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mn>3</m:mn>
+                      <m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>−</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>6</m:mn>
+                    </m:mfrac>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>9</m:mn>
+                      <m:mo>−</m:mo>
+                      <m:msup>
+                        <m:mi>t</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mo>+</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mn>6</m:mn>
+                    </m:mfrac>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>8</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msup>
+                      <m:mi>t</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+y(t)&amp;=\int\limits_{t-1}^{3}\frac{\tau}{3}d\tau\\
+&amp;=\left[\frac{1}{3}\frac{\tau^2}{2} \right]_{t-1}^{3}\\
+&amp;=\frac{1}{6}\left((3)^2-(t-1)^2\right)\\
+&amp;=\frac{1}{6}\left(9-t^2+2t-1\right)\\
+&amp;=\frac{1}{6}(8+2t-t^2)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm339986302736"><m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> now is:</para>
+      <para id="idm339986299248">
+        <m:math>
+          <m:mi>y</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mn>6</m:mn>
+                  </m:mfrac>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>2</m:mn>
+                    <m:mn>3</m:mn>
+                  </m:mfrac>
+                  <m:mi>t</m:mi>
+                </m:mtd>
+                <m:mtd>
+                  <m:mn>1</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mn>6</m:mn>
+                  </m:mfrac>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mn>8</m:mn>
+                  <m:mo>+</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>t</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mn>2</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:mo fence="true" stretchy="true"/>
+          </m:mrow>
+        </m:math>
+      </para>
+      <para id="idm339986269088"><emphasis effect="underline">Case 5</emphasis>:</para>
+      <para id="idm339986268064">The final case is when the trailing edge <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t-1</m:annotation></m:semantics></m:math> of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t-\tau)</m:annotation></m:semantics></m:math> moves past the end of <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(\tau)</m:annotation></m:semantics></m:math>, which happens for <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>≥</m:mo><m:mn>4</m:mn></m:mrow><m:annotation encoding="math/tex">t\geq 4</m:annotation></m:semantics></m:math> (<link target-id="finalconv"/>). In this case there is no overlap, so the convolution integral is <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>. </para><figure id="finalconv" orient="vertical"><subfigure id="finalconvs1">
+          <media id="B33_2a" alt="">
+            <image mime-type="" src="../../media/B33_2a.png"/>
+<image mime-type="application/postscript" src="../../media/B33_2a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="finalconvs2">
+          <media id="B32_2b" alt="">
+            <image mime-type="" src="../../media/B33_2b.png"/>
+<image mime-type="application/postscript" src="../../media/B33_2b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="finalconvs3">
+          <media id="B33_2c" alt="">
+            <image mime-type="" src="../../media/B33_2c.png"/>
+<image mime-type="application/postscript" src="../../media/B33_2c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The integrand is zero for the final case in which the signals do not overlap.</caption></figure><para id="idm339986250800">That completes our expression of <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math>:<newline/><newline/>
+<m:math>
+          <m:mi>y</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mn>6</m:mn>
+                  </m:mfrac>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>2</m:mn>
+                    <m:mn>3</m:mn>
+                  </m:mfrac>
+                  <m:mi>t</m:mi>
+                </m:mtd>
+                <m:mtd>
+                  <m:mn>1</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>2</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mn>6</m:mn>
+                  </m:mfrac>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mn>8</m:mn>
+                  <m:mo>+</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>t</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mn>2</m:mn>
+                  <m:mo>≤</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>≥</m:mo>
+                  <m:mn>4</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:mo fence="true" stretchy="true"/>
+          </m:mrow>
+        </m:math>
+      </para><figure id="idm339986217680"><media id="idm339986216912" alt="">
+          <image mime-type="" src="../../media/B34_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B34_1a.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      </figure><para id="idm339986214656">
+
+Note the non-zero duration of <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> is from <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t=-1</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow><m:annotation encoding="math/tex">t=4</m:annotation></m:semantics></m:math>, a duration of <m:math><m:semantics><m:mrow><m:mn>5</m:mn></m:mrow><m:annotation encoding="math/tex">5</m:annotation></m:semantics></m:math>. This is, as the case for all convolution integrals, the sum of the durations of the two signals that were convolved (<m:math><m:semantics><m:mrow><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">2</m:annotation></m:semantics></m:math> for <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mn>3</m:mn></m:mrow><m:annotation encoding="math/tex">3</m:annotation></m:semantics></m:math> for <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(t)</m:annotation></m:semantics></m:math>).</para>
+    </example><section id="idm339986194896">
+      <title>The Width of Convolution</title>
+      <para id="idm339986194480">As we just saw in the examples above, the "width" (i.e., the continuous non-zero duration) of a convolved signal is larger than the width of each of the two signals that went into the convolution. Its width is, in fact, the sum of the two individual widths. When looking at the different cases of the convolution, we can see why this is the case. Until the leading edge of the flipped and shifted signal meets the beginning of the other signal (the transition between Case 1 and Case 2 in the example above), the convolution integral is 0. It is then (except in exceptional cases) nonzero while the flipped and shifted signal continues to travel across to the edge of the other one (the end of Case 3 above). At this point, the convolution has an output width equal to the width of the non-flipped signal. But remember there is still another non-zero case (Case 4 above), in which the rest of the flipped and shifted signal traverses past the other signal. The width of that case is equal to the width of the flipped and shifted signal. Therefore the total width is the sum of the two convolved signals' individual widths (<link target-id="idm339986194224"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339986194224" orient="vertical"><subfigure id="idm339986193456">
+          <media id="idm339986193328" alt="">
+            <image mime-type="" src="../../media/B35_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B35_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986192112">
+          <media id="idm339986191984" alt="">
+            <image mime-type="" src="../../media/B35_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B35_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339986190768">
+          <media id="idm339986190640" alt="">
+            <image mime-type="" src="../../media/B35_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B35_1c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The non-zero duration of a convolution is equal to the sum of the durations of the two signals going into the convolution. Here <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x_1(t)\x07st x_2(t)</m:annotation></m:semantics></m:math>, where the duration of <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)</m:annotation></m:semantics></m:math> is and the duration of <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2(t)</m:annotation></m:semantics></m:math> is <m:math><m:semantics><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">T_2</m:annotation></m:semantics></m:math>. Suppose we choose <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2(t)</m:annotation></m:semantics></m:math> to flip and shift. As it crosses the <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t=-1</m:annotation></m:semantics></m:math> threshold of <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)</m:annotation></m:semantics></m:math> the convolution begins to be non-zero, continuing across the width of <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)</m:annotation></m:semantics></m:math>, but then extending additionally for the width of <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2(t)</m:annotation></m:semantics></m:math> as the rest of it traverses across the <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t=1</m:annotation></m:semantics></m:math> threshold of <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)</m:annotation></m:semantics></m:math>.</caption></figure></section>
+    <section id="idm339986133840">
+      <title>The Usefulness of Convolution</title>
+      <para id="idm339986133424">One of the reasons we study convolution is because it gives us a very straightforward way of finding the output of an LTI system (provided we know its impulse response) for a given input. But beyond that, convolution is also helpful because it provides us additional insight and intuition into what an LTI system is actually <emphasis effect="italics">doing</emphasis>.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339986132192">Recall that for an LTI system with impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math>, the output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> is the convolution of the input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> with the impulse response, <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t)\ast h(t)</m:annotation></m:semantics></m:math>. Imagine what the system is doing by flipping and shifting the impulse response. For a given time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>, the system looks at a certain section of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> (equal to the duration of the impulse response) and gives an output based upon those values being weighted by the impulse response and then integrated.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-998">If, for example, <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> has a constant value we can see that the output at a given time is simply a scaled multiple (depending on the height and width of <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math>) of the mean value of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> over the range that the flipped and shifted <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> selects (<link target-id="idm339985757984"/>). Generalizing <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math>, we can say that any convolution is essentially a weighted running average of the input.</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339985757984" orient="vertical"><subfigure id="idm339985757216">
+          <media id="idm339985757088" alt="">
+            <image mime-type="" src="../../media/B36_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B36_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339985755872">
+          <media id="idm339985755744" alt="">
+            <image mime-type="" src="../../media/B36_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B36_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339985754528">
+          <media id="idm339985754400" alt="">
+            <image mime-type="" src="../../media/B36_2a.png"/>
+<image mime-type="application/postscript" src="../../media/B36_2a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339985753184">
+          <media id="idm339985753056" alt="">
+            <image mime-type="" src="../../media/B36_2b.png"/>
+<image mime-type="application/postscript" src="../../media/B36_2b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm339985751840">
+          <media id="idm339985751712" alt="">
+            <image mime-type="" src="../../media/B36_2c.png"/>
+<image mime-type="application/postscript" src="../../media/B36_2c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>For an LTI system with the impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t)</m:annotation></m:semantics></m:math> shown above, we can see that for any given time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>, the system produces the average value of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> between time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">t-T</m:annotation></m:semantics></m:math>. The output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> is therefore a smoothed version of the input.</caption></figure><example id="idm339985714464" class="example">
+        <title id="id_46e06b33-b491-9370-b991-c8fd87b2b9e7" class="title"/>
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339985712688">Consider an RC circuit with an input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> as shown in <link target-id="idm339985708160"/>.</para><figure id="idm339985708160" orient="vertical"><subfigure id="idm339988715760">
+            <media id="idm339988715632" alt="">
+              <image mime-type="" src="../../media/RCcircuit.png" width="300pt" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm339988714480">
+            <media id="idm339988714352" alt="">
+              <image mime-type="" src="../../media/B37_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B37_1a.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          
+        </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988711856">The system's circuit diagram, and perhaps even its input/output relationship--<m:math><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:mi>R</m:mi><m:mi>C</m:mi><m:msup><m:mi>y</m:mi><m:mo>′</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:math>--may not provide much actual intuition into how the system modifies the input signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+. However, if we are also given the impulse response, we may get a better idea. As we have seen before, the impulse response of the RC circuit is:</para><para id="idm339988702368"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>R</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mfrac><m:mi>t</m:mi><m:mrow><m:mi>R</m:mi><m:mi>C</m:mi></m:mrow></m:mfrac></m:mrow></m:msup><m:mi>u</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:math>.</para>
+        <para id="idm339988691552">When this impulse response is flipped and shifted across the input, we can better appreciate what this system is doing (<link target-id="idm339988690784"/>).</para><figure id="idm339988690784"><media id="idm339988690016" alt="">
+            <image mime-type="" src="../../media/B39_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B39_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+          
+        </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988687632">At time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>, the convolution integral will weight the values of the input immediately before time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> by a decaying exponential, performing a weighted average of those values (with greatest weight to the most recent one). The effect of this operation comes into even sharper relief when we recall that the convolution operation (because it represents an LTI system) is linear, and that our input appears to be the sum of a signal plus noise (<link target-id="idm339988683504"/>).</para><figure id="idm339988683504" orient="vertical"><subfigure id="idm339988682736">
+            <media id="idm339988682608" alt="">
+              <image mime-type="" src="../../media/B37_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B37_1b.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm339988681392">
+            <media id="idm339988681264" alt="">
+              <image mime-type="" src="../../media/B37_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B37_1c.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          
+        </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988678880">We recall that the linearity of the system means that if an input is the sum of two signals, the output will be the sum of the outputs to the individual inputs: <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>s</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>n</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>s</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=H[s(t)+n(t)]=H[s(t)]+H[n(t)]</m:annotation></m:semantics></m:math>. The convolution with the decaying exponential, which amounts to a running weighted average, will result in slightly smoothing out the signal <m:math><m:semantics><m:mrow><m:mi>s</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">s(t)</m:annotation></m:semantics></m:math>. However, since <m:math><m:semantics><m:mrow><m:mi>n</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">n(t)</m:annotation></m:semantics></m:math> is zero-mean, the weighted averaging will actually nearly zero it out! The result then of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> going through the system will therefore be a de-noised and smoothed out version of <m:math><m:semantics><m:mrow><m:mi>s</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">s(t)</m:annotation></m:semantics></m:math> (<link target-id="idm339988645696"/>).</para><figure id="idm339988645696"><media id="idm339988644928" alt="">
+            <image mime-type="" src="../../media/B39_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B39_1c.eps" for="pdf" print-width="250pt"/>
+          </media>
+          
+        </figure><para id="idm339988642544">So the system acts to smooth and de-noise incoming signals. Technically it is a kind of "low pass filter," but we will learn more about that in due course.</para>
+      </example>
+      <exercise id="idm339988641616" class="exercise">
+        <problem id="ffec55fe-3594-49d4-3447-61d46624f6cb" class="problem">
+          <para id="idm339988640480">Consider a continuous-time LTI system with the impulse response depicted in <link target-id="idm339988640144"/>.</para><figure id="idm339988640144"><media id="idm339988639376" alt="">
+              <image mime-type="" src="../../media/B41_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B41_1b.eps" for="pdf" print-width="250pt"/>
+            </media>
+            
+          </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988637504">How would you describe how this system operates on input signals, e.g., the <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> in <link target-id="idm339988633856"/>? In particular, as <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> decreases, how does this affect the system's operation? </para><figure id="idm339988633856"><media id="idm339988633088" alt="">
+              <image mime-type="" src="../../media/B41_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B41_1a.eps" for="pdf" print-width="250pt"/>
+            </media>
+            
+          </figure></problem>
+        <solution id="idm339988629376" class="solution">
+          <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988628880">To better see what this system is doing, first plot <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>τ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h(t-\tau)</m:annotation></m:semantics></m:math> (<link target-id="idm339988624656"/>).</para><figure id="idm339988624656"><media id="idm339988623888" alt="">
+              <image mime-type="" src="../../media/B41_2.png"/>
+<image mime-type="application/postscript" src="../../media/B41_2.eps" for="pdf" print-width="250pt"/>
+            </media>
+            
+          </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988622016">As it traverses across <m:math>
+  <m:mi>t</m:mi>
+</m:math>
+, the convolution integral will essentially find the average value of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ between <m:math>
+  <m:mi>t</m:mi>
+</m:math> and <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mi>T</m:mi>
+    <m:mn>2</m:mn>
+  </m:mfrac>
+</m:math>
+, and subtract from that the average value of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> between <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mfrac>
+    <m:mi>T</m:mi>
+    <m:mn>2</m:mn>
+  </m:mfrac>
+</m:math>
+ and <m:math>
+  <m:mi>t</m:mi>
+</m:math>
+
+. In so doing, it will be determining how much <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ changes right around time <m:math>
+  <m:mi>t</m:mi>
+</m:math>
+
+. A plot of <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is in <link target-id="idm339988621456"/>.</para><figure id="idm339988621456"><media id="idm339988620688" alt="">
+              <image mime-type="" src="../../media/B41_1c.png"/>
+<image mime-type="application/postscript" src="../../media/B41_1c.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988618816">Note how <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+is larger when <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is increasing, and is smaller when <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is decreasing. As <m:math>
+  <m:mi>T</m:mi>
+</m:math>
+ gets smaller, we would expect the system to more precisely pinpoint the locations of the changes (<link target-id="idm339988618352"/>). </para><figure id="idm339988618352" orient="vertical">
+<subfigure id="idms1">
+<media id="idm339988617584" alt="">
+              <image mime-type="" src="../../media/B41_1d.png"/>
+<image mime-type="application/postscript" src="../../media/B41_1d.eps" for="pdf" print-width="250pt"/>
+            </media>
+</subfigure>
+            
+<subfigure id="idms2"><media id="idm339988614128" alt="">
+              <image mime-type="" src="../../media/B41_1e.png"/>
+<image mime-type="application/postscript" src="../../media/B41_1e.eps" for="pdf" print-width="250pt"/>
+            </media>
+  </subfigure>
+          
+          </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm339988612128"><span>The smaller <m:math>
+  <m:mi>T</m:mi>
+</m:math>
+ gets, the more the system is telling us what the rate of change of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> is immediately at time <m:math>
+  <m:mi>t</m:mi>
+</m:math>, or in other words, the trend is to give us the derivative <m:math>
+  <m:msup>
+    <m:mi>x</m:mi>
+    <m:mo>′</m:mo>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</span>
+          </para></solution>
+      </exercise>
+      </section>
+  </content>
+</document>

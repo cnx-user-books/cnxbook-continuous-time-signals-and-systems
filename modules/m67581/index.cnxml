@@ -1,0 +1,2371 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>The Laplace Transform</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m67581</md:content-id>
+  <md:title>The Laplace Transform</md:title>
+  <md:abstract/>
+  <md:uuid>89d08578-56ee-4765-b385-631e29e1b6e4</md:uuid>
+</metadata>
+
+<content>
+  <section id="eip-934"><title>A Larger Class of Signals for Representation</title><para id="eip-291">In our study of continuous-time signals, we have seen that the complex sinusoid <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math> (<link target-id="fig1"/>)
+ is pretty special. One reason is that any signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> (as long as it satisfies the Dirichlet conditions) can be represented in terms of a weighted combination of complex sinusoids. The representation is weighted according to the CTFT:<newline/>
+<m:math>
+  <m:mi>X</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:munderover>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+</m:math>
+<newline/>
+A second reason is that the complex sinusoid is an eigenfunction of LTI systems, meaning that if <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ is input into an LTI system, the output will be <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>, where <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>ω</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is the CTFT of the system’s impulse response.
+</para><figure id="fig1" orient="vertical"><media id="M3_1m1" alt="">
+       <image mime-type="" src="../../media/M3_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M3_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The real part of a complex sinusoid.</caption></figure><para id="eip-453">It so happens that these two properties of complex sinusoids also apply to a larger class of signals, complex exponentials. A complex exponential is a signal <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>s</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>, where <m:math>
+  <m:mi>s</m:mi>
+</m:math>
+ is some complex number (<link target-id="fig2"/>). Such signals are also eigenfunctions of LTI systems, and they can also be used to represent other signals.</para><figure id="fig2" orient="vertical"><media id="M3_2m0" alt="">
+       <image mime-type="" src="../../media/M3_2.png"/>
+       <image mime-type="application/postscript" src="../../media/M3_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The real part of a complex exponential.</caption></figure><para id="eip-513">You may wonder why we would want to consider working with <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>s</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ when <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ seemed to work perfectly well. The main reason is that it is a more helpful tool when it comes to continuous-time systems analysis and implementation. By being a larger class of signals, it can represent some signals better than the CTFT can. For example, there is no CTFT for the signal <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mi>t</m:mi>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, but we can represent it using complex exponentials. And some signals--such as the step function <m:math>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>--have CTFTs that require the use of a delta function, while their complex exponential representations don’t.</para></section><section id="eip-405"><title>A Transform Using Complex Exponentials: The Laplace Transform</title><para id="eip-680">Just as complex sinusoids <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ have the CTFT, there is also a frequency domain transform for complex exponentials <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>s</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>. It is called the <term>Laplace transform</term>. The Laplace transform for an infinite-length continuous time signal <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>s</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ is defined as:<newline/>
+<m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:munderover>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>s</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+</m:math>
+<newline/>
+Technically, this is the "bilateral" Laplace transform because the integral is calculated from <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math> to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math> (there is also a "unilateral" one that goes only from <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>0</m:mn>
+</m:math>
+ to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>, but we won't be dealing with it). Let's find the Laplace transform of a signal <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, where <m:math>
+  <m:mi>a</m:mi>
+</m:math>
+ is some real constant (<link target-id="fig3"/>).</para><figure id="fig3" orient="vertical"><media id="M6_1m1" alt="">
+       <image mime-type="" src="../../media/M6_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M6_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="eip-680b">We will just follow the formula, with <m:math>
+  <m:mi>s</m:mi>
+  <m:mo>=</m:mo>
+  <m:mi>σ</m:mi>
+  <m:mo>+</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+</m:math>:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>h</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>s</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mn>0</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>a</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>s</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mn>0</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>a</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:mrow>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+                <m:mrow>
+                  <m:mi>a</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>s</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>a</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>s</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mn>0</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>a</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mrow>
+            <m:munder>
+              <m:mo form="prefix">lim</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">→</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>s</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mo>]</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>a</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mrow>
+            <m:munder>
+              <m:mo form="prefix">lim</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">→</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>+</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mo>]</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>a</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>s</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mrow>
+          <m:mo>[</m:mo>
+          <m:mrow>
+            <m:munder>
+              <m:mo form="prefix">lim</m:mo>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">→</m:mo>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>ω</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>σ</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mo>]</m:mo>
+        </m:mrow>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+At this point, we have to acknowledge that the term <m:math>
+  <m:munder>
+    <m:mo form="prefix">lim</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>t</m:mi>
+      <m:mo stretchy="false">→</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:munder>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>a</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>σ</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ does not exist for all values of <m:math>
+  <m:mi>s</m:mi>
+</m:math>. The magnitude of <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+<m:mi>j</m:mi>
+      <m:mi>ω</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ is always <m:math>
+  <m:mn>1</m:mn>
+</m:math>, but as <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>, <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>a</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>σ</m:mi>
+      <m:mo stretchy="false">)</m:mo>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+ will either tend to <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ if <m:math>
+  <m:mi>σ</m:mi>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>a</m:mi>
+</m:math>
+ or become unbounded if <m:math>
+  <m:mi>σ</m:mi>
+  <m:mo>&lt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>a</m:mi>
+</m:math>. The limit will obviously exist in the first case, and will not for the latter. So then we have:<newline/>
+<m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mrow>
+    <m:mo>{</m:mo>
+    <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+      <m:mtr>
+        <m:mtd>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mrow>
+              <m:mi>s</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>a</m:mi>
+            </m:mrow>
+          </m:mfrac>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mtext>Re</m:mtext>
+          </m:mrow>
+          <m:mo fence="false" stretchy="false">{</m:mo>
+          <m:mi>s</m:mi>
+          <m:mo fence="false" stretchy="false">}</m:mo>
+          <m:mo>&gt;</m:mo>
+          <m:mo>−<!-- &#8722; --></m:mo>
+          <m:mi>a</m:mi>
+        </m:mtd>
+      </m:mtr>
+      <m:mtr>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mtext>undefined</m:mtext>
+          </m:mrow>
+        </m:mtd>
+        <m:mtd>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mtext>Re</m:mtext>
+          </m:mrow>
+          <m:mo fence="false" stretchy="false">{</m:mo>
+          <m:mi>s</m:mi>
+          <m:mo fence="false" stretchy="false">}</m:mo>
+          <m:mo>≤<!-- &#8804; --></m:mo>
+          <m:mo>−<!-- &#8722; --></m:mo>
+          <m:mi>a</m:mi>
+        </m:mtd>
+      </m:mtr>
+    </m:mtable>
+    <m:mo fence="true" stretchy="true" symmetric="true"/>
+  </m:mrow>
+</m:math>
+
+<newline/>
+However, this is typically shortened to be 
+<m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>a</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mtext> </m:mtext>
+  <m:mo>,</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−<!-- &#8722; --></m:mo>
+  <m:mi>a</m:mi>
+</m:math>, with the implied understanding it is undefined for <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>≤</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>a</m:mi>
+</m:math>. </para></section><section id="eip-108"><title>The Region of Convergence</title><para id="eip-232">The Laplace transform we calculated for the signal <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ was found to be <m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>a</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mtext> </m:mtext>
+  <m:mo>,</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>a</m:mi>
+</m:math>. The values of <m:math>
+  <m:mi>s</m:mi>
+</m:math>
+ for which the Laplace transform exists is known as the <term>region of convergence (ROC)</term>. We can also plot the ROC as a shaded region. All the values of <m:math>
+  <m:mi>s</m:mi>
+</m:math>
+ (recalling the complex-valued <m:math>
+  <m:mi>s</m:mi>
+</m:math>
+ can be expressed <m:math>
+  <m:mi>σ</m:mi>
+  <m:mo>+</m:mo>
+  <m:mi>j</m:mi>
+  <m:mi>ω</m:mi>
+</m:math>
+) in the ROC are shaded in <link target-id="fig4"/>.</para>
+<figure id="fig4" orient="vertical"><media id="M8_1m1" alt="">
+       <image mime-type="" src="../../media/M8_1.png"/>
+       <image mime-type="application/postscript" src="../../media/M8_1.eps" for="pdf" print-width="250pt"/>
+    </media>
+<caption>The shaded parts of the <m:math>
+  <m:mi>s</m:mi>
+</m:math>-plane are the values of <m:math>
+  <m:mi>s</m:mi>
+</m:math> for which a given signal's Laplace transform exists; these values are known as the Laplace transform's Region of convergence (ROC).</caption></figure><para id="eip-232b">The "x" on the plot above is a "pole" of <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, but we'll consider that more fully when discussing the properties of the Laplace transform. Note that it is very important to include the <m:math>
+  <m:mi>s</m:mi>
+</m:math> values of the ROC (if applicable) when expressing a Laplace transform, for two different signals might have what appears to be the same Laplace transform, albeit with a different ROC. Consider the signal <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+<m:mo>−</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ (<link target-id="fig5"/>).</para><figure id="fig5" orient="vertical"><media id="M11_3m1" alt="">
+       <image mime-type="" src="../../media/M11_3.png"/>
+       <image mime-type="application/postscript" src="../../media/M11_3.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="eip-232c">
+Its Laplace transform is nearly identical to that of the first signal we considered, with one important difference:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>H</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>h</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>s</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:msubsup>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>a</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>s</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:msubsup>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>a</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>a</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mrow>
+            <m:mo>[</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo>−</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>a</m:mi>
+                <m:mo>+</m:mo>
+                <m:mi>s</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>]</m:mo>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:msubsup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>a</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo stretchy="false">[</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo>−</m:mo>
+        <m:munder>
+          <m:mo form="prefix">lim</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">→</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munder>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>a</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo stretchy="false">]</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mi>a</m:mi>
+          </m:mrow>
+        </m:mfrac>
+        <m:mtext> </m:mtext>
+        <m:mo>,</m:mo>
+        <m:mtext> </m:mtext>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mtext>Re</m:mtext>
+        </m:mrow>
+        <m:mo fence="false" stretchy="false">{</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo fence="false" stretchy="false">}</m:mo>
+        <m:mo>&lt;</m:mo>
+        <m:mo>−</m:mo>
+        <m:mi>a</m:mi>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math><newline/>
+The only difference between this Laplace transform and the previous one is the ROC (<link target-id="fig6"/>).</para>
+<figure id="fig6" orient="vertical"><media id="M10_2m1" alt="">
+       <image mime-type="" src="../../media/M10_2.png"/>
+       <image mime-type="application/postscript" src="../../media/M10_2.eps" for="pdf" print-width="250pt"/>
+    </media>
+</figure><para id="eip-232d">Note also how the ROC corresponds to the kind of signal.
+ As we saw above, if a one-sided signal extends indefinitely to the right, its ROC does as well. The signal in <link target-id="fig8"/> extends to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>
+ while decreasing, and the ROC of its Laplace transform also extends to the right indefinitely.</para><figure id="fig8" orient="vertical"><subfigure id="fig8s1">
+<media id="M14_2am1" alt="">
+       <image mime-type="" src="../../media/M14_2a.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_2a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig8s2">
+<media id="M14_2bm1" alt="">
+       <image mime-type="" src="../../media/M14_2b.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_2b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>A one-sided signal that extends indefinitely to the right (i.e., <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>) has a ROC that also extends indefinitely to the right.</caption></figure><para id="eip-232e">If it increases while extending <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>, the ROC still also extends indefinitely to the right (<link target-id="fig9"/>).</para><figure id="fig9" orient="vertical"><subfigure id="fig9s1">
+<media id="M14_3am1" alt="">
+       <image mime-type="" src="../../media/M14_3a.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_3a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig9s2">
+<media id="M14_3bm1" alt="">
+       <image mime-type="" src="../../media/M14_3b.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_3b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure>
+<para id="eip-232f">Likewise, when a one-sided signal extends to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>, the ROC extends indefinitely to the left (<link target-id="fig10"/>).</para><figure id="fig10" orient="vertical"><subfigure id="fig10s1">
+<media id="M14_4am1" alt="">
+       <image mime-type="" src="../../media/M14_4a.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_4a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig10s2">
+<media id="M14_4bm1" alt="">
+       <image mime-type="" src="../../media/M14_4b.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_4b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>A one-sided signal that extends indefinitely to the left (i.e., <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>) has a ROC that also extends indefinitely to the left.</caption></figure><para id="eip-232g">Two-sided signals (those that extend to both <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>
+ and <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math>
+) do not always converge, but when they do, the ROCs of their Laplace transforms extend between the poles (<link target-id="fig11"/>).</para><figure id="fig11" orient="vertical"><subfigure id="fig11s1">
+<media id="M14_5am1" alt="">
+       <image mime-type="" src="../../media/M14_5a.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_5a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig11s2">
+<media id="M14_5bm1" alt="">
+       <image mime-type="" src="../../media/M14_5b.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_5b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>If a two-sided signal (nonzero from <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi mathvariant="normal">∞</m:mi>
+</m:math> to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">→<!-- &#8594; --></m:mo>
+  <m:mi mathvariant="normal">∞<!-- &#8734; --></m:mi>
+</m:math>) has a Laplace transform, it will not extend indefinitely, but rather will exist between two poles.</caption></figure><para id="eip-232h">Finally, if a signal is nonzero for only a finite section of time, then its ROC will be the entire <m:math>
+  <m:mi>s</m:mi>
+</m:math>-plane (<link target-id="fig12"/>).</para><figure id="fig12" orient="vertical"><subfigure id="fig12s1">
+<media id="M14_1am1" alt="">
+       <image mime-type="" src="../../media/M14_1a.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_1a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig12s2">
+<media id="M14_1bm1" alt="">
+       <image mime-type="" src="../../media/M14_1b.png"/>
+       <image mime-type="application/postscript" src="../../media/M14_1b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<caption>Signals that are nonzero (and bounded) for a finite amount of time will have Laplace transforms whose ROCs are the entire <m:math>
+  <m:mi>s</m:mi>
+</m:math>-plane.</caption></figure><para id="eip-514">So if a Laplace transform has a ROC, it is necessary to know it in order to recover the original signal, a task to which we will now turn.</para></section><section id="eip-152"><title>Inverting the Laplace Transform</title><para id="eip-532">Recall the Laplace transform definition for a signal <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>:<newline/>
+<m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:munderover>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>s</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+</m:math><newline/>
+Given <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, it is natural to inquire as to how we may then recover <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Unlike with the CTFT or CTFS, we cannot perform a simple integration -- instead we would need to calculate a contour integral. Rather than take that approach, it is usually more common to do something a bit more intuitive.</para><para id="eip-136">Suppose we are given <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>3</m:mn>
+    </m:mrow>
+  </m:mfrac>
+  <m:mtext> </m:mtext>
+  <m:mo>,</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mn>3</m:mn>
+</m:math>. We have already seen above that a Laplace transform of <m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>a</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mtext> </m:mtext>
+  <m:mo>,</m:mo>
+  <m:mtext> </m:mtext>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>a</m:mi>
+</m:math> corresponds to <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, so all we have to do is set <m:math>
+  <m:mi>a</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>3</m:mn>
+</m:math>, which gives us <m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mn>3</m:mn>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</para><para id="eip-952">Yes, that was a simple example. Suppose now that we have something a little more complicated, that we want to find the inverse Laplace transform for some <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:msub>
+    <m:mi>H</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>H</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, and we already know <m:math>
+  <m:msub>
+    <m:mi>h</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:msub>
+    <m:mi>h</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Since integrals (and contour integrals) are linear operators, then the inverse will likewise be <m:math>
+  <m:msub>
+    <m:mi>h</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>h</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Of course, it will be helpful to first have a table of elementary Laplace transform pairs (<link target-id="eip-230"/>).</para><table id="eip-230" summary="Table of Laplace Transform pairs">
+<tgroup cols="3"><tbody>
+  <row>
+    <entry><m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry>ROC</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mn>1</m:mn>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>all </m:mtext>
+  </m:mrow>
+  <m:mi>s</m:mi>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>s</m:mi>
+      <m:msub>
+        <m:mi>t</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+    </m:mrow>
+  </m:msup>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>all </m:mtext>
+  </m:mrow>
+  <m:mi>s</m:mi>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mi>s</m:mi>
+  </m:mfrac>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mn>0</m:mn>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mo>−</m:mo>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mi>s</m:mi>
+  </m:mfrac>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&lt;</m:mo>
+  <m:mn>0</m:mn>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>a</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−<!-- &#8722; --></m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>a</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+</m:math></entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mo>−</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>a</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&lt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>a</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mfrac>
+    <m:msup>
+      <m:mi>t</m:mi>
+      <m:mrow class="MJX-TeXAtom-ORD">
+        <m:mi>n</m:mi>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mrow>
+    </m:msup>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>n</m:mi>
+      <m:mo>−</m:mo>
+      <m:mn>1</m:mn>
+      <m:mo stretchy="false">)</m:mo>
+      <m:mo>!</m:mo>
+    </m:mrow>
+  </m:mfrac>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>a</m:mi>
+      <m:msup>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>n</m:mi>
+      </m:msup>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>a</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+</m:math>
+</entry>
+  </row>
+  <row>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mrow>
+      <m:mo>−</m:mo>
+      <m:msup>
+        <m:mi>t</m:mi>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mi>n</m:mi>
+          <m:mo>−</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:msup>
+    </m:mrow>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>n</m:mi>
+      <m:mo>−</m:mo>
+      <m:mn>1</m:mn>
+      <m:mo stretchy="false">)</m:mo>
+      <m:mo>!</m:mo>
+    </m:mrow>
+  </m:mfrac>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>a</m:mi>
+      <m:msup>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>n</m:mi>
+      </m:msup>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</entry>
+    <entry><m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&lt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>a</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+</m:math>
+</entry>
+  </row>
+</tbody>
+
+
+
+
+
+
+
+
+
+
+
+</tgroup>
+</table><para id="eip-334">Given this table, the task of inverting the Laplace transform is merely one of breaking up the <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ expression into a sum of parts that resemble elements on the table. Because <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is often expressed as a fraction with a polynomial numerator and denominator, this will typically involve finding the roots of the denominator and then performing a "partial fractions" expansion. The easiest way to explain partial fractions is to just go through an example (<link target-id="eip-815"/>).</para><example id="eip-815"><para id="eip-41">Suppose we are given an <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ of the form <m:math>
+  <m:mfrac>
+    <m:mrow>
+      <m:mn>2</m:mn>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mn>2</m:mn>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:mn>9</m:mn>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>5</m:mn>
+    </m:mrow>
+    <m:mrow>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mn>2</m:mn>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:mn>4</m:mn>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>3</m:mn>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+ with a ROC of <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+</m:math>. We would like to simplify it so that it looks more like, e.g., <m:math>
+  <m:mfrac>
+    <m:mi>A</m:mi>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mi>B</m:mi>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mi>b</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>.</para><para id="eip-806">The first step is to ensure that the polynomial power of the numerator is less than that of the denominator. In our example it is not, so we need to do a polynomial long division. It is just like long division with numbers, except it goes by term instead of by digit. See below:</para><para id="eip-504"><m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:munder>
+          <m:mrow>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mtext> </m:mtext>
+            <m:mn>2</m:mn>
+          </m:mrow>
+          <m:mo>_</m:mo>
+        </m:munder>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:mn>4</m:mn>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>3</m:mn>
+        <m:mtext> </m:mtext>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mn>2</m:mn>
+        <m:msup>
+          <m:mi>s</m:mi>
+          <m:mn>2</m:mn>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:mn>9</m:mn>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>5</m:mn>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:munder>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:msup>
+              <m:mi>s</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mn>8</m:mn>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>6</m:mn>
+          </m:mrow>
+          <m:mo>_</m:mo>
+        </m:munder>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mi>s</m:mi>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+</para></example><para id="eip-239">So we have that <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mn>1</m:mn>
+    </m:mrow>
+    <m:mrow>
+      <m:msup>
+        <m:mi>s</m:mi>
+        <m:mn>2</m:mn>
+      </m:msup>
+      <m:mo>+</m:mo>
+      <m:mn>4</m:mn>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>3</m:mn>
+    </m:mrow>
+  </m:mfrac>
+</m:math>. Now we will look to simplify the remainder term. The second step of partial fractions is to find the roots of the denominator. In this case, <m:math>
+  <m:msup>
+    <m:mi>s</m:mi>
+    <m:mn>2</m:mn>
+  </m:msup>
+  <m:mo>+</m:mo>
+  <m:mn>4</m:mn>
+  <m:mi>s</m:mi>
+  <m:mo>+</m:mo>
+  <m:mn>3</m:mn>
+  <m:mo>=</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo>+</m:mo>
+  <m:mn>1</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo>+</m:mo>
+  <m:mn>3</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. The third step is to then express this as a sum of two simpler terms:<newline/>
+<m:math>
+  <m:mfrac>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mn>1</m:mn>
+    </m:mrow>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>1</m:mn>
+      <m:mo stretchy="false">)</m:mo>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>3</m:mn>
+      <m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mi>A</m:mi>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>1</m:mn>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mi>B</m:mi>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>3</m:mn>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+<newline/>
+Now we just need to solve for <m:math>
+  <m:mi>A</m:mi>
+</m:math>
+ and <m:math>
+  <m:mi>B</m:mi>
+</m:math>:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mi>A</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo>+</m:mo>
+        <m:mfrac>
+          <m:mi>B</m:mi>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>s</m:mi>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>A</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo>+</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>B</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>s</m:mi>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>A</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>3</m:mn>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mn>1</m:mn>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>s</m:mi>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>A</m:mi>
+        <m:mo>+</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>s</m:mi>
+        <m:mo>+</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mn>3</m:mn>
+        <m:mi>A</m:mi>
+        <m:mo>+</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>A</m:mi>
+        <m:mo>+</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo>=</m:mo>
+        <m:mn>1</m:mn>
+        <m:mtext> </m:mtext>
+        <m:mo>,</m:mo>
+        <m:mtext> </m:mtext>
+        <m:mn>3</m:mn>
+        <m:mi>A</m:mi>
+        <m:mo>+</m:mo>
+        <m:mi>B</m:mi>
+        <m:mo>=</m:mo>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">→</m:mo>
+        <m:mi>A</m:mi>
+        <m:mo>=</m:mo>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+        <m:mtext> </m:mtext>
+        <m:mo>,</m:mo>
+        <m:mtext> </m:mtext>
+        <m:mi>B</m:mi>
+        <m:mo>=</m:mo>
+        <m:mn>2</m:mn>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mfrac>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:mfrac>
+        <m:mo>+</m:mo>
+        <m:mfrac>
+          <m:mn>2</m:mn>
+          <m:mrow>
+            <m:mi>s</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>3</m:mn>
+          </m:mrow>
+        </m:mfrac>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+This then gives us <m:math>
+  <m:mi>H</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mrow>
+      <m:mo>−<!-- &#8722; --></m:mo>
+      <m:mn>1</m:mn>
+    </m:mrow>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>1</m:mn>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:mn>2</m:mn>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>+</m:mo>
+      <m:mn>3</m:mn>
+    </m:mrow>
+  </m:mfrac>
+</m:math>. Recalling that the ROC is <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mtext>Re</m:mtext>
+  </m:mrow>
+  <m:mo fence="false" stretchy="false">{</m:mo>
+  <m:mi>s</m:mi>
+  <m:mo fence="false" stretchy="false">}</m:mo>
+  <m:mo>&gt;</m:mo>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+</m:math> and using the table above, we have:<newline/>
+<m:math>
+  <m:mi>h</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+  <m:mi>δ</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>−</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mn>2</m:mn>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mn>3</m:mn>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>u</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math></para><para id="eip-489">The only wrinkle in this process is if a root is repeated, in which case it needs to be decomposed through partial fractions like this:<newline/>
+<m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:msup>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>N</m:mi>
+      </m:msup>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:msub>
+      <m:mi>A</m:mi>
+      <m:mi>N</m:mi>
+    </m:msub>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:msup>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>N</m:mi>
+      </m:msup>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:msub>
+      <m:mi>A</m:mi>
+      <m:mrow class="MJX-TeXAtom-ORD">
+        <m:mi>N</m:mi>
+        <m:mo>−</m:mo>
+        <m:mn>1</m:mn>
+      </m:mrow>
+    </m:msub>
+    <m:mrow>
+      <m:mo stretchy="false">(</m:mo>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+      <m:msup>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mrow class="MJX-TeXAtom-ORD">
+          <m:mi>N</m:mi>
+          <m:mo>−</m:mo>
+          <m:mn>1</m:mn>
+        </m:mrow>
+      </m:msup>
+    </m:mrow>
+  </m:mfrac>
+  <m:mo>+</m:mo>
+  <m:mo>⋯</m:mo>
+  <m:mo>+</m:mo>
+  <m:mfrac>
+    <m:msub>
+      <m:mi>A</m:mi>
+      <m:mn>1</m:mn>
+    </m:msub>
+    <m:mrow>
+      <m:mi>s</m:mi>
+      <m:mo>−</m:mo>
+      <m:mi>a</m:mi>
+    </m:mrow>
+  </m:mfrac>
+</m:math>
+</para></section></content>
+
+</document>

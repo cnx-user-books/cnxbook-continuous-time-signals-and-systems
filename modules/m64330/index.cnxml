@@ -1,0 +1,790 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Norms of Continuous-Time Signals</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64330</md:content-id>
+  <md:title>Norms of Continuous-Time Signals</md:title>
+  <md:abstract>
+</md:abstract>
+  <md:uuid>91dd4937-5d62-4a3d-aa8d-3feaf52d5988</md:uuid>
+</metadata>
+
+<content>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102961920">Among the many things we might observe or wish to know about a given continuous-time signal, another property of interest is the signal's strength: how <emphasis effect="italics">big </emphasis>is the signal? As with physical strength, there are a number of different ways we can measure a signal's strength. One way is to calculate a signal's <term>energy</term>. For a signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, the energy is defined as:</para><para id="idm146102957264"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>E</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mi mathvariant="normal">∞</m:mi></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">E_x=\int\limits_{-\infty}^\infty |x(t)|^2 dt</m:annotation></m:semantics></m:math>,</para>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102945216">which is simply the area under the curve <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:annotation encoding="math/tex">|x(t)|^2</m:annotation></m:semantics></m:math> (<link target-id="idm146102938608"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102938608" orient="vertical"><subfigure id="idm146102937856">
+        <media id="idm146102937728" alt="">
+          <image mime-type="" src="../../media/A16_1a.png"/>
+<image mime-type="application/postscript" src="../../media/A16_1a.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm146102936528">
+        <media id="idm146102936400" alt="">
+          <image mime-type="" src="../../media/A16_1b.png"/>
+<image mime-type="application/postscript" src="../../media/A16_1b.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>The energy of a signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is defined as the area under the curve <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>.</caption></figure><exercise id="idm309696529904" class="exercise">
+      <problem id="c352e72b-710e-8622-acb8-51fe923736fd" class="problem">
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102927248">Find the energy <m:math><m:semantics><m:mrow><m:msub><m:mi>E</m:mi><m:mi>x</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">E_x</m:annotation></m:semantics></m:math> of the signal in <link target-id="idm146102924576"/>.</para><figure id="idm146102924576" orient="vertical"><media id="idm146102923856" alt="">
+            <image mime-type="" src="../../media/A16_2.png"/>
+<image mime-type="application/postscript" src="../../media/A16_2.eps" for="pdf" print-width="250pt"/>
+          </media>
+          
+        </figure></problem>
+      <solution id="idm309696522784" class="solution">
+        <para id="idm309696522288">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+            <m:semantics>
+              <m:mrow>
+                <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                  <m:mtr>
+                    <m:mtd>
+                      <m:msub>
+                        <m:mi>E</m:mi>
+                        <m:mi>x</m:mi>
+                      </m:msub>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo stretchy="false">|</m:mo>
+                      </m:mrow>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:msup>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mi>d</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>T</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo stretchy="false">|</m:mo>
+                      </m:mrow>
+                      <m:mfrac>
+                        <m:mi>A</m:mi>
+                        <m:mi>T</m:mi>
+                      </m:mfrac>
+                      <m:mi>t</m:mi>
+                      <m:msup>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mi>d</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:munderover>
+                        <m:mo>∫</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>T</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mfrac>
+                        <m:msup>
+                          <m:mi>A</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:msup>
+                          <m:mi>T</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                      </m:mfrac>
+                      <m:msup>
+                        <m:mi>t</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mi>d</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:msubsup>
+                        <m:mrow>
+                          <m:mo>[</m:mo>
+                          <m:mfrac>
+                            <m:msup>
+                              <m:mi>A</m:mi>
+                              <m:mn>2</m:mn>
+                            </m:msup>
+                            <m:mrow>
+                              <m:mn>3</m:mn>
+                              <m:msup>
+                                <m:mi>T</m:mi>
+                                <m:mn>2</m:mn>
+                              </m:msup>
+                            </m:mrow>
+                          </m:mfrac>
+                          <m:msup>
+                            <m:mi>t</m:mi>
+                            <m:mn>3</m:mn>
+                          </m:msup>
+                          <m:mo>]</m:mo>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mn>0</m:mn>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>T</m:mi>
+                        </m:mrow>
+                      </m:msubsup>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:msup>
+                            <m:mi>A</m:mi>
+                            <m:mn>2</m:mn>
+                          </m:msup>
+                          <m:msup>
+                            <m:mi>T</m:mi>
+                            <m:mn>3</m:mn>
+                          </m:msup>
+                        </m:mrow>
+                        <m:mrow>
+                          <m:mn>3</m:mn>
+                          <m:msup>
+                            <m:mi>T</m:mi>
+                            <m:mn>2</m:mn>
+                          </m:msup>
+                        </m:mrow>
+                      </m:mfrac>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd/>
+                    <m:mtd>
+                      <m:mi/>
+                      <m:mo>=</m:mo>
+                      <m:mfrac>
+                        <m:mn>1</m:mn>
+                        <m:mn>3</m:mn>
+                      </m:mfrac>
+                      <m:msup>
+                        <m:mi>A</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                      <m:mi>T</m:mi>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mrow>
+              <m:annotation encoding="math/tex">\begin{align*}E_x &amp;= \int\limits_{-\infty}^{\infty}|x(t)|^2 dt \\&amp;=\int\limits_{0}^{T}|\frac{A}{T}t|^2 dt\\&amp;=\int\limits_{0}^{T}\frac{A^2}{T^2}t^2 dt\\&amp;=\left[\frac{A^2}{3T^2} t^3\right]_{0}^{T}\\&amp;=\frac{A^2T^3}{3T^2}\\&amp;=\frac{1}{3}A^2T\end{align*}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+      </solution>
+    </exercise>
+    <section id="idm146102864944">
+      <title>Signal Norms</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102864560">For our purposes, we will usually refer to a signal's strength with reference to its <term>norm</term>, which is a kind of generalized measurement of the signal's energy. The <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_p</m:annotation></m:semantics></m:math> norm of a signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is defined as:</para><para id="idm146102858112"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msub><m:mo>∥</m:mo><m:mi>p</m:mi></m:msub><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>p</m:mi></m:msup><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mn>1</m:mn><m:mrow class="MJX-TeXAtom-ORD"><m:mo>/</m:mo></m:mrow><m:mi>p</m:mi></m:mrow></m:msup><m:mtext> </m:mtext><m:mo>,</m:mo><m:mtext> </m:mtext><m:mn>1</m:mn><m:mo>≤</m:mo><m:mi>p</m:mi><m:mo>&lt;</m:mo><m:mi mathvariant="normal">∞</m:mi></m:math>.</para>
+      <para id="idm146102836032">We will most often use values of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">2</m:annotation></m:semantics></m:math> for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_p</m:annotation></m:semantics></m:math> norms, as well as <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">\infty</m:annotation></m:semantics></m:math>, which is defined as:</para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102828512"><m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msub><m:mo>∥</m:mo><m:mi mathvariant="normal">∞</m:mi></m:msub><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>ess sup </m:mtext></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\|x(t)\|_\infty=\textrm{ess sup } |x(t)|</m:annotation></m:semantics></m:math></para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102816944">"Ess sup" means the essential supremem of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>. That has a fairly technical mathematical definition, but for our purposes it is simply the maximum value of <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">|x(t)|</m:annotation></m:semantics></m:math>.</para><exercise id="idm309696417920" class="exercise">
+        <problem id="id_0fad75db-577c-399b-b208-b755193c726f" class="problem">
+          <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102806320">For <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> in <link target-id="idm146102785232"/>, find <m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msub><m:mo fence="false" stretchy="false">∥</m:mo><m:mn>1</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">\|x(t)\|_1</m:annotation></m:semantics></m:math>, <span><m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msub><m:mo fence="false" stretchy="false">∥</m:mo><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">\|x(t)\|_2</m:annotation></m:semantics></m:math>, and <span><m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msub><m:mo fence="false" stretchy="false">∥</m:mo><m:mi mathvariant="normal">∞</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">\|x(t)\|_\infty</m:annotation></m:semantics></m:math>.</span></span></para><figure id="idm146102785232" orient="vertical"><media id="idm146102784464" alt="">
+                          <image mime-type="" src="../../media/A16_2.png"/>
+<image mime-type="application/postscript" src="../../media/A16_2.eps" for="pdf" print-width="250pt"/>
+            </media>
+            
+          </figure></problem>
+        <solution id="idm309696395360" class="solution">
+          <para id="idm309696394864">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+              <m:semantics>
+                <m:mrow>
+                  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mo fence="false" stretchy="false">∥</m:mo>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msub>
+                          <m:mo fence="false" stretchy="false">∥</m:mo>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:munderover>
+                          <m:mo>∫</m:mo>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mi mathvariant="normal">∞</m:mi>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi mathvariant="normal">∞</m:mi>
+                          </m:mrow>
+                        </m:munderover>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mi>d</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:munderover>
+                          <m:mo>∫</m:mo>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi>T</m:mi>
+                          </m:mrow>
+                        </m:munderover>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mfrac>
+                          <m:mi>A</m:mi>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>t</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mi>d</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:munderover>
+                          <m:mo>∫</m:mo>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi>T</m:mi>
+                          </m:mrow>
+                        </m:munderover>
+                        <m:mfrac>
+                          <m:mi>A</m:mi>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>t</m:mi>
+                        <m:mi>d</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:msubsup>
+                          <m:mrow>
+                            <m:mo>[</m:mo>
+                            <m:mfrac>
+                              <m:mi>A</m:mi>
+                              <m:mrow>
+                                <m:mn>2</m:mn>
+                                <m:mi>T</m:mi>
+                              </m:mrow>
+                            </m:mfrac>
+                            <m:msup>
+                              <m:mi>t</m:mi>
+                              <m:mn>2</m:mn>
+                            </m:msup>
+                            <m:mo>]</m:mo>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi>T</m:mi>
+                          </m:mrow>
+                        </m:msubsup>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mi>A</m:mi>
+                            <m:msup>
+                              <m:mi>T</m:mi>
+                              <m:mn>2</m:mn>
+                            </m:msup>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>T</m:mi>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                        <m:mi>A</m:mi>
+                        <m:mi>T</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mrow>
+                <m:annotation encoding="math/tex">\begin{align*}\|x(t)\|_1 &amp;= \int\limits_{-\infty}^{\infty}|x(t)| dt \\&amp;=\int\limits_{0}^{T}|\frac{A}{T}t| dt\\&amp;=\int\limits_{0}^{T}\frac{A}{T}t dt\\&amp;=\left[\frac{A}{2T} t^2\right]_{0}^{T}\\&amp;=\frac{AT^2}{2T}\\&amp;=\frac{1}{2}AT\end{align*}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="idm309696342080">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+              <m:semantics>
+                <m:mrow>
+                  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mo fence="false" stretchy="false">∥</m:mo>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msub>
+                          <m:mo fence="false" stretchy="false">∥</m:mo>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                      </m:mtd>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:munderover>
+                          <m:mo>∫</m:mo>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mi mathvariant="normal">∞</m:mi>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi mathvariant="normal">∞</m:mi>
+                          </m:mrow>
+                        </m:munderover>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:msup>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo stretchy="false">|</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mi>d</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:munderover>
+                          <m:mo>∫</m:mo>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi>T</m:mi>
+                          </m:mrow>
+                        </m:munderover>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo stretchy="false">|</m:mo>
+                        </m:mrow>
+                        <m:mfrac>
+                          <m:mi>A</m:mi>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>t</m:mi>
+                        <m:msup>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo stretchy="false">|</m:mo>
+                          </m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mi>d</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:munderover>
+                          <m:mo>∫</m:mo>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi>T</m:mi>
+                          </m:mrow>
+                        </m:munderover>
+                        <m:mfrac>
+                          <m:msup>
+                            <m:mi>A</m:mi>
+                            <m:mn>2</m:mn>
+                          </m:msup>
+                          <m:msup>
+                            <m:mi>T</m:mi>
+                            <m:mn>2</m:mn>
+                          </m:msup>
+                        </m:mfrac>
+                        <m:msup>
+                          <m:mi>t</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mi>d</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:msubsup>
+                          <m:mrow>
+                            <m:mo>[</m:mo>
+                            <m:mfrac>
+                              <m:msup>
+                                <m:mi>A</m:mi>
+                                <m:mn>2</m:mn>
+                              </m:msup>
+                              <m:mrow>
+                                <m:mn>3</m:mn>
+                                <m:msup>
+                                  <m:mi>T</m:mi>
+                                  <m:mn>2</m:mn>
+                                </m:msup>
+                              </m:mrow>
+                            </m:mfrac>
+                            <m:msup>
+                              <m:mi>t</m:mi>
+                              <m:mn>3</m:mn>
+                            </m:msup>
+                            <m:mo>]</m:mo>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mn>0</m:mn>
+                          </m:mrow>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi>T</m:mi>
+                          </m:mrow>
+                        </m:msubsup>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:msup>
+                              <m:mi>A</m:mi>
+                              <m:mn>2</m:mn>
+                            </m:msup>
+                            <m:msup>
+                              <m:mi>T</m:mi>
+                              <m:mn>3</m:mn>
+                            </m:msup>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mn>3</m:mn>
+                            <m:msup>
+                              <m:mi>T</m:mi>
+                              <m:mn>2</m:mn>
+                            </m:msup>
+                          </m:mrow>
+                        </m:mfrac>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd/>
+                      <m:mtd>
+                        <m:mi/>
+                        <m:mo>=</m:mo>
+                        <m:mfrac>
+                          <m:mn>1</m:mn>
+                          <m:mn>3</m:mn>
+                        </m:mfrac>
+                        <m:msup>
+                          <m:mi>A</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msup>
+                        <m:mi>T</m:mi>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                </m:mrow>
+                <m:annotation encoding="math/tex">\begin{align*}
+\|x(t)\|_2 &amp;= \int\limits_{-\infty}^{\infty}|x(t)|^2 dt \\
+&amp;=\int\limits_{0}^{T}|\frac{A}{T}t|^2 dt\\
+&amp;=\int\limits_{0}^{T}\frac{A^2}{T^2}t^2 dt\\
+&amp;=\left[\frac{A^2}{3T^2} t^3\right]_{0}^{T}\\
+&amp;=\frac{A^2T^3}{3T^2}\\
+&amp;=\frac{1}{3}A^2T
+\end{align*}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="idm309696281840">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+              <m:semantics>
+                <m:mrow>
+                  <m:mo fence="false" stretchy="false">∥</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msub>
+                    <m:mo>∥</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mi>A</m:mi>
+                </m:mrow>
+                <m:annotation encoding="math/tex">\|x(t)\|_\infty=A</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+        </solution>
+      </exercise>
+    </section>
+    <section id="idm146102663488">
+      <title><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_p</m:annotation></m:semantics></m:math> Signal Spaces</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102660928">Having defined the <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_p</m:annotation></m:semantics></m:math> norms for signals, it should be evident that they do not necessarily always exist. It may be that they are unbounded for certain signals and/or values of <m:math><m:semantics><m:mrow><m:mi>p</m:mi></m:mrow><m:annotation encoding="math/tex">p</m:annotation></m:semantics></m:math>. For example, the following signal's <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">L_1</m:annotation></m:semantics></m:math> norm does not exist, but its <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">L_2</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi mathvariant="normal">∞</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_\infty</m:annotation></m:semantics></m:math> norms do exist:</para><para id="idm146102649408">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:mi>x</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:mrow>
+            <m:mo>{</m:mo>
+            <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+              <m:mtr>
+                <m:mtd>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>t</m:mi>
+                  </m:mfrac>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>≥</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi>t</m:mi>
+                  <m:mo>&lt;</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:mo fence="true" stretchy="true"/>
+          </m:mrow>
+        </m:math>
+      </para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102637616" orient="vertical"><media id="idm146102636848" alt="">
+          <image mime-type="" src="../../media/A21_1.png"/>
+<image mime-type="application/postscript" src="../../media/A21_1.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>For this signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, the <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">L_1</m:annotation></m:semantics></m:math> norm is unbounded, while the <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">L_2</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi mathvariant="normal">∞</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_\\infty</m:annotation></m:semantics></m:math> norms do exist. Can you calculate them?</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102622032">We can broadly categorize infinite-length signals depending on whether or not they have finite <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_p</m:annotation></m:semantics></m:math> norms. The <term><m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_p</m:annotation></m:semantics></m:math> signal space</term> for a particular value of <m:math><m:semantics><m:mrow><m:mi>p</m:mi></m:mrow><m:annotation encoding="math/tex">p</m:annotation></m:semantics></m:math> is the set of all signals that have a finite <m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">L_p</m:annotation></m:semantics></m:math> norm:</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102613168"><m:math><m:semantics><m:mrow><m:msub><m:mi>L</m:mi><m:mi>p</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">R</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>:</m:mo><m:mo>∥</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msub><m:mo>∥</m:mo><m:mi>p</m:mi></m:msub><m:mo>&lt;</m:mo><m:mi mathvariant="normal">∞</m:mi><m:mo fence="false" stretchy="false">}</m:mo></m:mrow><m:annotation encoding="math/tex">L_p(\mathbb{R})=\{x(t):\|x(t)\|_p &lt; \infty\}</m:annotation></m:semantics></m:math> <newline/>(the <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">R</m:mi></m:mrow></m:mrow><m:annotation encoding="math/tex">\mathbb{R}</m:annotation></m:semantics></m:math> simply means we are talking about signals that have the real number line as their independent variable)</para></section>
+    <section id="idm146102596464">
+      <title>Signal Power</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102596064">There may be times in which a signal of interest does not have a finite norm, such as with a periodic signal (because it repeats forever, its norm will be unbounded). We may wonder if there is a way to convey the strength of these signals, and for many such cases there is. We can examine what the energy (which, you recall is similar to the norm) of a signal is <emphasis effect="italics">per unit of time</emphasis>. We will refer to this quantity as the signal's <term>power</term>, and it is defined over a certain time period <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> as:</para><para id="idm146102592784">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>P</m:mi>
+                <m:mi>x</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:munderover>
+                <m:mo>∫</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mfrac>
+                    <m:mi>T</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:mfrac>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mfrac>
+                    <m:mi>T</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:mfrac>
+                </m:mrow>
+              </m:munderover>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo stretchy="false">|</m:mo>
+              </m:mrow>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msup>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo stretchy="false">|</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mi>d</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+            <m:annotation encoding="math/tex">P_x=\frac{1}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}|x(t)|^2 dt</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm146102578096">As <m:math><m:semantics><m:mrow><m:mi>T</m:mi><m:mo stretchy="false">→</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">T\rightarrow\infty</m:annotation></m:semantics></m:math>, this value is known as the <term>average power</term> of the signal over all of its time. If we then take the square root of the average power, we have what is called the <term>root mean squared (RMS)</term> value of the signal:</para><para id="idm146102574000">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mi>R</m:mi>
+              <m:mi>M</m:mi>
+              <m:msub>
+                <m:mi>S</m:mi>
+                <m:mi>x</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:msqrt>
+                <m:munder>
+                  <m:mo movablelimits="true" form="prefix">lim</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>T</m:mi>
+                    <m:mo stretchy="false">→</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                </m:munder>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mi>T</m:mi>
+                </m:mfrac>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mfrac>
+                      <m:mi>T</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mfrac>
+                      <m:mi>T</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:munderover>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo stretchy="false">|</m:mo>
+                </m:mrow>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:msup>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:msqrt>
+            </m:mrow>
+            <m:annotation encoding="math/tex">RMS_x=\sqrt{\lim_{T\rightarrow\infty}\frac{1}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}|x(t)|^2 dt}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+    </section>
+  </content>
+</document>

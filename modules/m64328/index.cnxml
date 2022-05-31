@@ -1,0 +1,837 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Continuous-Time Systems</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64328</md:content-id>
+  <md:title>Continuous-Time Systems</md:title>
+  <md:abstract>
+</md:abstract>
+  <md:uuid>f9826eac-9770-4808-9a29-78b829f85b2d</md:uuid>
+</metadata>
+
+<content>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm136504372528">We have learned <link document="m64332" window="new">what signals are</link> and the <link document="m64331" window="new">various ways they are typically classified</link>. But we want to do more than simply observe and classify signals, we would like to <emphasis effect="italics">do</emphasis> something with them. For example, we may want to take a noisy signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and try to reduce the noise, calling the new signal we produce <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math> (<link target-id="idm136504365184"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm136504365184" orient="vertical"><subfigure id="idm136504364384">
+        <media id="idm136504364192" alt="">
+          <image mime-type="" src="../../media/B1a_1a.png"/>
+<image mime-type="application/postscript" src="../../media/B1a_1a.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm136504362848">
+        <media id="idm136504362720" alt="">
+          <image mime-type="" src="../../media/B1a_1b.png"/>
+<image mime-type="application/postscript" src="../../media/B1a_1b.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>A system modifies an input signal and produces a new signal as an output. A de-noising system can take a noisy signal such as <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and produce a less noisy version of it, <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math>.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm136504352816">The entity that processes an input signal and produces an output signal is called a <term>system</term>. We will typically refer to the <term>input</term> signal as <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and the <term>output</term> as <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math>, and sometimes give the system a name, such as <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math>. When <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> operates on the input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, we can refer to that operation as <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]</m:annotation></m:semantics></m:math>. The input/system/output relationship can also be represented pictorially, as shown in <link target-id="idm136504334688"/>.</para><figure id="idm136504334688" orient="vertical"><media id="idm136504333984" alt="">
+        <image mime-type="" src="../../media/xHy.png" width="300pt" print-width="250pt"/>
+      </media>
+      
+    <caption>A system may be represented as a box having an input and and output.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm136504332096">There are all sorts of different kinds of systems, as many as the different ways we may wish to modify a signal! We have already seen that we may want to de-noise it. Another common modification is to delay a signal. A system <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> may take an input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and produce output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t-t_0)</m:annotation></m:semantics></m:math> (<link target-id="idm136504319840"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm136504319840" orient="vertical"><subfigure id="idm136504319072">
+        <media id="idm136504318944" alt="">
+          <image mime-type="" src="../../media/Bdelay1.png"/>
+<image mime-type="application/postscript" src="../../media/Bdelay1.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm136504317728">
+        <media id="idm136504317600" alt="">
+          <image mime-type="" src="../../media/Bdelay2.png"/>
+<image mime-type="application/postscript" src="../../media/Bdelay2.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>Here a system takes an input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and delays it by a time of <m:math><m:semantics><m:mrow><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">t_0</m:annotation></m:semantics></m:math>, producing an output <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t-t_0)</m:annotation></m:semantics></m:math>. In this case the value of <m:math><m:semantics><m:mrow><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">t_0</m:annotation></m:semantics></m:math> is positive.</caption></figure><para id="idm136504297136">Or we may want to amplify a signal, or attenuate it, or mix it with another signal. Supposing the signal is a picture, we may want to de-blur it (or perform one of the many other image enhancement techniques offered by an image editing program). If the signal is a music recording, we may want to turn up the bass. For signals that are stock prices or global temperature measurements, we may want to create new signals that predict future values. For each of these and a myriad of other desired signal modifications, there is a system that takes the input signal, operates on it, and produces the desired output.</para><para id="idm136504296112">So there are many different kinds of systems, but just as with signals, there are several ways we can broadly categorize them by what they do. Four classifications are particularly important: whether or not the system is linear, time-invariant, causal, and/or stable.</para><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-804"><title>Linearity</title><para id="idm136504295584">A continuous-time system <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> is <term>linear</term> if it obeys the following two properties for any signals <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2(t)</m:annotation></m:semantics></m:math> and constant value <m:math><m:semantics><m:mrow><m:mi>α</m:mi><m:mo>∈</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">C</m:mi></m:mrow></m:mrow><m:annotation encoding="math/tex">\alpha\in\mathbb{C}</m:annotation></m:semantics></m:math>:</para><list id="idm136504282160" list-type="bulleted">
+      <item>Scaling: <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>α</m:mi><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>α</m:mi><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[\alpha x_1(t)]=\alpha H[x_1(t)]</m:annotation></m:semantics></m:math></item>
+      <item>Superposition: <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[x_1(t)+x_2(t)]=H[x_1(t)]+H[x_2(t)]</m:annotation></m:semantics></m:math></item>
+    </list>
+    <para id="idm136504251936">The <term>scaling property</term> says that scaling the input a certain amount will result in the output be scaled the same amount; e.g., if an input produces a certain output, doubling the input and putting it back through the system will result in an output double the size of the original output. A system satisfies the <term>superposition property</term> if an input that is the sum of two signals produces an output the same as summing the two outputs of the signals when input individually. Note that in order to prove a system is linear, we must show that both of these properties hold for arbitrary signals and constants. To show a system is not linear, we only need to provide a single counter-example of the system not holding one of the properties.</para><example id="idm136504250944" class="example"><para id="idm136504249680">Let's consider a system that adds a constant value of <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+ to any input and see if it is linear.<newline/> <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">H[x(t)]=x(t)+1</m:annotation></m:semantics></m:math> <newline/>We will first test the scaling property:<newline/>
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>α</m:mi>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>α</m:mi>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>α</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>−</m:mo>
+                    <m:mi>α</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>α</m:mi>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>−</m:mo>
+                    <m:mi>α</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+H[\alpha x(t)]&amp;=(\alpha x(t))+1\\
+&amp;=\alpha (x(t)+1)+(1-\alpha)\\
+&amp;=\alpha H[x(t)]+(1-\alpha)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm136504210224">So the system will only satisfy the scaling property (i.e., have <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>α</m:mi><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>α</m:mi><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[\alpha x(t)]=\alpha H[x(t)]</m:annotation></m:semantics></m:math>) for <m:math><m:semantics><m:mrow><m:mi>α</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">\alpha=1</m:annotation></m:semantics></m:math> (which, of course, is not scaling the input at all!). If <m:math><m:semantics><m:mrow><m:mi>α</m:mi></m:mrow><m:annotation encoding="math/tex">\alpha</m:annotation></m:semantics></m:math> is any other number then the property will fail. Thus the system is not linear.</para>
+      <para id="idm136504196192">To disprove linearity, we could have merely provided a single counterexample. Suppose <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">x(t)=0</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>α</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">\alpha=2</m:annotation></m:semantics></m:math>. <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">H[x(t)]=1</m:annotation></m:semantics></m:math>, yet <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mn>2</m:mn><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>≠</m:mo><m:mn>2</m:mn><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H[2x(t)]=1\neq 2 H[x(t)]</m:annotation></m:semantics></m:math>.</para></example><exercise id="idm136504173328" class="exercise">
+      <problem id="b9f52a4d-e46a-cd41-398e-afde93022e9b" class="problem">
+        <para id="idm136504172160">Work out for yourself whether or not the following systems are linear:</para>
+        <list id="idm136504171824" list-type="bulleted">
+          <item>
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>=</m:mo>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mrow>
+                <m:annotation encoding="math/tex">H[x(t)]=(x(t))^2</m:annotation>
+              </m:semantics>
+            </m:math>
+          </item>
+          <item>
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>t</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+                <m:annotation encoding="math/tex">H[x(t)]=x(t^2)</m:annotation>
+              </m:semantics>
+            </m:math>
+          </item>
+          <item>
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>=</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+                <m:annotation encoding="math/tex">H[x(t)]=2x(t)+x(t-2)</m:annotation>
+              </m:semantics>
+            </m:math>
+          </item>
+          <item>
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>=</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mfrac>
+                    <m:mi>d</m:mi>
+                    <m:mrow>
+                      <m:mi>d</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+                <m:annotation encoding="math/tex">H[x(t)]=2\frac{d}{dt}x(t)</m:annotation>
+              </m:semantics>
+            </m:math>
+          </item>
+        </list>
+      </problem>
+      <solution id="idm136504133920" class="solution">
+        <list id="idm136505415440" list-type="bulleted">
+          <item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msup></m:mrow><m:annotation encoding="math/tex">H[x(t)]=(x(t))^2</m:annotation></m:semantics></m:math>  --  not linear</item>
+          <item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:msup><m:mi>t</m:mi><m:mn>2</m:mn></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=x(t^2)</m:annotation></m:semantics></m:math> --  linear</item>
+          <item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=2x(t)+x(t-2)</m:annotation></m:semantics></m:math> --  linear</item>
+          <item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mfrac><m:mi>d</m:mi><m:mrow><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mfrac><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=2\frac{d}{dt}x(t)</m:annotation></m:semantics></m:math> --  linear</item>
+        </list>
+      </solution>
+    </exercise>
+</section>
+    <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-964"><title>Time-invariance</title><para id="idm136505376976">The second significant property of a system is whether or not it is <term>time-invariant</term>. A system <m:math><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math>  is said to be time-invariant if, for an arbitrary time delay <m:math><m:semantics><m:mrow><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">t_0</m:annotation></m:semantics></m:math>, and an arbitrary input <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> whose output is denoted <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math>, <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t-t_0)]=y(t-t_0)</m:annotation></m:semantics></m:math>. Time-invariance means that delaying an input (i.e., putting it into the system at a different time) will produce a corresponding delay in the output. Time-invariance is a property that we intuitively expect most any system to have--we generally want systems to operate the same way in the evening as in the morning, or on Tuesday as on Wednesday.</para><example id="idm136505355216" class="example">
+      <title id="id_6ad3cc19-37f5-a5b7-2d3f-377c652bd813" class="title"/>
+      <para id="idm136505353952">Let's look at a couple simple systems and try to determine whether or not they are time-invariant. The first one is <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>3</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=x(t-3)</m:annotation></m:semantics></m:math>. So <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>3</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)=x(t-3)</m:annotation></m:semantics></m:math>. What we would like to know is if <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t-t_0)]=y(t-t_0)</m:annotation></m:semantics></m:math>. It is helpful when examining time invariance to introduce a placeholder function <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(t)=x(t-t_0)</m:annotation></m:semantics></m:math> for the intermediate steps.</para>
+      <para id="idm136505321600">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>g</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>g</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+H[x(t-t_0)]&amp;=H[g(t)]\\
+&amp;=g(t-3)\\
+&amp;=x((t-3)-t_0)\\
+&amp;=x((t-t_0)-3)\\
+&amp;=y(t-t_0)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm136505283808">So this system is time-invariant. Now let's look at another simple system, <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">H[x(t)]=x(t)-t</m:annotation></m:semantics></m:math>. So <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">y(t)=x(t)-t</m:annotation></m:semantics></m:math> and we will want to show that <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t-t_0)]=y(t-t_0)</m:annotation></m:semantics></m:math>. Again, we will use a placeholder <m:math><m:semantics><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">g(t)=x(t-t_0)</m:annotation></m:semantics></m:math> to help keep all of the <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>'s and <m:math><m:semantics><m:mrow><m:msub><m:mi>t</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">t_0</m:annotation></m:semantics></m:math>'s clear:</para>
+      <para id="idm136505247760">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>g</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>g</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi>t</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi>t</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:msub>
+                        <m:mi>t</m:mi>
+                        <m:mn>0</m:mn>
+                      </m:msub>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>−</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:msub>
+                        <m:mi>t</m:mi>
+                        <m:mn>0</m:mn>
+                      </m:msub>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>≠</m:mo>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:msub>
+                      <m:mi>t</m:mi>
+                      <m:mn>0</m:mn>
+                    </m:msub>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+H[x(t-t_0)]&amp;=H[g(t)]\\
+&amp;=g(t)-t\\
+&amp;=x(t-t_0)-t\\
+&amp;=\left( x(t-t_0)-(t-t_0)\right )-t_0\\
+&amp;=y(t-t_0)-t_0\\
+&amp;\neq y(t-t_0)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm136503326096">So this system is not time-invariant.</para>
+    </example>
+    <div id="idm136503325584">
+      <exercise id="idm136503325456" class="exercise">
+        <problem id="idm136503324976" class="problem">
+          <para id="idm136503324624">Work out for yourself whether or not the following systems are time-invariant:</para>
+          <list id="idm136503324288" list-type="bulleted">
+            <item>
+              <m:math>
+                <m:semantics>
+                  <m:mrow>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msup>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                  </m:mrow>
+                  <m:annotation encoding="math/tex">H[x(t)]=(x(t))^2</m:annotation>
+                </m:semantics>
+              </m:math>
+            </item>
+            <item>
+              <m:math>
+                <m:semantics>
+                  <m:mrow>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:msup>
+                      <m:mi>t</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                  <m:annotation encoding="math/tex">H[x(t)]=x(t^2)</m:annotation>
+                </m:semantics>
+              </m:math>
+            </item>
+            <item>
+              <m:math>
+                <m:semantics>
+                  <m:mrow>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>+</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                  <m:annotation encoding="math/tex">H[x(t)]=2x(t)+x(t-2)</m:annotation>
+                </m:semantics>
+              </m:math>
+            </item>
+            <item>
+              <m:math>
+                <m:semantics>
+                  <m:mrow>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mfrac>
+                      <m:mi>d</m:mi>
+                      <m:mrow>
+                        <m:mi>d</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                  <m:annotation encoding="math/tex">H[x(t)]=2\frac{d}{dt}x(t)</m:annotation>
+                </m:semantics>
+              </m:math>
+            </item>
+          </list>
+        </problem>
+        <solution id="idm136504102976" class="solution">
+          <list id="idm136504102480" list-type="bulleted"><item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msup></m:mrow><m:annotation encoding="math/tex">H[x(t)]=(x(t))^2</m:annotation></m:semantics></m:math>  --  time-invariant</item>
+            <item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:msup><m:mi>t</m:mi><m:mn>2</m:mn></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=x(t^2)</m:annotation></m:semantics></m:math> --  time-varying</item>
+            <item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=2x(t)+x(t-2)</m:annotation></m:semantics></m:math> --  time-invariant</item>
+            <item><m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">[</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mfrac><m:mi>d</m:mi><m:mrow><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mfrac><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H[x(t)]=2\frac{d}{dt}x(t)</m:annotation></m:semantics></m:math> --  time-invariant</item>
+          </list></solution>
+      </exercise>
+    </div>
+</section>
+<section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-976"><title>Causality</title><para id="eip-405">Recall that a system takes an input <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and produces an output <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+(<link target-id="fig4"/>). The very nature of that diagram suggests a temporal process: <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+goes in, and then <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> comes out. Or, in other words, <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> only depends on the present (and perhaps also the past) values of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+. And at first, it makes sense practically speaking as well, that a system cannot act in the present based upon future values of its input. But in theory, a system certainly <emphasis effect="italics">could</emphasis> be defined to consider future values of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+. If a signal is not processed in real-time, then at a given "current" time the output could indeed took to "future" values of the input, e.g., <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>+</m:mo>
+  <m:mn>1</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>.</para>
+<figure id="fig4" orient="vertical"><media id="idm2" alt="">
+        <image mime-type="" src="../../media/xHy.png" width="300pt" print-width="250pt"/>
+      </media>
+</figure>
+<para id="eip-862">Because it is possible to define a system that looks into the future, we need a special definition for the systems that don't do that. A system is said to be <term>causal</term> if the output at any given time depends only on the present and/or past values of the input.</para><para id="eip-29">It's not too difficult to determine if a system is causal or not, provided its input/output relationship is known. All one needs to do is look at it and see if it ever takes future values of time into account. So, for example, the following system is causal because it never considers future values of the input:<newline/>
+<m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:msup>
+    <m:mo stretchy="false">)</m:mo>
+    <m:mn>2</m:mn>
+  </m:msup>
+</m:math>
+<newline/>
+But now consider this system:<newline/>
+<m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:msup>
+    <m:mi>t</m:mi>
+    <m:mn>2</m:mn>
+  </m:msup>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+<newline/>
+For all time values in which <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>t</m:mi>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+</m:math>
+ is greater than <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+, the output <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is a future value of the input, e.g. <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mn>2</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mn>4</m:mn>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+, so the system is not causal.</para></section>
+<section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-562"><title>Stability</title><para id="eip-392">Imagine having a phone that always worked perfectly, but then its circuits would get fried if you sneezed. That would not be a good response! Or if an ECG blew up if a person's heart rate increased too quickly (also not good), or your radio shut off whenever a song from Kesha's first studio album came on (understandable). If a system has a reasonable input, we want the output not to be anything too unexpected. In other words, we would like systems to be <term>stable</term>.</para><para id="eip-750">There are various mathematical ways of certifying a system to be stable, but the one we will focus on is <term>bounded-input bounded-output (BIBO) stability</term>. As you might surmise, this describes a system that, so long as the input is bounded by some amplitude, will have an output also bounded by some (different) amplitude. Mathematically, a system <m:math>
+  <m:mi>H</m:mi>
+</m:math>
+ is said to be BIBO stable if, for any signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ such that <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mo>&lt;</m:mo>
+  <m:mi>A</m:mi>
+</m:math>
+, there exists some <m:math>
+  <m:mi>B</m:mi>
+</m:math>
+ such that its output <m:math>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is also bounded, <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>y</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mo>&lt;</m:mo>
+  <m:mi>B</m:mi>
+</m:math> (<link target-id="fig5"/>).
+</para>
+<figure id="fig5" orient="vertical"><subfigure id="fig5s1">
+<media id="B47_2am1" alt="">
+       <image mime-type="" src="../../media/B47_2a.png"/>
+       <image mime-type="application/postscript" src="../../media/B47_2a.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+<subfigure id="fig5s2">
+<media id="B47_2bm1" alt="">
+       <image mime-type="" src="../../media/B47_2b.png"/>
+       <image mime-type="application/postscript" src="../../media/B47_2b.eps" for="pdf" print-width="250pt"/>
+    </media>
+</subfigure>
+</figure>
+<para id="eip-750b">
+BIBO stability is a guarantee for systems. If a system is BIBO stable, then no matter what sort of input it receives (so long as the magnitude is bounded), the output is going to be bounded.</para></section>
+</content>
+</document>

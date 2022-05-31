@@ -1,0 +1,1070 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>The Continuous-Time Fourier Series</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64324</md:content-id>
+  <md:title>The Continuous-Time Fourier Series</md:title>
+  <md:abstract/>
+  <md:uuid>8af37e41-e2e9-4201-afa8-f6d277d92014</md:uuid>
+</metadata>
+
+<content>
+    <section id="idm295596338816">
+      <title>Linear Combinations of Signals</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596338400">Consider two continuous-time finite-length (length <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>) signals <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2(t)</m:annotation></m:semantics></m:math> (<link target-id="idm295596328272"/>).</para><figure id="idm295596328272" orient="vertical"><subfigure id="idm295596327472">
+          <media id="idm295596327280" alt="">
+            <image mime-type="" src="../../media/D2_1a.png"/>
+<image mime-type="application/postscript" src="../../media/D2_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596326128">
+          <media id="idm295596326000" alt="">
+            <image mime-type="" src="../../media/D2_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D2_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596324192">It is possible to combine these two signals to produce a new signal, such as <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">2x_1(t)+3x_2(t)</m:annotation></m:semantics></m:math> (<link target-id="idm295596315936"/>).</para><figure id="idm295596315936" orient="vertical"><media id="idm295596315184" alt="">
+          <image mime-type="" src="../../media/D2_1c.png"/>
+<image mime-type="application/postscript" src="../../media/D2_1c.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596313200">In general, if we have a collection <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math> of <m:math><m:semantics><m:mrow><m:mi>N</m:mi></m:mrow><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> length-<m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> signals <m:math><m:semantics><m:mrow><m:mi>B</m:mi><m:mo>=</m:mo><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>b</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo fence="false" stretchy="false">}</m:mo></m:mrow><m:annotation encoding="math/tex">B=\{b_0(t),b_1(t),b_2(t),...,b_{N-1}(t)\}</m:annotation></m:semantics></m:math>, we can linearly combine them in an infinite number of ways (by varying the scalar weights <m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:msub><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:annotation encoding="math/tex">c_0,c_1,c_2...c_{N-1}</m:annotation></m:semantics></m:math>) to create new signals:<newline/>
+<m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:munderover><m:mo movablelimits="false">∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:msub><m:mi>b</m:mi><m:mi>n</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)=\sum\limits_{n=0}^{N-1}c_nb_n(t)</m:annotation></m:semantics></m:math>
+<newline/>
+A practical example of linearly combining signals is the mixing board one might find in a music recording studio, which takes a number of different signals (e.g., vocals, bass guitar, lead guitar, keyboard, drums, animal sounds for certain Beach Boys albums, etc.) and combines them with desired strengths to create the final track (<link target-id="idm295596266992"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596266992" orient="vertical"><subfigure id="idm295596266224">
+          <media id="idm295596266096" alt="">
+            <image mime-type="" src="../../media/D3_1a.png"/>
+<image mime-type="application/postscript" src="../../media/D3_1a.eps" for="pdf" print-width="150pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596264880">
+          <media id="idm295596264752" alt="">
+            <image mime-type="" src="../../media/D3_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D3_1b.eps" for="pdf" print-width="150pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596263536">
+          <media id="idm295596263408" alt="">
+            <image mime-type="" src="../../media/D3_1c.png"/>
+<image mime-type="application/postscript" src="../../media/D3_1c.eps" for="pdf" print-width="150pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596262192">
+          <media id="idm295596262064" alt="">
+            <image mime-type="" src="../../media/D3_1d.png"/>
+<image mime-type="application/postscript" src="../../media/D3_1d.eps" for="pdf" print-width="150pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596260848">
+          <media id="idm295596260720" alt="">
+            <image mime-type="" src="../../media/D3_1e.png"/>
+<image mime-type="application/postscript" src="../../media/D3_1e.eps" for="pdf" print-width="150pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596259504">
+          <media id="idm295596259376" alt="">
+            <image mime-type="" src="../../media/D3_1f.png"/>
+<image mime-type="application/postscript" src="../../media/D3_1f.eps" for="pdf" print-width="150pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>A mixing board takes signals <m:math><m:semantics><m:mrow><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:msub><m:mi>b</m:mi><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">b_0(t)...b_4(t)</m:annotation></m:semantics></m:math> and combines them to produce <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-851">Once the set of signals <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math> is established, all we need to know to generate different signals is the value of the weights to apply to each signal in the linear combination. Suppose that <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math> is the set of four signals in <link target-id="idm295596242608"/>.</para><figure id="idm295596242608" orient="vertical"><subfigure id="idm295596241840">
+          <media id="idm295596241712" alt="">
+            <image mime-type="" src="../../media/D4_1a.png"/>
+<image mime-type="application/postscript" src="../../media/D4_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596240496">
+          <media id="idm295596240368" alt="">
+            <image mime-type="" src="../../media/D4_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D4_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596239152">
+          <media id="idm295596239024" alt="">
+            <image mime-type="" src="../../media/D4_1c.png"/>
+<image mime-type="application/postscript" src="../../media/D4_1c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm295596237808">
+          <media id="idm295596237680" alt="">
+            <image mime-type="" src="../../media/D4_1d.png"/>
+<image mime-type="application/postscript" src="../../media/D4_1d.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>Four signals in a signal collection.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596235808">Then if we have weights of, say, <m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mo fence="false" stretchy="false">{</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo fence="false" stretchy="false">}</m:mo></m:mrow><m:annotation encoding="math/tex">c_n=\{1,-1,2,0\}</m:annotation></m:semantics></m:math>, those correspond to the signal in <link target-id="idm295596227936"/>.</para><figure id="idm295596227936" orient="vertical"><media id="idm295596227168" alt="">
+          <image mime-type="" src="../../media/D5_1.png"/>
+<image mime-type="application/postscript" src="../../media/D5_1.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>A linear combination of the signals from the signal set of <link target-id="idm295596242608"/>.</caption></figure><para id="idm295596224912">We can also work backwards. If we we know a signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> was made through a linear combination of signals from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math>, we can deduce the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">c_n</m:annotation></m:semantics></m:math> from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>.</para>
+      <exercise id="idm295596214336" class="exercise">
+        <problem id="ba8a3472-0b01-8f29-589b-9d654ba4cfd3" class="problem">
+          <para id="idm295596213200">Consider the signal set in <link target-id="idm295596212912"/>.</para><figure id="idm295596212912" orient="vertical"><subfigure id="idm295596212144">
+              <media id="idm295596212016" alt="">
+                <image mime-type="" src="../../media/D6_1a.png"/>
+<image mime-type="application/postscript" src="../../media/D6_1a.eps" for="pdf" print-width="250pt"/>
+              </media>
+            </subfigure>
+            <subfigure id="idm295596210800">
+              <media id="idm295596210672" alt="">
+                <image mime-type="" src="../../media/D6_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D6_1b.eps" for="pdf" print-width="250pt"/>
+              </media>
+            </subfigure>
+            <subfigure id="idm295596209456">
+              <media id="idm295596209328" alt="">
+                <image mime-type="" src="../../media/D6_1c.png"/>
+<image mime-type="application/postscript" src="../../media/D6_1c.eps" for="pdf" print-width="250pt"/>
+              </media>
+            </subfigure>
+            <subfigure id="idm295596208112">
+              <media id="idm295596207984" alt="">
+                <image mime-type="" src="../../media/D6_1d.png"/>
+<image mime-type="application/postscript" src="../../media/D6_1d.eps" for="pdf" print-width="250pt"/>
+              </media>
+            </subfigure>
+            
+          </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596206112">What are the weights <m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">c_n</m:annotation></m:semantics></m:math> that, when used in a linear combination of the signals from the set, correspond to the signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> 
+ in <link target-id="idm295596200320"/>?</para><figure id="idm295596200320" orient="vertical"><media id="idm295596199552" alt="">
+              <image mime-type="" src="../../media/D6_3.png"/>
+<image mime-type="application/postscript" src="../../media/D6_3.eps" for="pdf" print-width="250pt"/>
+            </media>
+            
+          </figure></problem>
+        <solution id="idm295596197680" class="solution">
+          <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596197184"><m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is valued at <m:math><m:semantics><m:mrow><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math> from <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>. The only way it can have that value is if <m:math>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>3</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ are summed together, so we have <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>
+ and <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>3</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>. Note how from <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>3</m:mn>
+</m:math>
+
+ to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>4</m:mn>
+</m:math>, <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ increases from <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ to <m:math>
+  <m:mn>1</m:mn>
+</m:math>. As that is precisely what <m:math>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>3</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is already doing there, it must be that <m:math>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ (the only other signal in the set nonzero from <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>3</m:mn>
+</m:math>
+ to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>4</m:mn>
+</m:math>
+)  does not additionally contribute, so <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mn>0</m:mn>
+</m:math>. Now we only need to find out how much <m:math>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ contributes. From <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+</m:math>
+ to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>3</m:mn>
+</m:math>, 
+ <m:math> 
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+
+ goes from <m:math>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+</m:math>
+ to <m:math>
+  <m:mn>0</m:mn>
+</m:math>, while <m:math>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ goes from <m:math>
+  <m:mn>1</m:mn>
+</m:math>
+ to <m:math>
+  <m:mn>0</m:mn>
+</m:math>
+ (recall that <m:math>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is not contributing). Thus we need <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+</m:math>. We also verify that <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:msub>
+    <m:mi>b</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ from <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>
+ to <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>2</m:mn>
+</m:math>
+ also matches <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, and indeed it does. So, in sum:</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596190048"><m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>, <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mo>−</m:mo>
+  <m:mn>1</m:mn>
+</m:math>, <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mn>0</m:mn>
+</m:math>, <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mn>3</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mn>1</m:mn>
+</m:math>
+</para></solution>
+      </exercise></section>
+      <section id="idm295596189632">
+        <title>The CTFS</title>
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596189120">Now, even as it is clear we can vary the weights of a linear combination in an infinite number of ways--and thus create and infinite number of different signals from them--we may also ask, can we create <emphasis effect="italics">any</emphasis> signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> from <emphasis effect="italics">any</emphasis> given collection <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math>? The answer, of course, is no. Consider again the <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math> set from <link target-id="idm295596242608"/>. Note how each signal has a constant value between <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t=1</m:annotation></m:semantics></m:math>. Therefore it would be impossible to use them to create a new signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> that <emphasis effect="italics">did</emphasis> change in value between <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">t=1</m:annotation></m:semantics></m:math>.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596167952">This should not be a huge surprise--you can't make a pound cake if all you have are eggs and sugar--but it does raise the question...is there some set <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math> that <emphasis effect="italics">can</emphasis> create any signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>? Or to use the culinary analogy, can we stock a pantry (signal set) so well that can be used to cook up any arbitrary dish (signal)? The surprising answer is yes, although the size of the set <m:math><m:semantics><m:mrow><m:mi>B</m:mi></m:mrow><m:annotation encoding="math/tex">B</m:annotation></m:semantics></m:math> will have be infinitely large.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596160176">The person credited with providing the answer to that question is Jean-Baptiste Joseph Fourier (1768-1830). He found (it took later mathematical work by others to give more rigorous proofs) that any periodic signal--or equivalently, finite-length signal--can be created with  a linear combination of a (possibly infinite) number of harmonic sine waves of varying frequencies. The eventual end result is what we today call the <term>continuous-time Fourier series (CTFS)</term>. It states that any finite length (length <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>) signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>--or equivalently a periodic signal with period <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>--can be represented with virtually perfect precision (more on that later) by a linear combination of signals from the set:</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596152208"><m:math><m:semantics><m:mrow><m:mi>B</m:mi><m:mo>=</m:mo><m:msubsup><m:mrow><m:mo>{</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo>}</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:msubsup></m:mrow><m:annotation encoding="math/tex">B=\left\{e^{j\frac{2\pi}{T}nt}\right\}_{n=-\infty}^{\infty}</m:annotation></m:semantics></m:math></para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596140272" orient="vertical"><subfigure id="idm295596139504">
+            <media id="idm295596139376" alt="">
+              <image mime-type="" src="../../media/D13_2a.png"/>
+<image mime-type="application/postscript" src="../../media/D13_2a.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm295596138160">
+            <media id="idm295596138032" alt="">
+              <image mime-type="" src="../../media/D13_2b.png"/>
+<image mime-type="application/postscript" src="../../media/D13_2b.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm295596136816">
+            <media id="idm295596136688" alt="">
+              <image mime-type="" src="../../media/D13_2c.png"/>
+<image mime-type="application/postscript" src="../../media/D13_2c.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm295596135472">
+            <media id="idm295596135344" alt="">
+              <image mime-type="" src="../../media/D13_2d.png"/>
+<image mime-type="application/postscript" src="../../media/D13_2d.eps" for="pdf" print-width="250pt"/>
+            </media>
+          </subfigure>
+          <caption>Plotted here are the real and imaginary parts of four of the signals from the infinitely large set that is the CTFS component signals. Note how the frequency increases as the <m:math><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> of <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> increases.</caption>
+        </figure><para id="idm295596125840">And not only that, but there is a simple formula to determine each weight (also known as a <term>Fourier coefficient</term>) needed in the linear combination! The linear combination and that formula together are the CTFS:</para><list id="idm295596124992" list-type="bulleted">
+          <item>
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+              <m:semantics>
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo movablelimits="false">∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>−</m:mo>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>c</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>t</m:mi>
+                      </m:mfrac>
+                      <m:mi>n</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+                <m:annotation encoding="math/tex">x(t)=\sum\limits_{n=-\infty}^{\infty}c_ne^{j\frac{2\pi}{t}nt}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </item>
+          <item>
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+              <m:semantics>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>c</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>T</m:mi>
+                      </m:mfrac>
+                      <m:mi>n</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+                <m:annotation encoding="math/tex">c_n=\frac{1}{T}\int\limits_0^T x(t)e^{-j\frac{2\pi}{T}nt}dt</m:annotation>
+              </m:semantics>
+            </m:math>
+          </item>
+        </list>
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596097568">Take a moment to ponder the significance of the CTFS. It really is remarkable that any periodic signal can be constructed by adding up a bunch of complex sinusoids. Even a signal that looks nothing at all like a sinusoid can be expressed as an infinite sum of them. Perhaps even more impressive is the fact that--unlike as in <link target-id="idm295596214336"/> above--we don't have to guess and check what weight to assign each sinusoid; the value of the coefficient is simply the integral of the product of the signal (<m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>) and the complex conjugate of the sinusoid in question (<m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{-j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math>). </para></section>
+      <section id="idm295596087552">
+        <title>A Word on CTFS Coefficients</title>
+        <para id="idm295596087136">Let's take a closer look at that operation that finds us the weight <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">c_n</m:annotation></m:semantics></m:math> corresponding to how much a particular complex sinusoid contributes to the CTFS sum. The weight <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">c_n</m:annotation></m:semantics></m:math> associated with <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> is:</para>
+        <para id="idm295596076416">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+            <m:semantics>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>c</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msub>
+                <m:mo>=</m:mo>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mi>T</m:mi>
+                </m:mfrac>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mi>T</m:mi>
+                </m:munderover>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:mi>n</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+              <m:annotation encoding="math/tex">c_n=\frac{1}{T}\int\limits_0^T x(t)e^{-j\frac{2\pi}{T}nt}dt</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295596063312">To find out how much <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> contributes to the sum that forms <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, we multiply its complex conjugate by <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and then integrate. What that operation is doing is telling us how similar <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> are. If they are very similar (or precisely opposite), the value of <m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">c_n</m:annotation></m:semantics></m:math> will be large, while if they are not very similar then it will be close to <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> (because, after all, if that particular <span><m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> were totally unlike <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, then it would not have anything to offer in the CTFS sum)</span>.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594326336">The technical term for that comparison integral is the signal <term>inner product</term>. You may be familiar with that term as it applies to vectors, but it is doing the same thing with length-<m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> continuous-time signals, as well. The inner product operation on two continuous-time signals returns a (possibly complex) scalar value that indicates how alike the two signals are:</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594323792"><m:math><m:semantics><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>f</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>g</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>T</m:mi></m:mrow></m:munderover><m:mi>f</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:msup><m:mi>g</m:mi><m:mo>∗</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">(f(t)|g(t))=\int\limits_{0}^{T}f(t)g^*(t)dt</m:annotation></m:semantics></m:math></para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594307568">If the two signals are like each other, their inner product will be large, and if they are not, it will be small. If their inner product is <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>--meaning they are as unlike as can be--that special case has its own name: the two signals are <term>orthogonal</term>.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594305008">So then, the CTFS weight <m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">c_n</m:annotation></m:semantics></m:math> corresponding to a particular complex sinusoid in the CTFS sum is simply the inner product of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> with that sinusoid:</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594299152"><m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">c_n=(x(t)|e^{j\frac{2\pi}{T}nt})</m:annotation></m:semantics></m:math></para>
+          <para id="idm295594286896">It's time now to get our hands dirty and actually calculate a CTFS! By that we mean the task of finding the CTFS coefficients for some signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>. </para>
+          <example id="idm295594283312" class="example">
+            <title class="title" id="cc065f13-6fbe-6345-0ebf-af0c8ed22c1b"/>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594281920">For the square pulse signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> in <link target-id="idm295594278176"/>, we will find the CTFS.</para><figure id="idm295594278176" orient="vertical"><media id="idm295594277408" alt="">
+                <image mime-type="" src="../../media/D23_1.png"/>
+<image mime-type="application/postscript" src="../../media/D23_1.eps" for="pdf" print-width="250pt"/>
+              </media>
+              
+            </figure><para id="idm295594275152">To find the Fourier coefficients, we'll simply follow the formula:</para>
+            <para id="idm295594274560">
+              <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+                <m:semantics>
+                  <m:mrow>
+                    <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                      <m:mtr>
+                        <m:mtd>
+                          <m:msub>
+                            <m:mi>c</m:mi>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                          </m:msub>
+                        </m:mtd>
+                        <m:mtd>
+                          <m:mi/>
+                          <m:mo>=</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mi>T</m:mi>
+                          </m:mfrac>
+                          <m:msubsup>
+                            <m:mo>∫</m:mo>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mn>0</m:mn>
+                            </m:mrow>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mi>T</m:mi>
+                            </m:mrow>
+                          </m:msubsup>
+                          <m:mi>x</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>t</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mo>−</m:mo>
+                              <m:mi>j</m:mi>
+                              <m:mfrac>
+                                <m:mrow>
+                                  <m:mn>2</m:mn>
+                                  <m:mi>π</m:mi>
+                                </m:mrow>
+                                <m:mi>T</m:mi>
+                              </m:mfrac>
+                              <m:mi>n</m:mi>
+                              <m:mi>t</m:mi>
+                            </m:mrow>
+                          </m:msup>
+                          <m:mi>d</m:mi>
+                          <m:mi>t</m:mi>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd/>
+                        <m:mtd>
+                          <m:mi/>
+                          <m:mo>=</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mi>T</m:mi>
+                          </m:mfrac>
+                          <m:msubsup>
+                            <m:mo>∫</m:mo>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mn>0</m:mn>
+                            </m:mrow>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mfrac>
+                                <m:mi>T</m:mi>
+                                <m:mn>4</m:mn>
+                              </m:mfrac>
+                            </m:mrow>
+                          </m:msubsup>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mo>−</m:mo>
+                              <m:mi>j</m:mi>
+                              <m:mfrac>
+                                <m:mrow>
+                                  <m:mn>2</m:mn>
+                                  <m:mi>π</m:mi>
+                                </m:mrow>
+                                <m:mi>T</m:mi>
+                              </m:mfrac>
+                              <m:mi>n</m:mi>
+                              <m:mi>t</m:mi>
+                            </m:mrow>
+                          </m:msup>
+                          <m:mi>d</m:mi>
+                          <m:mi>t</m:mi>
+                          <m:mo>+</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mi>T</m:mi>
+                          </m:mfrac>
+                          <m:msubsup>
+                            <m:mo>∫</m:mo>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mfrac>
+                                <m:mrow>
+                                  <m:mn>3</m:mn>
+                                  <m:mi>T</m:mi>
+                                </m:mrow>
+                                <m:mn>4</m:mn>
+                              </m:mfrac>
+                            </m:mrow>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mi>T</m:mi>
+                            </m:mrow>
+                          </m:msubsup>
+                          <m:msup>
+                            <m:mi>e</m:mi>
+                            <m:mrow class="MJX-TeXAtom-ORD">
+                              <m:mo>−</m:mo>
+                              <m:mi>j</m:mi>
+                              <m:mfrac>
+                                <m:mrow>
+                                  <m:mn>2</m:mn>
+                                  <m:mi>π</m:mi>
+                                </m:mrow>
+                                <m:mi>T</m:mi>
+                              </m:mfrac>
+                              <m:mi>n</m:mi>
+                              <m:mi>t</m:mi>
+                            </m:mrow>
+                          </m:msup>
+                          <m:mi>d</m:mi>
+                          <m:mi>t</m:mi>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd/>
+                        <m:mtd>
+                          <m:mi/>
+                          <m:mo>=</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mrow>
+                              <m:mo>−</m:mo>
+                              <m:mi>j</m:mi>
+                              <m:mfrac>
+                                <m:mrow>
+                                  <m:mn>2</m:mn>
+                                  <m:mi>π</m:mi>
+                                </m:mrow>
+                                <m:mi>T</m:mi>
+                              </m:mfrac>
+                              <m:mi>T</m:mi>
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                          </m:mfrac>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:msup>
+                              <m:mi>e</m:mi>
+                              <m:mrow class="MJX-TeXAtom-ORD">
+                                <m:mo>−</m:mo>
+                                <m:mi>j</m:mi>
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:mn>2</m:mn>
+                                    <m:mi>π</m:mi>
+                                  </m:mrow>
+                                  <m:mi>T</m:mi>
+                                </m:mfrac>
+                                <m:mfrac>
+                                  <m:mi>T</m:mi>
+                                  <m:mn>4</m:mn>
+                                </m:mfrac>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:msup>
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                          <m:mo>+</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mrow>
+                              <m:mo>−</m:mo>
+                              <m:mi>j</m:mi>
+                              <m:mfrac>
+                                <m:mrow>
+                                  <m:mn>2</m:mn>
+                                  <m:mi>π</m:mi>
+                                </m:mrow>
+                                <m:mi>T</m:mi>
+                              </m:mfrac>
+                              <m:mi>T</m:mi>
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                          </m:mfrac>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:msup>
+                              <m:mi>e</m:mi>
+                              <m:mrow class="MJX-TeXAtom-ORD">
+                                <m:mo>−</m:mo>
+                                <m:mi>j</m:mi>
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:mn>2</m:mn>
+                                    <m:mi>π</m:mi>
+                                  </m:mrow>
+                                  <m:mi>T</m:mi>
+                                </m:mfrac>
+                                <m:mi>T</m:mi>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:msup>
+                            <m:mo>−</m:mo>
+                            <m:msup>
+                              <m:mi>e</m:mi>
+                              <m:mrow class="MJX-TeXAtom-ORD">
+                                <m:mo>−</m:mo>
+                                <m:mi>j</m:mi>
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:mn>2</m:mn>
+                                    <m:mi>π</m:mi>
+                                  </m:mrow>
+                                  <m:mi>T</m:mi>
+                                </m:mfrac>
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:mn>3</m:mn>
+                                    <m:mi>T</m:mi>
+                                  </m:mrow>
+                                  <m:mn>4</m:mn>
+                                </m:mfrac>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:msup>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd/>
+                        <m:mtd>
+                          <m:mi/>
+                          <m:mo>=</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mrow>
+                              <m:mi>j</m:mi>
+                              <m:mn>2</m:mn>
+                              <m:mi>π</m:mi>
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                          </m:mfrac>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:msup>
+                              <m:mi>e</m:mi>
+                              <m:mrow class="MJX-TeXAtom-ORD">
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:mo>−</m:mo>
+                                    <m:mi>j</m:mi>
+                                    <m:mn>3</m:mn>
+                                    <m:mi>π</m:mi>
+                                    <m:mi>n</m:mi>
+                                  </m:mrow>
+                                  <m:mn>2</m:mn>
+                                </m:mfrac>
+                              </m:mrow>
+                            </m:msup>
+                            <m:mo>−</m:mo>
+                            <m:msup>
+                              <m:mi>e</m:mi>
+                              <m:mrow class="MJX-TeXAtom-ORD">
+                                <m:mfrac>
+                                  <m:mrow>
+                                    <m:mo>−</m:mo>
+                                    <m:mi>j</m:mi>
+                                    <m:mi>π</m:mi>
+                                    <m:mi>n</m:mi>
+                                  </m:mrow>
+                                  <m:mn>2</m:mn>
+                                </m:mfrac>
+                              </m:mrow>
+                            </m:msup>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd/>
+                        <m:mtd>
+                          <m:mi/>
+                          <m:mo>=</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mrow>
+                              <m:mi>π</m:mi>
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                          </m:mfrac>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mfrac>
+                              <m:mrow>
+                                <m:msup>
+                                  <m:mi>e</m:mi>
+                                  <m:mrow class="MJX-TeXAtom-ORD">
+                                    <m:mfrac>
+                                      <m:mrow>
+                                        <m:mi>j</m:mi>
+                                        <m:mi>π</m:mi>
+                                        <m:mi>n</m:mi>
+                                      </m:mrow>
+                                      <m:mn>2</m:mn>
+                                    </m:mfrac>
+                                  </m:mrow>
+                                </m:msup>
+                                <m:mo>−</m:mo>
+                                <m:msup>
+                                  <m:mi>e</m:mi>
+                                  <m:mrow class="MJX-TeXAtom-ORD">
+                                    <m:mfrac>
+                                      <m:mrow>
+                                        <m:mo>−</m:mo>
+                                        <m:mi>j</m:mi>
+                                        <m:mi>π</m:mi>
+                                        <m:mi>n</m:mi>
+                                      </m:mrow>
+                                      <m:mn>2</m:mn>
+                                    </m:mfrac>
+                                  </m:mrow>
+                                </m:msup>
+                              </m:mrow>
+                              <m:mrow>
+                                <m:mn>2</m:mn>
+                                <m:mi>j</m:mi>
+                              </m:mrow>
+                            </m:mfrac>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd/>
+                        <m:mtd>
+                          <m:mi/>
+                          <m:mo>=</m:mo>
+                          <m:mfrac>
+                            <m:mn>1</m:mn>
+                            <m:mrow>
+                              <m:mi>π</m:mi>
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                          </m:mfrac>
+                          <m:mi>sin</m:mi>
+                          <m:mo>⁡</m:mo>
+                          <m:mrow>
+                            <m:mo>(</m:mo>
+                            <m:mfrac>
+                              <m:mrow>
+                                <m:mi>π</m:mi>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mfrac>
+                            <m:mo>)</m:mo>
+                          </m:mrow>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd/>
+                        <m:mtd>
+                          <m:mi/>
+                          <m:mo>=</m:mo>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mtext>sinc</m:mtext>
+                          </m:mrow>
+                          <m:mfrac>
+                            <m:mrow>
+                              <m:mi>π</m:mi>
+                              <m:mi>n</m:mi>
+                            </m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mfrac>
+                        </m:mtd>
+                      </m:mtr>
+                    </m:mtable>
+                  </m:mrow>
+                  <m:annotation encoding="math/tex">\begin{align*}
+c_{n} &amp;= \frac{1}{T}\int_{0}^{T} x(t) e^{-j\frac{2\pi}{T} nt} dt \\
+&amp;= \frac{1}{T}\int_{0}^{\frac{T}{4}}e^{-j\frac{2\pi}{T}nt} dt + \frac{1}{T} \int_{\frac{3T}{4}}^{T} e^{-j\frac{2\pi}{T} nt} dt \\
+&amp;= \frac{1}{-j\frac{2\pi}{T}Tn} \left(e^{-j\frac{2\pi}{T} \frac{T}{4}n} -1 \right) + \frac{1}{-j\frac{2\pi}{T}Tn} \left(e^{-j\frac{2\pi}{T}Tn} - e^{-j\frac{2\pi}{T}\frac{3T}{4} n}\right)\\
+&amp;=\frac{1}{j2\pi n} \left(e^{\frac{-j3\pi n}{2}} - e^{\frac{-j\pi n}{2}} \right) \\
+&amp;= \frac{1}{\pi n} \left( \frac{e^{\frac{j\pi n}{2}} - e^{\frac{-j \pi n}{2}}}{2j} \right) \\
+&amp;= \frac{1}{\pi n} \sin \left(\frac{\pi n}{2}\right) \\
+&amp;=\textrm{sinc}\frac{\pi n}{2}
+\end{align*}</m:annotation>
+                </m:semantics>
+              </m:math>
+            </para>
+            <para id="idm295594158352">As the sinc function is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for (nonzero) even multiples of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">\frac{\pi}{2}</m:annotation></m:semantics></m:math>, we can also express the coefficients in this way:</para>
+            <para id="idm295594154112">
+              <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+                <m:semantics>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>c</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mo>{</m:mo>
+                      <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mn>2</m:mn>
+                            </m:mfrac>
+                            <m:mo>,</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mi>n</m:mi>
+                            <m:mo>=</m:mo>
+                            <m:mn>0</m:mn>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mrow>
+                                <m:mi>π</m:mi>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mfrac>
+                            <m:mo>,</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mi>n</m:mi>
+                            <m:mo>=</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>1</m:mn>
+                            <m:mo>,</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>5</m:mn>
+                            <m:mo>,</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>9...</m:mn>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mo>−</m:mo>
+                            <m:mfrac>
+                              <m:mn>1</m:mn>
+                              <m:mrow>
+                                <m:mi>π</m:mi>
+                                <m:mi>n</m:mi>
+                              </m:mrow>
+                            </m:mfrac>
+                            <m:mo>,</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mi>n</m:mi>
+                            <m:mo>=</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>3</m:mn>
+                            <m:mo>,</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>7</m:mn>
+                            <m:mo>,</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>11...</m:mn>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mn>0</m:mn>
+                            <m:mo>,</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mi>n</m:mi>
+                            <m:mo>=</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>2</m:mn>
+                            <m:mo>,</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>4</m:mn>
+                            <m:mo>,</m:mo>
+                            <m:mo>±</m:mo>
+                            <m:mn>6...</m:mn>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                      <m:mo fence="true" stretchy="true"/>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:annotation encoding="math/tex">c_n=\begin{cases} \frac{1}{2},&amp; n=0\\\frac{1}{\pi n},&amp; n=\pm1,\pm5,\pm9...\\-\frac{1}{\pi n},&amp; n=\pm3,\pm7,\pm11...\\0,&amp;  n=\pm2,\pm4,\pm6... \end{cases}</m:annotation>
+                </m:semantics>
+              </m:math>
+            </para>
+            <para id="idm295594123568"><link target-id="idm295594123008"/> shows a plot of the these coefficients.</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594123008" orient="vertical"><media id="idm295594122256" alt="">
+                <image mime-type="" src="../../media/D24_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D24_1b.eps" for="pdf" print-width="250pt"/>
+              </media>
+              
+            <caption>The CTFS coefficients of a square pulse is a sinc function in terms of <m:math>
+  <m:mi>n</m:mi>
+</m:math>.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594119808">Note how these coefficients are only valued for integers: <m:math><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>±</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>=</m:mo><m:mo>±</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex"> n=0,\pm 1,=\pm 2</m:annotation></m:semantics></m:math>, etc. That said, we can still see that they are indeed a sinc function (a decaying sine function) evaluated at those integer values (<link target-id="idm295594114128"/>).</para><figure id="idm295594114128" orient="vertical"><media id="idm295594113360" alt="">
+                <image mime-type="" src="../../media/D24_1.png"/>
+<image mime-type="application/postscript" src="../../media/D24_1.eps" for="pdf" print-width="250pt"/>
+              </media>
+              
+            </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm295594111488">Take a second to think about how interesting a result this is. Even though <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ has sharp edges on its transition, we are able to re-create it with a sum of (smooth!) complex exponentials.</para></example>
+          </section>
+  </content>
+</document>

@@ -1,0 +1,3623 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Continuous-Time Fourier Series Properties</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64323</md:content-id>
+  <md:title>Continuous-Time Fourier Series Properties</md:title>
+  <md:abstract/>
+  <md:uuid>0d7a379f-c237-4964-9d93-2b1c4c77556b</md:uuid>
+</metadata>
+
+<content>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366287138624">Recall that the CTFS for a finite-length (length <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>) continuous-time signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is defined as:<newline/>
+<m:math>
+          <m:mi>x</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo movablelimits="false">∑</m:mo>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mo>−</m:mo>
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+          </m:munderover>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>j</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:mi>n</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+        </m:math>
+<newline/>
+        <m:math>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:mfrac>
+          <m:munderover>
+            <m:mo>∫</m:mo>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>T</m:mi>
+            </m:mrow>
+          </m:munderover>
+          <m:mi>x</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo>−</m:mo>
+              <m:mi>j</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:mi>n</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+        </m:math>
+      <newline/>
+Having defined what the CTFS is, we'll now look at some if its properties.</para><section id="idm366287105248">
+      <title>Periodicity of the CTFS</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366287104864">We have said before that the CTFS applies equally to length-<m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> finite-length signals as well as periodic signals (with a period of <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>), meaning that a finite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and the periodized version of it <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>p</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_p(t)</m:annotation></m:semantics></m:math> would both have the exact same CTFS coefficients (<link target-id="idm366287094368"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366287094368" orient="vertical"><subfigure id="idm366287093568">
+          <media id="idm366287093440" alt="">
+            <image mime-type="" src="../../media/D1_1.png"/>
+<image mime-type="application/postscript" src="../../media/D1_1.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm366287092224">
+          <media id="idm366287092096" alt="">
+            <image mime-type="" src="../../media/D1_2.png"/>
+<image mime-type="application/postscript" src="../../media/D1_2.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The finite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> and its periodized version <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>p</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_p(t)</m:annotation></m:semantics></m:math> have identical CTFS coefficients.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366287082880">In order to see why this is so, we need only look at the complex sinusoids that are summed up in a CTFS. For length-<m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> signals, these signals <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> are only considered for the time period <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">t=T</m:annotation></m:semantics></m:math>. But let's see what happens if we look outside that time period, say at time <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">t+T</m:annotation></m:semantics></m:math>:<newline/>
+<m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mi>T</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+e^{j\frac{2\pi}{T}n(t+T)}&amp;=e^{j\frac{2\pi}{T}nt+j\frac{2\pi}{T}T}\\
+&amp;=e^{j\frac{2\pi}{T}nt}e^{j\frac{2\pi}{T}nT}\\
+&amp;=e^{j\frac{2\pi}{T}nt}e^{j2\pi n}\\
+&amp;=e^{j\frac{2\pi}{T}nt}(1)\\
+&amp;=e^{j\frac{2\pi}{T}nt}
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      <newline/>
+All of the constituent sinusoids going into a CTFS themselves repeat every time period <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> (<link target-id="idm366287015328"/>). They actually repeat <m:math><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> times each time period <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>, but in any case this repetition means that the sum of all of them also repeats every time period <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>. As a result, even though we had originally considered the CTFS sum to represent a length-<m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, that sum actually gives us a <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>-periodic version of it if we look outside the <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">t=T</m:annotation></m:semantics></m:math> time range:<newline/>
+<m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mi>T</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo movablelimits="false">∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>c</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mi>T</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo movablelimits="false">∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>c</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>+</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo movablelimits="false">∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>c</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo movablelimits="false">∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>c</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo movablelimits="false">∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>c</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo movablelimits="false">∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>c</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>j</m:mi>
+                        <m:mfrac>
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                            <m:mi>π</m:mi>
+                          </m:mrow>
+                          <m:mi>T</m:mi>
+                        </m:mfrac>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+x(t+T)&amp;=\sum\limits_{n=0}^{\infty}c_ne^{j\frac{2\pi}{T}n(t+T)}\\
+&amp;=\sum\limits_{n=0}^{\infty}c_ne^{j\frac{2\pi}{T}nt+j\frac{2\pi}{T}T}\\
+&amp;=\sum\limits_{n=0}^{\infty}c_ne^{j\frac{2\pi}{T}nt}e^{j\frac{2\pi}{T}nT}\\
+&amp;=\sum\limits_{n=0}^{\infty}c_ne^{j\frac{2\pi}{T}nt}e^{j2\pi n}\\
+&amp;=\sum\limits_{n=0}^{\infty}c_ne^{j\frac{2\pi}{T}nt}(1)\\
+&amp;=\sum\limits_{n=0}^{\infty}c_ne^{j\frac{2\pi}{T}nt}\\
+&amp;=x(t)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366287015328" orient="vertical"><subfigure id="idm366287014576">
+          <media id="idm366287014448" alt="">
+            <image mime-type="" src="../../media/D25_1a.png"/>
+<image mime-type="application/postscript" src="../../media/D25_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm366287013232">
+          <media id="idm366287013104" alt="">
+            <image mime-type="" src="../../media/D25_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D25_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The complex sinusoids of the CTFS sum repeat every time period <m:math><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm366286901024">One of helpful consequences of this finite-length/periodic relationship is that it gives us some flexibility in finding the CTFS coefficients. Recall that a finite-length signal and a periodized version of it have identical CTFS coefficients. We can therefore choose any contiguous length-<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> portion of the periodized signal and use the CTFS integral formula on that portion. Doing so may make the integration easier, as we will see in the following example.</para>
+      <example id="idm366286898784" class="example">
+        <title class="title" id="b001e2b3-37d8-7cc1-6609-baf1d6ccb51c"/>
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286897632">To see how the finite-length/periodic relationship of the CTFS can help us in finding CTFS coefficients, consider the following finite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> in <link target-id="idm366286894048"/>.</para><figure id="idm366286894048" orient="vertical"><media id="idm366286893920" alt="">
+            <image mime-type="" src="../../media/D26_2.png"/>
+<image mime-type="application/postscript" src="../../media/D26_2.eps" for="pdf" print-width="250pt"/>
+          </media>
+          
+        </figure><para id="idm366286892176">The CTFS coefficients for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> can be found with the following formula:</para>
+        <para id="idm366286888672">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+            <m:semantics>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>c</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msub>
+                <m:mo>=</m:mo>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mi>T</m:mi>
+                </m:mfrac>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>T</m:mi>
+                  </m:mrow>
+                </m:munderover>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>t</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:mi>n</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+              <m:annotation encoding="math/tex">c_n=\frac{1}{T}\int\limits_{0}^{T}x(t)e^{-j\frac{2\pi}{T}nt}dt</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="idm366286874320">Note, however, that because <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">x(t)=t</m:annotation></m:semantics></m:math> from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>T</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">t=\frac{T}{2}</m:annotation></m:semantics></m:math>, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>−</m:mo><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">t-T</m:annotation></m:semantics></m:math> from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>T</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">t=\frac{T}{2}</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">t=T</m:annotation></m:semantics></m:math>, we would actually need to divide that integral into two integrals:</para>
+        <para id="idm366286856912">
+          <span>
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+              <m:semantics>
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>c</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mfrac>
+                        <m:mi>T</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mi>t</m:mi>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>T</m:mi>
+                      </m:mfrac>
+                      <m:mi>n</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:munderover>
+                    <m:mo>∫</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mfrac>
+                        <m:mi>T</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:mfrac>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>T</m:mi>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:mi>T</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>T</m:mi>
+                      </m:mfrac>
+                      <m:mi>n</m:mi>
+                      <m:mi>t</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+                <m:annotation encoding="math/tex">c_n=\frac{1}{T}\int\limits_{0}^{\frac{T}{2}}te^{-j\frac{2\pi}{T}nt}dt+\frac{1}{T}\int\limits_{\frac{T}{2}}^{T}(t-T)e^{-j\frac{2\pi}{T}nt}dt</m:annotation>
+              </m:semantics>
+            </m:math>
+          </span>
+        </para>
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286830048">As we have already seen, the CTFS coefficients for <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> are identical to those of its periodized version, which we'll call <m:math>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mi>p</m:mi>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> (<link target-id="idm366286826496"/>).</para><figure id="idm366286826496" orient="vertical"><media id="idm366286826368" alt="">
+            <image mime-type="" src="../../media/D26_2b.png"/>
+<image mime-type="application/postscript" src="../../media/D26_2b.eps" for="pdf" print-width="250pt"/>
+          </media>
+          
+        </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286824624">Now consider the finite-length signal <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mover><m:mi>x</m:mi><m:mo stretchy="false">^</m:mo></m:mover></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\hat{x}(t)</m:annotation></m:semantics></m:math> in <link target-id="idm366286819472"/>.</para><figure id="idm366286819472" orient="vertical"><media id="idm366286819344" alt="">
+            <image mime-type="" src="../../media/D26_3.png"/>
+<image mime-type="application/postscript" src="../../media/D26_3.eps" for="pdf" print-width="250pt"/>
+          </media>
+          
+        </figure><para id="idm366286817600">Its periodized version is <emphasis effect="italics">also </emphasis><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>p</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_p(t)</m:annotation></m:semantics></m:math>, meaning that its CTFS coefficients are also identical to those of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>. The difference in this case, however, is that they can be found with just a single integral:</para>
+        <para id="idm366286809520">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+            <m:semantics>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>c</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msub>
+                <m:mo>=</m:mo>
+                <m:mfrac>
+                  <m:mn>1</m:mn>
+                  <m:mi>T</m:mi>
+                </m:mfrac>
+                <m:munderover>
+                  <m:mo>∫</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mfrac>
+                      <m:mi>T</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mfrac>
+                      <m:mi>T</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:mfrac>
+                  </m:mrow>
+                </m:munderover>
+                <m:mi>t</m:mi>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:mi>n</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mi>d</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+              <m:annotation encoding="math/tex">c_n=\frac{1}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}te^{-j\frac{2\pi}{T}nt}dt </m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="idm366286794832">We can also see from this exercise how to find the CTFS coefficients of a periodic signal of period <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math>: we simply choose any length-<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>T</m:mi></m:mrow><m:annotation encoding="math/tex">T</m:annotation></m:semantics></m:math> contiguous portion of it (whichever makes things easiest for us!) and calculate the CTFS integral formula over that portion.</para>
+      </example>
+      </section>
+    <section id="idm366286790624">
+      <title>CTFS Symmetry</title>
+      <para id="idm366286790224">Take another look at the CTFS coefficient formula for a finite-length or periodic continuous-time signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm366286786688">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>c</m:mi>
+                <m:mi>n</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:munderover>
+                <m:mo>∫</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mn>0</m:mn>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>T</m:mi>
+                </m:mrow>
+              </m:munderover>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:mi>n</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mi>d</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+            <m:annotation encoding="math/tex">c_n=\frac{1}{T}\int\limits_{0}^{T}x(t)e^{-j\frac{2\pi}{T}nt}dt</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286772336">As the complex sinusoids <span><m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{-j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> are conjugate symmetric (because <span><m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{-j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math> and <span><m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{-j\frac{2\pi}{T}n(-t)}</m:annotation></m:semantics></m:math> are complex conjugates for all <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>), the CTFS coefficients will also display certain kinds of symmetry for various types of signals.</span></span></span></para><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-131"><title>Real Signals</title><para id="idm366286750320">If a signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is real, then its CTFS coefficients will be conjugate symmetric:<newline/><m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:msub><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msub><m:msup><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo></m:msup></m:mrow><m:annotation encoding="math/tex">c_n=(c_{-n})^*</m:annotation></m:semantics></m:math> (also written <m:math><m:semantics><m:mrow><m:msubsup><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow><m:mo>∗</m:mo></m:msubsup></m:mrow><m:annotation encoding="math/tex">c^*_{-n}</m:annotation></m:semantics></m:math>)<newline/>
+Conjugate symmetry implies that both the real part of the coefficients and the magnitudes of the coefficients will be even, <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Re</m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Re</m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msub><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>,</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msub><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msub><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\textrm{Re}[c_n]=\textrm{Re}[c_{-n}]~,~|c_n|=|c_{-n}|</m:annotation></m:semantics></m:math>, and that both the imaginary part of the coefficients and the phases of the coefficients will be odd, <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Im</m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo>−</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Im</m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msub><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>,</m:mo><m:mtext> </m:mtext><m:mi mathvariant="normal">∠</m:mi><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi mathvariant="normal">∠</m:mi><m:msub><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msub></m:mrow><m:annotation encoding="math/tex">\textrm{Im}[c_n]=-\textrm{Im}[c_{-n}]~,~\angle c_n=\angle c_{-n}</m:annotation></m:semantics></m:math>. Thus for real signals (which are what we will be dealing with most of the time), plots of their CTFS coefficients will display this characteristic symmetry (<link target-id="idm366286698752"/>).</para><figure id="idm366286698752" orient="vertical"><media id="idm366286697984" alt="">
+          <image mime-type="" src="../../media/D28all.png"/>
+<image mime-type="application/postscript" src="../../media/D28all.eps" for="pdf" print-width="350pt"/>
+        </media>
+        
+      <caption>For real-valued signals, their CTFS coefficients will have conjugate symmetric symmetry, meaning that their real parts and magnitudes will be even, while their imaginary parts and phases will be odd.</caption></figure></section><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-935"><title>Real and Even Signals</title><para id="idm366286695648">If a signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> is real and even, then its CTFS coefficients will also be real and even: <m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>c</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msub><m:mtext> </m:mtext><m:mo>,</m:mo><m:mtext> </m:mtext><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:msup><m:mo stretchy="false">)</m:mo><m:mo>∗</m:mo></m:msup></m:mrow><m:annotation encoding="math/tex">c_n=c_{-n}~,~c_n=(c_n)^*</m:annotation></m:semantics></m:math>. This makes sense because if a signal is real and even, then there cannot be any sine waves or shifted cosines or complex coefficients in the CTFS sum <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mo>∑</m:mo><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>n</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">x(t)=\sum c_n e^{j\frac{2\pi}{T}nt}</m:annotation></m:semantics></m:math>. With the <m:math><m:semantics><m:mrow><m:msub><m:mi>c</m:mi><m:mi>n</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">c_n</m:annotation></m:semantics></m:math>'s being real and even, the CTFS sum can be simplified:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:mn>2</m:mn>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:mi>cos</m:mi>
+        <m:mo>⁡</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+          </m:mrow>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:mi>n</m:mi>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math><newline/>
+Since <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is the sum of real and even signals (cosines), <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> itself is real and even.</para></section><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-385"><title>Real and Odd Signals</title><para id="idm366286556448">For similar reasons to those for real and odd signals (the difference being that unshifted cosines are even while unshifted sines are odd), if a signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> is real-valued and odd, its CTFS coefficients will be imaginary and odd: <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>c</m:mi>
+                <m:mi>n</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mo>−</m:mo>
+              <m:msub>
+                <m:mi>c</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>n</m:mi>
+                </m:mrow>
+              </m:msub>
+              <m:mtext> </m:mtext>
+              <m:mo>,</m:mo>
+              <m:mtext> </m:mtext>
+              <m:msub>
+                <m:mi>c</m:mi>
+                <m:mi>n</m:mi>
+              </m:msub>
+              <m:mo>=</m:mo>
+              <m:mo>−</m:mo>
+              <m:mo stretchy="false">(</m:mo>
+              <m:msub>
+                <m:mi>c</m:mi>
+                <m:mi>n</m:mi>
+              </m:msub>
+              <m:msup>
+                <m:mo stretchy="false">)</m:mo>
+                <m:mo>∗</m:mo>
+              </m:msup>
+            </m:mrow>
+            <m:annotation encoding="math/tex">c_n=-c_{-n}~,~c_n=-(c_n)^*</m:annotation>
+          </m:semantics>
+        </m:math>.
+      <newline/>
+Just as it was the case with real and even signals, the CTFS expression for real and odd signals can also be simplified, but this time in terms of sines:<newline/>
+
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo>−</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:mn>2</m:mn>
+        <m:mi>j</m:mi>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>1</m:mn>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:mi>sin</m:mi>
+        <m:mo>⁡</m:mo>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mfrac>
+          <m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>π</m:mi>
+          </m:mrow>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:mi>n</m:mi>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math></para></section></section>
+    <section id="idm366286543584">
+      <title>CTFS and Signal Energy</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286543168">To this point we have only considered the "un-normalized basis" representation of the CTFS, mostly because it is the most conventional:<newline/>
+<m:math>
+          <m:mi>x</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo movablelimits="false">∑</m:mo>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mo>−</m:mo>
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+          </m:munderover>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>j</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:mi>n</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+</m:math><newline/><m:math>
+          <m:msub>
+            <m:mi>c</m:mi>
+            <m:mi>n</m:mi>
+          </m:msub>
+          <m:mo>=</m:mo>
+          <m:mfrac>
+            <m:mn>1</m:mn>
+            <m:mi>T</m:mi>
+          </m:mfrac>
+          <m:munderover>
+            <m:mo>∫</m:mo>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>T</m:mi>
+            </m:mrow>
+          </m:munderover>
+          <m:mi>x</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:msup>
+            <m:mi>e</m:mi>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo>−</m:mo>
+              <m:mi>j</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:mi>n</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+          </m:msup>
+        </m:math>
+      <newline/>
+Note the <m:math><m:semantics><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow><m:annotation encoding="math/tex">\frac{1}{T}</m:annotation></m:semantics></m:math> in the equation for <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>, and how it is absent in the equation for <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. It is possible to have a "normalized basis" representation of the CTFS by "spreading out" that <m:math>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mi>T</m:mi>
+  </m:mfrac>
+</m:math> across both equations:<newline/>
+<m:math>
+    
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:msqrt>
+                  <m:mi>T</m:mi>
+                </m:msqrt>
+              </m:mfrac>
+              <m:munderover>
+                <m:mo movablelimits="false">∑</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>n</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mo>−</m:mo>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+              </m:munderover>
+              <m:msubsup>
+                <m:mi>c</m:mi>
+                <m:mi>n</m:mi>
+                <m:mo>′</m:mo>
+              </m:msubsup>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>j</m:mi>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:mi>n</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>
+</m:math><newline/><m:math>
+              <m:msubsup>
+                <m:mi>c</m:mi>
+                <m:mi>n</m:mi>
+                <m:mo>′</m:mo>
+              </m:msubsup>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:msqrt>
+                  <m:mi>T</m:mi>
+                </m:msqrt>
+              </m:mfrac>
+              <m:munderover>
+                <m:mo>∫</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mn>0</m:mn>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>T</m:mi>
+                </m:mrow>
+              </m:munderover>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:mi>n</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:msup>            
+        </m:math><newline/>
+Expressing the CTFS in this way helps us to see of a few of its other properties more clearly.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286484400">One of the interesting properties of the CTFS (and in fact, for all of the Fourier transform relationships we will consider in the study of signals and systems) is that it preserves a signal's energy. When using the normalized CTFS, it obeys a relationship called <term>Plancherel's Theorem</term>:<newline/>
+<m:math>
+          <m:munderover>
+            <m:mo>∫</m:mo>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mn>0</m:mn>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>T</m:mi>
+            </m:mrow>
+          </m:munderover>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:mi>x</m:mi>
+          <m:mo stretchy="false">(</m:mo>
+          <m:mi>t</m:mi>
+          <m:mo stretchy="false">)</m:mo>
+          <m:msup>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+          <m:mi>d</m:mi>
+          <m:mi>t</m:mi>
+          <m:mo>=</m:mo>
+          <m:munderover>
+            <m:mo movablelimits="false">∑</m:mo>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mo>−</m:mo>
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mi mathvariant="normal">∞</m:mi>
+            </m:mrow>
+          </m:munderover>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo stretchy="false">|</m:mo>
+          </m:mrow>
+          <m:msubsup>
+            <m:mi>c</m:mi>
+            <m:mi>n</m:mi>
+            <m:mo>′</m:mo>
+          </m:msubsup>
+          <m:msup>
+            <m:mrow class="MJX-TeXAtom-ORD">
+              <m:mo stretchy="false">|</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+          </m:msup>
+        </m:math>
+      <newline/>
+In words, what this means is that however much energy a signal had, its CTFS coefficients have the same energy! For the regular, un-normalized CTFS, the relationship simply needs to be scaled: <newline/>
+<m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:munderover>
+                <m:mo>∫</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mn>0</m:mn>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>T</m:mi>
+                </m:mrow>
+              </m:munderover>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo stretchy="false">|</m:mo>
+              </m:mrow>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msup>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo stretchy="false">|</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mi>d</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>=</m:mo>
+              <m:mi>T</m:mi>
+              <m:munderover>
+                <m:mo movablelimits="false">∑</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>n</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mo>−</m:mo>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+              </m:munderover>
+              <m:mrow class="MJX-TeXAtom-ORD">
+                <m:mo stretchy="false">|</m:mo>
+              </m:mrow>
+              <m:msub>
+                <m:mi>c</m:mi>
+                <m:mi>n</m:mi>
+              </m:msub>
+              <m:msup>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo stretchy="false">|</m:mo>
+                </m:mrow>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\int\limits_{0}^{T}|x(t)|^2 dt=T\sum\limits_{n=-\infty}^{\infty}|c_n|^2</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286444208">It turns out this property is simply one case of a broader relationship between signals and their CTFS coefficients, a relationship expressed mathematically in <term>Parseval's Theorem</term>. Consider two signals of length <m:math>
+  <m:mi>T</m:mi>
+</m:math>
+, <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. Recall their inner product, a scalar value indicating how similar (for large values) or different (for small values) they are to each other:<newline/>
+<m:math>
+  <m:munderover>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mn>0</m:mn>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>T</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>g</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>∗</m:mo>
+    </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+</m:math>
+<newline/>
+Remarkably, Parseval's Theorem states that the CFTS preserves this relationship. The value of the signals' inner product is the same as the inner product of their CTFS coefficients!<newline/>
+<m:math>
+  <m:munderover>
+    <m:mo>∫</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mn>0</m:mn>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>T</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msup>
+    <m:mi>g</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>∗</m:mo>
+    </m:mrow>
+  </m:msup>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:munderover>
+    <m:mo movablelimits="false">∑</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>n</m:mi>
+      <m:mo>=</m:mo>
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:msubsup>
+    <m:mi>c</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>n</m:mi>
+    </m:mrow>
+    <m:mo>′</m:mo>
+  </m:msubsup>
+  <m:msubsup>
+    <m:mi>d</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>n</m:mi>
+    </m:mrow>
+    <m:mrow>
+      <m:mo class="MJX-variant">′</m:mo>
+      <m:mo>∗</m:mo>
+    </m:mrow>
+  </m:msubsup>
+</m:math>
+<newline/>
+The Plancherel theorem follows if Pareseval's theorem is applied to two identical signals.
+</para><para id="eip-452">The benefit of these two CTFS properties is that certain signal analyses--e.g., signal energy or signal inner products--can be computed either on the signals themselves, or on their CTFS coefficients. There may be cases where one calculation would be easier than the other.</para></section>
+    <section id="idm366286443920">
+      <title>CTFS Convergence</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286443504">The nature of a CTFS is that we can represent some signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> as a (possibly) infinite sum of weighted complex exponentials. So then, suppose we have some signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> and find its CTFS coefficients <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>. We then create a signal <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^<!-- ^ --></m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> using those coefficients:<newline/>
+<m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^</m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:munderover>
+    <m:mo movablelimits="false">∑</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>n</m:mi>
+      <m:mo>=</m:mo>
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mi mathvariant="normal">∞</m:mi>
+  </m:munderover>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mfrac>
+        <m:mrow>
+          <m:mn>2</m:mn>
+          <m:mi>π</m:mi>
+        </m:mrow>
+        <m:mi>T</m:mi>
+      </m:mfrac>
+      <m:mi>n</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>
+<newline/>
+We would expect that <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^</m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>; after all, it is simply the definition of the CTFS.
+Fourier argued that this identity always holds, i.e., that the CTFS works for all signals. But some people objected, and countered that the CTFS does not work that way for every imaginable <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. For example, the mathematician Joseph-Louis Lagrange believed the identity of the sum would only hold if <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ were a continuous function.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-795">So Fourier believed the CTFS works for any signal, and Lagrange believed it would for only continuous signals. It turns out that the truth is somewhere in between, and it took the work another mathematician to prove it. Johann Peter Gustav Lejeune Dirichlet--living up to all those names--showed the identity <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^</m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+only holds for a certain set of conditions:</para><list xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-558"><item><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ must be absolutely integral, meaning that the integral <m:math>
+  <m:munderover>
+    <m:mo>∫</m:mo>
+    <m:mn>0</m:mn>
+    <m:mi>T</m:mi>
+  </m:munderover>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mo stretchy="false">|</m:mo>
+  </m:mrow>
+  <m:mi>d</m:mi>
+  <m:mi>t</m:mi>
+</m:math>
+ must be finite.</item>
+<item><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> must have only a finite number of local maxima and minima for any given time period.</item>
+<item><m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> must have only a finite number of discontinuities for any given time period.</item></list><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-518">The first condition is really the only one really keep an eye on, as the second two only apply for very strange signals (the technical term is "pathological"), such as <m:math>
+  <m:mi>sin</m:mi>
+  <m:mo>⁡</m:mo>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mi>t</m:mi>
+  </m:mfrac>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ around the time <m:math>
+  <m:mi>t</m:mi>
+  <m:mo>=</m:mo>
+  <m:mn>0</m:mn>
+</m:math>. But so long as those conditions are met, <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^</m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. The series may indeed require an infinite number of terms, but it will converge to the desired signal.</para><para id="eip-672">However, even if the CTFS of a signal converges, there had always been discussion of its behavior around the points of discontinuity (remember, so long as there is a finite number of these points, Dirichlet's conditions can still be satisfied). In fact, as more and more terms were added to the Fourier series of, say, a square wave, an interesting trend was noticed (<link target-id="ripples"/>).</para><figure id="ripples" orient="vertical"><subfigure id="ripple1">
+          <media id="ripple1pic" alt="">
+            <image mime-type="" src="../../media/D47_1a.png"/>
+<image mime-type="application/postscript" src="../../media/D47_1a.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+<subfigure id="ripple2">
+          <media id="ripple2pic" alt="">
+            <image mime-type="" src="../../media/D47_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D47_1b.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+<subfigure id="ripple3">
+          <media id="ripple3pic" alt="">
+            <image mime-type="" src="../../media/D47_1c.png"/>
+<image mime-type="application/postscript" src="../../media/D47_1c.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+<subfigure id="ripple4">
+          <media id="ripple4pic" alt="">
+            <image mime-type="" src="../../media/D47_1e.png"/>
+<image mime-type="application/postscript" src="../../media/D47_1e.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+<subfigure id="ripple5">
+          <media id="ripple5pic" alt="">
+            <image mime-type="" src="../../media/D48_1.png"/>
+<image mime-type="application/postscript" src="../../media/D48_1.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+<caption>Here we have a Fourier series representation of a square wave. No matter how many terms are added to a Fourier series, there will always be ripples at the discontinuities. Here we see that even with 79 terms, when we zoom in on the discontinuity we can still see the ripple.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-777">We see that even as the number of terms in the Fourier series increases, there will always be ripples at the discontinuities. At first it would seem that this disproves the identity  <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^</m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, because all the Dirichlet conditions were met for the signal in the figure, and the rippled version is clearly not equal to the original. What we actually need to do is be a little more precise in defining what the equals sign means in <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^</m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>=</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. What it really means in the case of Fourier series is that <m:math>
+  <m:mo fence="false" stretchy="false">∥</m:mo>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mover>
+      <m:mi>x</m:mi>
+      <m:mo stretchy="false">^</m:mo>
+    </m:mover>
+  </m:mrow>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>−</m:mo>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:msub>
+    <m:mo fence="false" stretchy="false">∥</m:mo>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo>=</m:mo>
+  <m:mn>0</m:mn>
+</m:math>. The norm of the difference in the two signals is zero. So even though there will always be a ripple, as the number of terms in the Fourier series goes to infinity, the ripple will get more and more narrow (it will always, interestingly, have the same height) and thus the area between the ripple and the original signal will tend to zero. So the ripple will never disappear, but we can make it infinitely narrow. The fact that these ripples occur at discontinuities is known as the Gibbs phenomenon.</para></section>
+    <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-362"><title>CTFS Pairs and Linearity</title><para id="eip-575">There is a one-to-one relationship between a signal and its CTFS signal coefficients, meaning that a particular signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> has only one set of CTFS coefficients <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+, and a set of CTFS coefficients <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+ corresponds to only one signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>. As a result, we refer to a signal and its CTFS coefficients as a CTFS pair, sometimes written like this:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+</para><para id="eip-922">One of the helpful properties of the CTFS is that it is linear. By that we mean--just as the case with linear systems--that if we have a signal <m:math>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ with CTFS coefficients <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+ and a signal <m:math>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ with coefficients <m:math>
+  <m:msub>
+    <m:mi>d</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>, with <m:math>
+  <m:msub>
+    <m:mi>α</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+</m:math>
+ and <m:math>
+  <m:msub>
+    <m:mi>α</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+</m:math>
+ as constants, then the following is also a CTFS pair:<newline/>
+<m:math>
+  <m:msub>
+    <m:mi>α</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>α</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:msub>
+    <m:mi>x</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msub>
+    <m:mi>α</m:mi>
+    <m:mn>1</m:mn>
+  </m:msub>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+  <m:mo>+</m:mo>
+  <m:msub>
+    <m:mi>α</m:mi>
+    <m:mn>2</m:mn>
+  </m:msub>
+  <m:msub>
+    <m:mi>d</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+
+<newline/>
+The proof is simply a consequence of the linearity of the integral operator in the CTFS coefficients formula:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mtext>CTFS</m:mtext>
+        <m:mo fence="false" stretchy="false">{</m:mo>
+        <m:msub>
+          <m:mi>α</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:msub>
+          <m:mi>x</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>+</m:mo>
+        <m:msub>
+          <m:mi>α</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:msub>
+          <m:mi>x</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">}</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mn>0</m:mn>
+          <m:mi>T</m:mi>
+        </m:msubsup>
+        <m:mrow>
+          <m:mo>(</m:mo>
+          <m:mrow>
+            <m:msub>
+              <m:mi>α</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>α</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:mo>)</m:mo>
+        </m:mrow>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>α</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mn>0</m:mn>
+          <m:mi>T</m:mi>
+        </m:msubsup>
+        <m:msub>
+          <m:mi>x</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+        <m:mo>+</m:mo>
+        <m:msub>
+          <m:mi>α</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mn>0</m:mn>
+          <m:mi>T</m:mi>
+        </m:msubsup>
+        <m:msub>
+          <m:mi>x</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msub>
+          <m:mi>α</m:mi>
+          <m:mn>1</m:mn>
+        </m:msub>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:mo>+</m:mo>
+        <m:msub>
+          <m:mi>α</m:mi>
+          <m:mn>2</m:mn>
+        </m:msub>
+        <m:msub>
+          <m:mi>d</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+
+</para><para id="eip-868">This property can sometimes make it easier to find a signal's CTFS coefficients. Suppose we know the coefficients for <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ are <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>. To find the coefficients of <m:math>
+  <m:mn>2</m:mn>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, we do not need to recalculate the CTFS coefficient formula, they 
+ are simply <m:math>
+  <m:mn>2</m:mn>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>. Or suppose we know the CTFS coefficients of two signals. The CTFS coefficients of the sum of the two signals is simply the sum of their CTFS coefficients.</para></section><section id="idm366286443232">
+      <title>CTFS Time/Frequency Relationship</title><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm366286442800">Now that we have established what a CTFS pair is, we can consider some other properties. Specifically, we can look at how changes to one element of the pair affects the other. If a signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is changed in some way, then how do its CTFS coefficients <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+ change in response?</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-866">One way a signal <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ could be changed is by delaying it in time. Supposing that it is delayed by time <m:math>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+</m:math>, such a delay will have the following effect on its CTFS coefficients:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:msub>
+    <m:mi>t</m:mi>
+    <m:mn>0</m:mn>
+  </m:msub>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mo>−</m:mo>
+      <m:mi>j</m:mi>
+      <m:mfrac>
+        <m:mrow>
+          <m:mn>2</m:mn>
+          <m:mi>π</m:mi>
+        </m:mrow>
+        <m:mi>T</m:mi>
+      </m:mfrac>
+      <m:msub>
+        <m:mi>t</m:mi>
+        <m:mn>0</m:mn>
+      </m:msub>
+      <m:mi>n</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+
+<newline/>
+What happens is a phase shift in the coefficients, while the magnitude of the coefficients do not change at all. To prove this property requires a change of variables and recognition that the CTFS can be computed along any <m:math>
+  <m:mi>T</m:mi>
+</m:math>
+-length section of the signal:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mtext>CTFS</m:mtext>
+        <m:mo fence="false" stretchy="false">{</m:mo>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>t</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo fence="false" stretchy="false">}</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+          <m:mi>T</m:mi>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>t</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:mi>t</m:mi>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mtext>Let </m:mtext>
+        <m:msup>
+          <m:mi>t</m:mi>
+          <m:mo>′</m:mo>
+        </m:msup>
+        <m:mo>=</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>t</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:msup>
+              <m:mi>t</m:mi>
+              <m:mo>′</m:mo>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>T</m:mi>
+            <m:mo>−</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msup>
+          <m:mi>t</m:mi>
+          <m:mo>′</m:mo>
+        </m:msup>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:msup>
+              <m:mi>t</m:mi>
+              <m:mo>′</m:mo>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:msup>
+          <m:mi>t</m:mi>
+          <m:mo>′</m:mo>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:msup>
+              <m:mi>t</m:mi>
+              <m:mo>′</m:mo>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>T</m:mi>
+            <m:mo>−</m:mo>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+          </m:mrow>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:msup>
+          <m:mi>t</m:mi>
+          <m:mo>′</m:mo>
+        </m:msup>
+        <m:mo stretchy="false">)</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>n</m:mi>
+            <m:msup>
+              <m:mi>t</m:mi>
+              <m:mo>′</m:mo>
+            </m:msup>
+          </m:mrow>
+        </m:msup>
+        <m:mi>d</m:mi>
+        <m:msup>
+          <m:mi>t</m:mi>
+          <m:mo>′</m:mo>
+        </m:msup>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-468">Rather than apply a time shift to <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, we could instead introduce a frequency shift by multiplying it with a complex exponential <m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mfrac>
+        <m:mrow>
+          <m:mn>2</m:mn>
+          <m:mi>π</m:mi>
+        </m:mrow>
+        <m:mi>T</m:mi>
+      </m:mfrac>
+      <m:mi>k</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+</m:math>. Note the effect on the CTFS coefficients:<newline/>
+<m:math>
+  <m:msup>
+    <m:mi>e</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>j</m:mi>
+      <m:mfrac>
+        <m:mrow>
+          <m:mn>2</m:mn>
+          <m:mi>π</m:mi>
+        </m:mrow>
+        <m:mi>T</m:mi>
+      </m:mfrac>
+      <m:mi>k</m:mi>
+      <m:mi>t</m:mi>
+    </m:mrow>
+  </m:msup>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>n</m:mi>
+      <m:mo>−</m:mo>
+      <m:mi>k</m:mi>
+    </m:mrow>
+  </m:msub>
+</m:math>
+
+</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-479">Let's compare these two relationships:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>t</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>k</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>−</m:mo>
+            <m:mi>k</m:mi>
+          </m:mrow>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math><newline/>
+We can see here an interesting time/frequency relationship. When one side of the CTFT pair is shifted, the other is modulated. A shift in time results in modulating the CTFS by a complex exponential; a shift in frequency (i.e., in the CTFS coefficients) yields a similar modulation in time. This is only one of many corresponding relationships between time and frequency. For example, recall that a pulse signal in time has a sinc-like representation for CTFS coefficients, while a the coefficients of a sinc time signal are pulse-like.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-843">Another time/frequency relationship involves two signals and their CTFS coefficients, and it has a special implication in the study of signals and systems. Suppose we have two periodic (or, equivalently, finite-length) signals, <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math> and <m:math>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, with CTFS coefficients of <m:math>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+ and <m:math>
+  <m:msub>
+    <m:mi>d</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>. The <term>cyclic convolution</term> of these signals is defined as their convolution as computed over a single period:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>y</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>⊛</m:mo>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mi/>
+        <m:mo>=</m:mo>
+        <m:mfrac>
+          <m:mn>1</m:mn>
+          <m:mi>T</m:mi>
+        </m:mfrac>
+        <m:msubsup>
+          <m:mo>∫</m:mo>
+          <m:mn>0</m:mn>
+          <m:mi>T</m:mi>
+        </m:msubsup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>τ</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:mi>τ</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>d</m:mi>
+        <m:mi>τ</m:mi>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+See <link target-id="circconvs"/> for an example of how it looks.
+</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="circconvs" orient="vertical"><subfigure id="cc1s">
+          <media id="cc1" alt="">
+            <image mime-type="" src="../../media/D50_1a.png"/>
+<image mime-type="application/postscript" src="../../media/D50_1a.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="cc2s">
+          <media id="cc2" alt="">
+            <image mime-type="" src="../../media/D50_1b.png"/>
+<image mime-type="application/postscript" src="../../media/D50_1b.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="cc3s">
+          <media id="cc3" alt="">
+            <image mime-type="" src="../../media/D50_2a.png"/>
+<image mime-type="application/postscript" src="../../media/D50_2a.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="cc4s">
+          <media id="cc4" alt="">
+            <image mime-type="" src="../../media/D50_2c.png"/>
+<image mime-type="application/postscript" src="../../media/D50_2c.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="cc5s">
+          <media id="cc5" alt="">
+            <image mime-type="" src="../../media/D50_2d.png"/>
+<image mime-type="application/postscript" src="../../media/D50_2d.eps" for="pdf" print-width="200pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>For the cyclic convolution of <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+, the area under the curve <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo>−</m:mo>
+  <m:mi>τ</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ is calculated for only a single period.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-355">What is remarkable about circular convolution is its expression with respect to CTFS pairs:<newline/>
+<m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>d</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>⊛</m:mo>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msub>
+          <m:mi>d</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+<newline/>
+The cyclical convolution of two signals in time is the same as the multiplication of their CTFS coefficients in frequency! What this means is that cyclical convolution can be computed without needing to use a convolution integral: simply multiply the CTFS coefficients of the two signals in question and then take the inverse CTFS.</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-248">Just as with time/frequency shifting, this convolution/multiplication relationship also works on the other side of the CTFT pair. Suppose rather than cyclically convolving signals <m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>
+ and <m:math>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+</m:math>, we instead multiply them together. The result on their CTFS coefficients will be--you guessed it--their convolution:<newline/>
+<m:math>
+  <m:mi>x</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mi>g</m:mi>
+  <m:mo stretchy="false">(</m:mo>
+  <m:mi>t</m:mi>
+  <m:mo stretchy="false">)</m:mo>
+  <m:mo stretchy="false">↔</m:mo>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+  <m:mo>∗</m:mo>
+  <m:msub>
+    <m:mi>d</m:mi>
+    <m:mi>n</m:mi>
+  </m:msub>
+</m:math>
+<newline/>
+Here the convolution of the coefficients is not cyclical, and is defined as 
+<m:math>
+  <m:munderover>
+    <m:mo movablelimits="false">∑</m:mo>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>k</m:mi>
+      <m:mo>=</m:mo>
+      <m:mo>−</m:mo>
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi mathvariant="normal">∞</m:mi>
+    </m:mrow>
+  </m:munderover>
+  <m:msub>
+    <m:mi>c</m:mi>
+    <m:mi>k</m:mi>
+  </m:msub>
+  <m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow class="MJX-TeXAtom-ORD">
+      <m:mi>n</m:mi>
+      <m:mo>−</m:mo>
+      <m:mi>k</m:mi>
+    </m:mrow>
+  </m:msub>
+</m:math>. Putting this together with the cyclic convolution property, we can see that convolution in one domain (i.e., time or frequency) has the effect of multiplication in the other domain.
+</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-765"><title>Summary of CTFS Time/Frequency Properties</title><m:math>
+  <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>d</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo>−</m:mo>
+        <m:msub>
+          <m:mi>t</m:mi>
+          <m:mn>0</m:mn>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>t</m:mi>
+              <m:mn>0</m:mn>
+            </m:msub>
+            <m:mi>n</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:msup>
+          <m:mi>e</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mo>−</m:mo>
+            <m:mi>j</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mi>k</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:msup>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>−</m:mo>
+            <m:mi>k</m:mi>
+          </m:mrow>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mo>⊛</m:mo>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:msub>
+          <m:mi>d</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+      </m:mtd>
+    </m:mtr>
+    <m:mtr>
+      <m:mtd>
+        <m:mi>x</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+        <m:mi>g</m:mi>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mi>t</m:mi>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+      <m:mtd>
+        <m:mi/>
+        <m:mo stretchy="false">↔</m:mo>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:mo>∗</m:mo>
+        <m:msub>
+          <m:mi>d</m:mi>
+          <m:mi>n</m:mi>
+        </m:msub>
+        <m:mtext> </m:mtext>
+        <m:mtext> </m:mtext>
+        <m:mo stretchy="false">(</m:mo>
+        <m:mo>=</m:mo>
+        <m:munderover>
+          <m:mo movablelimits="false">∑</m:mo>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>k</m:mi>
+            <m:mo>=</m:mo>
+            <m:mo>−</m:mo>
+            <m:mi mathvariant="normal">∞</m:mi>
+          </m:mrow>
+          <m:mi mathvariant="normal">∞</m:mi>
+        </m:munderover>
+        <m:msub>
+          <m:mi>c</m:mi>
+          <m:mi>k</m:mi>
+        </m:msub>
+        <m:msub>
+          <m:mi>d</m:mi>
+          <m:mrow class="MJX-TeXAtom-ORD">
+            <m:mi>n</m:mi>
+            <m:mo>−</m:mo>
+            <m:mi>k</m:mi>
+          </m:mrow>
+        </m:msub>
+        <m:mo stretchy="false">)</m:mo>
+      </m:mtd>
+    </m:mtr>
+  </m:mtable>
+</m:math>
+</para></section>
+    </content>
+</document>

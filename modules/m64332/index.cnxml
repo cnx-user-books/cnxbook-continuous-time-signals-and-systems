@@ -1,0 +1,79 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>What are Signals?</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m64332</md:content-id>
+  <md:title>What are Signals?</md:title>
+  <md:abstract>
+</md:abstract>
+  <md:uuid>f5f0031e-fc95-41da-bfb0-e7708f6171bf</md:uuid>
+</metadata>
+
+<content>
+    <para id="idm424395032416">A <emphasis>signal</emphasis> is a mathematical entity expressed as a function of
+some independent variable. As dry and abstract as that definition sounds,
+signals and the systems that modify them are actually interesting, important,
+and--believe it or not--very relevant to your life.</para><para id="idm424395030592">Signals are all around us. Think of any real-world
+phenomenon that can be mathematically quantified, and that also varies with respect
+to another variable, such as time. Go ahead, take a moment and think of one, what is something around you that can be expressed as a quantity that may change over time? What
+you have just thought of is a signal. The ambient temperature in your room over
+the course of a day is a signal. Your favorite sports team's margin of victory (or defeat) over the course of a season is also a signal.</para>
+    <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm424395029680" orient="vertical"><subfigure id="idm424395028880">
+        <media id="idm424395028720" alt="">
+          <image mime-type="" src="../../media/roomtemp.png"/>
+<image mime-type="application/postscript" src="../../media/roomtemp.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      <subfigure id="idm424395027344">
+        <media id="idm424395027216" alt="">
+          <image mime-type="" src="../../media/football.png"/>
+<image mime-type="application/postscript" src="../../media/football.eps" for="pdf" print-width="250pt"/>
+        </media>
+      </subfigure>
+      
+    <caption>The signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> represents the temperature in a room over the course of 24 hours. The signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> represents a team's margin of victory over the course of a sixteen game season (in this case, the disastrous 2015 season of the Dallas Cowboys).</caption></figure><para id="idm424395018144">Those two
+examples are fairly trivial (though both may influence how you feel!). Other
+signals might affect you in more significant ways. The daily closing value of
+the Dow Jones average might say something about your savings, the electrical
+potential of your heart over time--also known as an electrocardiogram--might say something about your health, and
+the voltage a radio wave induces on the antenna in your phone might
+(literally) say something directly to you. </para>
+    <section id="idm424395028368">
+      <title>Types of Signals</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm424395016464">Signals are as varied and unique as the realities they express. That said, they can also be classified in a number of conventional ways. One of the most fundamental ways to categorize a signal is by the nature of its independent variable. Suppose, for instance, the independent variable is time. A signal may be expressed in terms of a continuum of time values, such as with the example of the temperature in a room over the course of a day. At any given time instant, there is a value for the signal: the temperature of the room at that moment in time. We can represent the time variable as a real number <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>, and the temperature at time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> as <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>. Signals with these types of independent variables are known as <emphasis>continuous-time signals</emphasis>. It will be our convention to refer to these signals using functions whose arguments are in parentheses--e.g., <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y(t)</m:annotation></m:semantics></m:math>--and plot these signals with line plots (see <link target-id="idm424395002928"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm424395002928" orient="vertical"><media id="idm424395002176" alt="">
+          <image mime-type="" src="../../media/roomtemp.png"/>
+<image mime-type="application/postscript" src="../../media/roomtemp.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>The temperature in a room over the course of 24 hours is a continuous-time signal. Note that the signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math> is referred to with parentheses around the argument, because <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> runs continuously from <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">t=0</m:annotation></m:semantics></m:math> (representing midnight) to <m:math><m:semantics><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>24</m:mn></m:mrow><m:annotation encoding="math/tex">t=24</m:annotation></m:semantics></m:math> (representing the following midnight).</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm424394990704">Other signals do not have values for any arbitrary value of time. Consider the example of your sports team's margin of victory, or the daily closing price of a financial stock. These signals are defined only for certain discrete values of time. The victory margin is only defined for particular games (in football, for example, as week number 1, or 2, or 3, etc.), and the daily closing price is only defined for weekdays. Outside of those particular units of time, the signals are not defined; it makes no sense to ask what the victory margin or closing price is at, say 12:01 p.m. as compared to 12:02 p.m. The independent variable for each of these examples can be expressed as an integer <m:math><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>, and the value of the signal at that time <m:math><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> is <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>. Signals with integer-valued independent variables are known as <emphasis>discrete-time signals</emphasis>. As you may have already noticed, it will be our convention to use brackets to contain the arguments of these signals' functions--e.g. <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>--and plot the signals with stem plots (<link target-id="idm424394976304"/>).</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm424394976304" orient="vertical"><media id="idm424394975536" alt="">
+           <image mime-type="" src="../../media/football.png"/>
+<image mime-type="application/postscript" src="../../media/football.eps" for="pdf" print-width="250pt"/>
+        </media>
+        
+      <caption>A sports team's margin of victory over the course of a season is a discrete-time signal. The time variable runs from 1 to 16, but not continuously, for there is no such thing as a final score for game number 2.397! Note that the signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> uses brackets around the argument because the time variable takes only discrete, integer values.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm424394969888">This general division of signals according to their independent variables can also be extended to their dependent variables, as well. The value a signal has at a particular time (be it <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>) could, like the time variable itself, be either continuous-valued or discrete-valued. A football team can only score an integer number of points, whereas the ambient temperature can vary at infinitesimally small increments (quantum mechanics aside). If a signal has both a continuous-valued independent and dependent variable (such as the temperature in a room at time <m:math><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>), it is known as an <term>analog </term>signal; most "real world" signals are analog. If both variables are discrete-valued, the signal is known as a <term>digital</term> signal; <emphasis effect="italics">any </emphasis>signal stored in a computer is digital. There are no commonly used terms for continuous-valued discrete-time signals, nor for discrete-valued continuous-time signals, even though you can probably think of real world examples of each. <link target-id="idm424394962640"/> shows plots of all four of these signal types.</para><para id="eip-838">For our purposes, we will always assume (unless otherwise stated) that both the continuous-time and discrete-time signals we deal with are continuous-valued. While we will obviously work with signals quite a bit on our computers--and hence, these signals are actually discrete-valued--the abundance of computer memory allows us to treat them as being essentially continuous-valued.</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm424394962640" orient="vertical"><subfigure id="idm424394961872">
+          <media id="idm424394961744" alt="">
+            <image mime-type="" src="../../media/A2_1a.png"/>
+<image mime-type="application/postscript" src="../../media/A2_1a.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm424394960528">
+          <media id="idm424394960400" alt="">
+            <image mime-type="" src="../../media/A2_1b.png"/>
+<image mime-type="application/postscript" src="../../media/A2_1b.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm424394959424">
+          <media id="idm424394959296" alt="">
+            <image mime-type="" src="../../media/A2_1c.png"/>
+<image mime-type="application/postscript" src="../../media/A2_1c.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm424394958320">
+          <media id="idm424394958192" alt="">
+            <image mime-type="" src="../../media/A2_1d.png"/>
+<image mime-type="application/postscript" src="../../media/A2_1d.eps" for="pdf" print-width="250pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The possible values a signal may take at a particular time instance could reside either on a continuum or may be a discrete set of values. <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>c</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_c(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>c</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_c[n]</m:annotation></m:semantics></m:math> are examples of continuous-valued signals, while <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>d</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_d(t)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>d</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_d[n]</m:annotation></m:semantics></m:math> are discrete-valued. If a signal is continuous-valued and continuous-time, such as <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>c</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_c(t)</m:annotation></m:semantics></m:math>, it is called an analog signal. Discrete-valued discrete-time signals, such as <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>d</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_d[n]</m:annotation></m:semantics></m:math>, are called digital signals.</caption></figure></section>
+  </content>
+</document>
